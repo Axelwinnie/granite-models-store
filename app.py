@@ -233,6 +233,14 @@ def roadmap():
 def contact():
     return render_template('contact.html', social=SOCIAL)
 
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html', social=SOCIAL)
+
+@app.route('/terms')
+def terms():
+    return render_template('terms.html', social=SOCIAL)
+
 
 @app.route('/pricing', methods=['GET', 'POST'])
 def pricing():
