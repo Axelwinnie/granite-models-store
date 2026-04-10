@@ -355,7 +355,32 @@ def sitemap():
     return xml, 200, {'Content-Type': 'application/xml'}
 
 # ═══ LIVE CHAT (OpenRouter AI) ═══
-CHAT_API_KEY = os.environ.get('OPENROUTER_API_KEY', '')
+# Try every possible env var name and secret file location
+CHAT_API_KEY = ''
+for _env_name in ['OPENROUTER_API_KEY', 'OPENROUTER_KEY', 'OPEN_ROUTER_API_KEY', 'CHAT_API_KEY', 'LLM_API_KEY']:
+    CHAT_API_KEY = os.environ.get(_env_name, '')
+    if CHAT_API_KEY:
+        print(f'[CHAT] Found API key in env var: {_env_name}')
+        break
+if not CHAT_API_KEY:
+    # Try Render secret files
+    for _sf in ['/etc/secrets/.env', '/etc/secrets/openrouter_key', '/etc/secrets/api_key']:
+        try:
+            with open(_sf, 'r') as _f:
+                for _line in _f:
+                    _line = _line.strip()
+                    if '=' in _line:
+                        _line = _line.split('=', 1)[1].strip()
+                    if _line.startswith('sk-or-'):
+                        CHAT_API_KEY = _line
+                        print(f'[CHAT] Found API key in secret file: {_sf}')
+                        break
+            if CHAT_API_KEY:
+                break
+        except FileNotFoundError:
+            pass
+if not CHAT_API_KEY:
+    print(f'[CHAT] WARNING: No API key found. Env vars available: {[k for k in os.environ.keys()]}')
 CHAT_SYSTEM_PROMPT = """You are a friendly, professional customer service assistant for Granite Models Automations (GMA).
 GMA builds AI-powered business management software for the trades industry — landscaping, HVAC, plumbing, steel fabrication, construction, electrical, and 16 more trades.
 
@@ -376,18 +401,6 @@ RULES:
 - Be warm and conversational, not robotic."""
 
 _chat_histories = {}
-
-@app.route('/api/env-check')
-def env_check():
-    import os
-    key = os.environ.get('OPENROUTER_API_KEY', '')
-    all_keys = [k for k in os.environ if 'KEY' in k or 'OPEN' in k or 'ROUTER' in k]
-    return jsonify({
-        'has_key': bool(key),
-        'key_len': len(key),
-        'key_prefix': key[:6] if key else 'EMPTY',
-        'env_vars_with_key': all_keys
-    })
 
 @app.route('/api/chat', methods=['POST'])
 def api_chat():
