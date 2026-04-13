@@ -64,10 +64,10 @@ PROJECTS = {
     'file-processor': {
         'name': 'File Automation Pro',
         'sector': 'Operations & Automation',
-        'status': 'Production',
-        'tagline': 'Automated document processing for every trade — $10/page or $250/month',
+        'status': 'Development',
+        'tagline': 'Automated document processing for every trade — Coming Soon',
         'description': 'Every trade runs on paperwork — drawings, specs, cut lists, BOMs, compliance documents, permits, inspection reports. File Automation Pro takes the chaos out of document management by automatically sorting, validating, checking for completeness, and packaging files into branded delivery bundles for any trade. For steel fabrication and CNC shops, it goes deeper — routing DSTV files to beam lines, PXFT files to plasma tables, AGXT files to robotic welders.',
-        'stats': {'trades': '22', 'file_types': 'All', 'pricing': '$10/page'},
+        'stats': {'trades': '22', 'file_types': 'All', 'pricing': 'Coming Soon'},
         'tech': ['Python', 'Flask', 'SQLite', 'FFmpeg', 'CNC Routing'],
         'features': ['Automated file sorting and categorization for any trade', 'Completeness checking against trade-specific requirements', 'Branded package delivery with professional cover reports', 'Steel fab CNC routing — DSTV, PXFT, AGXT file parsing', 'Machine destination tagging from file headers', 'Metadata extraction and file validation', 'PDF, drawing, spreadsheet, and compliance doc handling', 'Works for all 22 supported industries'],
         'architecture': [
