@@ -354,6 +354,24 @@ def pricing():
         return render_template('pricing.html', social=SOCIAL, success=True)
     return render_template('pricing.html', social=SOCIAL, success=False)
 
+# ----------------------------------------------------------------------
+# /tools  /  /route-scheduler  —  added by directive
+# GMA-WEBSITE-TOOLS-PAGE-GIT-BASELINE-RECOVERY-AND-CLEAN-PROMOTION-1  (2026-05-26)
+# Surgically reapplied on top of e3ffee0 baseline (NOT the stale 0c1f455 base).
+# Templates depend only on existing CSS classes verified present in styles.css.
+# ----------------------------------------------------------------------
+@app.route('/tools')
+def tools():
+    return render_template('tools.html', social=SOCIAL)
+
+@app.route('/route-scheduler')
+def route_scheduler():
+    return render_template('route_scheduler.html', social=SOCIAL)
+
+@app.route('/tools/route-scheduler')
+def tools_route_scheduler_alias():
+    return redirect('/route-scheduler', code=302)
+
 @app.route('/robots.txt')
 def robots():
     return app.send_static_file('robots.txt')

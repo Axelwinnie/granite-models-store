@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block title %}Route Scheduler — Granite Models Automations{% endblock %}
+{% block description %}Route Scheduler is a standalone GMA tool for trade crews. Photo-to-route in 30 seconds, weekly schedule, weather-aware rescheduling. Mobile PWA. $50/month with a 7-day free trial.{% endblock %}
+{% block og_title %}Route Scheduler — built for crews{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <section class="section" style="padding-bottom:32px;">
+    <p class="section-label">ROUTE SCHEDULER</p>
+    <h2 class="section-title">Route Scheduler &mdash; built for crews.</h2>
+    <p class="section-desc">A photo, a list of stops, or a typed address book turns into an optimized route in 30 seconds. Mobile-first. Weekly schedule per crew. Weather-aware rescheduling. Plugs into any future GMA trade dashboard.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
+      <a href="/contact?interest=route_scheduler_early_access" class="hero-cta">Request Early Access &rarr;</a>
+      <a href="#rs-pricing" class="hero-cta" style="background:transparent;border:1px solid var(--gold);color:var(--gold);">View Pricing</a>
+    </div>
+  </section>
+
+  <section class="section--sm" style="padding-top:0;">
+    <h3 style="margin-bottom:16px;">What it does</h3>
+    <div class="card-grid" style="grid-template-columns:repeat(2, 1fr);gap:16px;">
+      <div class="card">
+        <h3 style="color:var(--gold);margin-bottom:8px;">Photo &rarr; route in 30 seconds</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">Snap a photo of a handwritten list or paste a block of addresses. Claude Vision OCR pulls the stops, geocodes them, and orders them for the shortest drive starting and ending at your shop.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--gold);margin-bottom:8px;">Weekly schedule</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">Master mow list, Monday through Saturday day-bucketed. Same schedule repeats every week and resets on Monday. Per-stop completion checkboxes for the crew.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--gold);margin-bottom:8px;">Weather-aware rescheduling</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">7-day forecast next to the schedule. When the day goes sideways &mdash; rain, equipment, short crew &mdash; one button balances the unfinished stops across the rest of the week.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--gold);margin-bottom:8px;">Mobile PWA, install in 30 seconds</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">Add-to-home-screen install on iPhone and Android. Works on the truck, on the porch, between stops. Cached so it&rsquo;s usable when the signal isn&rsquo;t.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--sm" style="padding-top:0;">
+    <h3 style="margin-bottom:16px;">Who it&rsquo;s for</h3>
+    <div class="card">
+      <p style="margin-bottom:8px;">Crew-based trades where the route is the day &mdash; lawn / landscape, paving, snow, irrigation, septic service, anything where a foreman drives a list of stops every morning.</p>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">Crews tap-and-go. The boss manages the master property list, adds notes (gate codes, special requests, what was done last time), and watches the week. No per-user fees &mdash; bring as many crew members as you need.</p>
+    </div>
+  </section>
+
+  <section class="section--sm" style="padding-top:0;">
+    <h3 style="margin-bottom:16px;">How install works</h3>
+    <div class="card-grid" style="grid-template-columns:repeat(3, 1fr);gap:16px;">
+      <div class="card">
+        <span style="font-family:var(--font-display);font-size:32px;color:var(--gold);font-weight:700;">1</span>
+        <h3 style="margin:4px 0 8px 0;">Sign up</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Tell us your company name and email. 7-day free trial starts when your account is provisioned.</p>
+      </div>
+      <div class="card">
+        <span style="font-family:var(--font-display);font-size:32px;color:var(--gold);font-weight:700;">2</span>
+        <h3 style="margin:4px 0 8px 0;">Email with install link</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">A one-tap install link arrives at the email you signed up with. Open it on your phone.</p>
+      </div>
+      <div class="card">
+        <span style="font-family:var(--font-display);font-size:32px;color:var(--gold);font-weight:700;">3</span>
+        <h3 style="margin:4px 0 8px 0;">Install &amp; go</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Add to Home Screen on iPhone Safari or Android Chrome. The gold RS icon launches the app already logged in.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--sm" style="padding-top:0;">
+    <h3 style="margin-bottom:16px;">Screenshots</h3>
+    <div class="card-grid" style="grid-template-columns:repeat(3, 1fr);gap:16px;">
+      <div class="card" style="text-align:center;padding:40px 16px;border:2px dashed rgba(212,167,69,0.3);">
+        <p style="color:var(--text-muted);font-size:13px;">Screenshot &mdash; today&rsquo;s route</p>
+      </div>
+      <div class="card" style="text-align:center;padding:40px 16px;border:2px dashed rgba(212,167,69,0.3);">
+        <p style="color:var(--text-muted);font-size:13px;">Screenshot &mdash; weekly schedule</p>
+      </div>
+      <div class="card" style="text-align:center;padding:40px 16px;border:2px dashed rgba(212,167,69,0.3);">
+        <p style="color:var(--text-muted);font-size:13px;">Screenshot &mdash; install card</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--sm" style="padding-top:0;">
+    <h3 style="margin-bottom:16px;">How it relates to full dashboards</h3>
+    <div class="card" style="border-left:2px solid var(--blue);">
+      <p style="margin-bottom:8px;">Route Scheduler is one of several GMA standalone tools. It does one thing well &mdash; routes and schedules for crews.</p>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">If you want a full landscaping / concrete / HVAC business dashboard with jobs, invoicing, CRM, crews, equipment, and AI assistance in one connected system, see <a href="/tools" style="color:var(--gold);">Tools</a> for the full lineup or <a href="/contact" style="color:var(--gold);">talk to us</a> about Trades Platform or Granite Pro. Standalone tools can plug into broader dashboards later if you outgrow them.</p>
+    </div>
+  </section>
+
+  <section class="section--sm" style="padding-top:0;" id="rs-pricing">
+    <h3 style="margin-bottom:16px;">Pricing</h3>
+    <div class="card" style="border-left:2px solid var(--gold);">
+      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px;">
+        <div>
+          <span style="font-size:32px;font-weight:700;color:var(--gold);">$50</span><span style="color:var(--text-muted);"> /month</span>
+          <br><span style="font-size:13px;color:var(--text-muted);">Standalone. Cancel anytime.</span>
+        </div>
+        <div>
+          <span style="font-size:24px;font-weight:700;color:var(--green);">7 days</span>
+          <br><span style="font-size:13px;color:var(--text-muted);">Free trial. Card on file. Cancel before day 7 and you&rsquo;re not charged.</span>
+        </div>
+      </div>
+      <div class="pricing-list">
+        <span>Unlimited routes</span>
+        <span>Unlimited stops per route</span>
+        <span>Unlimited properties on the master list</span>
+        <span>Photo intake with Claude Vision OCR</span>
+        <span>Weather-aware rescheduling (Open-Meteo)</span>
+        <span>Weekly schedule (Mon&ndash;Sat) per crew</span>
+        <span>Per-property notes (gate codes, history, special requests)</span>
+        <span>Mobile PWA install (iPhone + Android)</span>
+        <span>No per-user fees &mdash; add as many crew members as you need</span>
+      </div>
+      <div style="margin-top:16px;font-size:13px;color:var(--text-muted);">
+        <strong style="color:var(--text);">Cancellation:</strong> You keep access until the end of the period you paid for. No refund. No long-term contract.
+      </div>
+    </div>
+  </section>
+
+  <section class="section--sm" style="padding-top:0;">
+    <h3 style="margin-bottom:16px;">FAQ</h3>
+    <div class="card" style="margin-bottom:12px;">
+      <h3 style="margin-bottom:6px;font-size:16px;">Does it require GPS tracking on my crew?</h3>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">No. Route Scheduler does routing, not surveillance. You tell it where the stops are; it tells the crew the order.</p>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <h3 style="margin-bottom:6px;font-size:16px;">Can I use my own map?</h3>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">In-app map uses Leaflet with OpenStreetMap tiles. Export to Google Maps with one tap (auto-splits when you have more than 9 stops, because Google Maps caps waypoints).</p>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <h3 style="margin-bottom:6px;font-size:16px;">How many properties can I add?</h3>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">Unlimited. Build your master mow list once; it repeats every week and resets on Monday.</p>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <h3 style="margin-bottom:6px;font-size:16px;">Does it work offline?</h3>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">The PWA caches the day&rsquo;s schedule so a crew can keep working through a bad signal. Updates push to the server when the connection comes back.</p>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <h3 style="margin-bottom:6px;font-size:16px;">Can I add it to my existing dashboard later?</h3>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">Yes. The Route Scheduler data layer is designed to plug into a broader trade dashboard or the Granite Pro stack when you&rsquo;re ready.</p>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <h3 style="margin-bottom:6px;font-size:16px;">What happens if I cancel?</h3>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.6;">You keep access until the end of the period you already paid for. No refund. After that, your account goes inactive and the data stays archived for 90 days in case you come back.</p>
+    </div>
+  </section>
+
+  <section class="section" id="get-started">
+    <p class="section-label">GET STARTED</p>
+    <h2 class="section-title">Ready to run your route the easy way?</h2>
+    <p class="section-desc">Request early access. We&rsquo;ll send you the install link by email.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px;">
+      <a href="/contact?interest=route_scheduler_early_access" class="hero-cta">Request Early Access &rarr;</a>
+      <a href="mailto:support@granitemodels.store" class="hero-cta" style="background:transparent;border:1px solid var(--gold);color:var(--gold);">support@granitemodels.store</a>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

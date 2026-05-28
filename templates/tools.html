@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block title %}Tools — Granite Models Automations{% endblock %}
+{% block description %}Standalone tools for trade contractors. Buy one tool, use a trade dashboard, or upgrade to the full GMA platform. Route Scheduler available now at $50/month with a 7-day free trial.{% endblock %}
+{% block og_title %}GMA Tools — Standalone Software for Trade Contractors{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <section class="section" style="padding-bottom:40px;">
+    <p class="section-label">TOOLS</p>
+    <h2 class="section-title">Tools for Trade Contractors</h2>
+    <p class="section-desc">Buy a single tool. Roll it into a full trade dashboard. Or grow into the GMA platform. Start with what you need today.</p>
+  </section>
+
+  <section class="section--sm" style="padding-top:0;">
+    <div class="card-grid" style="grid-template-columns:repeat(3, 1fr);gap:16px;">
+      <div class="card">
+        <h3 style="color:var(--gold);margin-bottom:8px;">Buy one tool</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Pick a single tool that solves the one thing slowing you down. Pay monthly. Cancel anytime.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--green);margin-bottom:8px;">Use a trade dashboard</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">A bundled dashboard for your trade with jobs, crews, invoicing, CRM, equipment, and AI in one place.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--blue);margin-bottom:8px;">Upgrade to the full platform</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">The Granite Pro stack adds lead generation, territory exclusivity, and priority support on top of the dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--sm" style="padding-top:0;">
+    <h3 style="margin-bottom:16px;">Available Now</h3>
+    <div class="card" style="border-left:2px solid var(--green);">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+        <span class="badge badge--production">AVAILABLE NOW</span>
+        <span style="font-family:var(--font-display);font-weight:700;color:var(--text);font-size:18px;">Route Scheduler</span>
+      </div>
+      <p style="margin-bottom:12px;">Photo-to-route in 30 seconds. Mobile-first PWA that turns a list of stops into an optimized route, anchored at your shop. Weekly schedule per crew, weather-aware rescheduling, photo intake with Claude Vision OCR. Built for lawn, landscape, paving, snow, and any crew-based trade where the route is the day.</p>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:12px;">
+        <div>
+          <span style="font-size:24px;font-weight:700;color:var(--gold);">$50</span><span style="color:var(--text-muted);"> /month</span>
+        </div>
+        <div>
+          <span style="font-size:18px;font-weight:700;color:var(--green);">7 days</span><span style="color:var(--text-muted);"> free trial</span>
+        </div>
+        <div>
+          <span style="font-size:14px;color:var(--text-muted);">Standalone tool. Cancel anytime. No per-user fees.</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="/route-scheduler" class="hero-cta">View Route Scheduler &rarr;</a>
+        <a href="/contact?interest=route_scheduler_early_access" class="hero-cta" style="background:transparent;border:1px solid var(--gold);color:var(--gold);">Request Early Access</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--sm" style="padding-top:0;">
+    <h3 style="margin-bottom:16px;">Coming Soon</h3>
+    <div class="card-grid" style="grid-template-columns:repeat(2, 1fr);gap:16px;">
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span class="badge badge--rebuilding">COMING SOON</span>
+          <span style="font-family:var(--font-display);font-weight:700;">File Processor / DIG</span>
+        </div>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Automated document intake and sorting for any trade. Sorts drawings, specs, BOMs, permits, inspection reports into branded delivery bundles. Steel fab + CNC routing supported.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span class="badge badge--rebuilding">COMING SOON</span>
+          <span style="font-family:var(--font-display);font-weight:700;">Scope ID</span>
+        </div>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Identifies and tags scope items from drawings and specs so estimators don&rsquo;t miss line items.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span class="badge badge--rebuilding">COMING SOON</span>
+          <span style="font-family:var(--font-display);font-weight:700;">Steel Estimator</span>
+        </div>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Steel fabrication estimating with AISC library lookups, weight calculations, and shop-rate pricing.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span class="badge badge--rebuilding">COMING SOON</span>
+          <span style="font-family:var(--font-display);font-weight:700;">AI Answering Service</span>
+        </div>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Picks up the phone when you can&rsquo;t. Books estimates, captures leads, routes urgent calls.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span class="badge badge--rebuilding">COMING SOON</span>
+          <span style="font-family:var(--font-display);font-weight:700;">File Vault</span>
+        </div>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Compliance-grade document storage with version history, signature capture, and audit trails.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span class="badge badge--rebuilding">COMING SOON</span>
+          <span style="font-family:var(--font-display);font-weight:700;">Job Site Designer</span>
+        </div>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Visual job-site layout planning for crews. Drag-and-drop equipment, materials, and crew positions on a site map.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--sm" style="padding-top:0;">
+    <h3 style="margin-bottom:16px;">Trade Dashboards</h3>
+    <div class="card" style="border-left:2px solid var(--blue);">
+      <p style="margin-bottom:12px;">A trade dashboard bundles multiple business functions for a single trade &mdash; jobs, scheduling, crews, equipment, invoicing, CRM, and AI assistance &mdash; in one connected system. Standalone tools like Route Scheduler can plug into a trade dashboard later if you outgrow them.</p>
+      <p style="margin-bottom:12px;color:var(--text-muted);font-size:14px;">Available by trade / consult required:</p>
+      <div class="pricing-list" style="grid-template-columns:repeat(3, 1fr);">
+        <span>Landscaping</span>
+        <span>Plumbing</span>
+        <span>HVAC</span>
+        <span>Concrete</span>
+        <span>Electrical</span>
+        <span>Painting</span>
+        <span>Septic</span>
+        <span>Irrigation</span>
+        <span>Roofing</span>
+        <span>Masonry</span>
+      </div>
+      <div style="margin-top:16px;">
+        <a href="/contact" class="hero-cta">Talk to GMA about a trade dashboard &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--sm" style="padding-top:0;">
+    <h3 style="margin-bottom:16px;">Bundle Path</h3>
+    <div class="card-grid" style="grid-template-columns:repeat(2, 1fr);gap:16px;">
+      <div class="card">
+        <h3 style="margin-bottom:8px;">Trades Platform</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;margin-bottom:8px;">Full trade dashboard with jobs, crews, invoicing, CRM, equipment, AI assistant, QuickBooks + Excel integration. No per-user fees.</p>
+        <a href="/pricing" style="font-size:14px;color:var(--gold);">See pricing &rarr;</a>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">Granite Pro</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;margin-bottom:8px;">Everything in Trades Platform plus Lead Hunter Pro V2 lead generation, territory exclusivity, and priority support.</p>
+        <a href="/pricing" style="font-size:14px;color:var(--gold);">See pricing &rarr;</a>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">Custom Builds</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;margin-bottom:8px;">Bespoke systems, integrations, automations. $100&ndash;$150/hr, $500 minimum.</p>
+        <a href="/pricing" style="font-size:14px;color:var(--gold);">See pricing &rarr;</a>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">Granite Browser</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;margin-bottom:8px;">Trade community at $30/mo. Connect with other contractors, post jobs, swap knowledge.</p>
+        <a href="/pricing" style="font-size:14px;color:var(--gold);">See pricing &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="get-started">
+    <p class="section-label">GET STARTED</p>
+    <h2 class="section-title">Start with one tool. Grow into the full platform.</h2>
+    <p class="section-desc">Try Route Scheduler today, or talk to us about which path fits your business best.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px;">
+      <a href="/route-scheduler" class="hero-cta">Start with Route Scheduler &rarr;</a>
+      <a href="/contact" class="hero-cta" style="background:transparent;border:1px solid var(--gold);color:var(--gold);">Talk to GMA about a full dashboard</a>
+    </div>
+  </section>
+
+</div>
+{% endblock %}
