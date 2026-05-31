@@ -57,6 +57,25 @@ Last updated: 2026-05-31
   8. Granted Trades Network Demo
 - Any slot without a video stays "Demo coming soon" — page still ships.
 
+## Separate Programs — tracked changes (NOT this website repo)
+
+### Ticket Service Toolbox (formerly "ASF Maintenance Toolbox")
+- This is a STANDALONE program on its own registry. It is NOT part of granite-models-store
+  and cannot be edited from the website session. These are tracked tasks for that program.
+- **RENAME:** "ASF Maintenance Toolbox" → **"Ticket Service Toolbox"**.
+  - Promote the new name throughout that program's ENTIRE codebase at a later date.
+  - Priority: LOW for now — website comes first. Jon: "It's its own standalone program... not too worried."
+- **Top nav bar cleanup (in that program):**
+  - Remove **"ASF"** branding (top-left logo text).
+  - Remove the user name **"Pete Sirois"** — it sits in the top nav **between the notification bell
+    and Logout**. Delete it entirely; no user name needed there.
+  - These are the ONLY two changes for the program; it's all in the top nav bar.
+- **Website impact:**
+  - After the program is updated, RE-RECORD a clean demo for the website.
+  - The current `asf-toolbox.webm` (shows ASF + Pete Sirois) is OBSOLETE — do NOT publish.
+    Removed from the website repo. The "Ticket Service Toolbox" is a TOOL demo (not a trade) and
+    stays "Demo coming soon" until the clean re-record arrives.
+
 ## Process (locked)
 - All work on dev branch `claude/gallant-einstein-aiOog`. NOTHING pushed/live until full verification.
 - Before live: every button/route/link connected and tested; mobile pass; no overclaim; rollback ready.
