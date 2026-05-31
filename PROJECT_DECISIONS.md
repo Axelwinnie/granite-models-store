@@ -6,8 +6,12 @@ Last updated: 2026-05-31
 ## Identity / brand
 - Founder & owner: **Jon Anderson** (owner of GMA — Granite Models Automations).
   - The mockups' "Jon C. McKee / Jon McKee" is a PLACEHOLDER → replace with Jon Anderson everywhere.
-- Brand of the network: spelled **"Granted Trades Network"** in all specs + mockups.
-  - NEEDS CONFIRM: Jon typed "GRANITE TRADES NETWORK" once — confirm Granted vs Granite before any page goes live.
+- Brand of the network: **GRANITE**, NOT "Granted". Jon confirmed: "the name is Granite Trade System
+  Network. Not granted. It's granite."
+  - ALL specs + mockups say "GRANTED TRADES NETWORK" — that is WRONG. Correct to GRANITE everywhere
+    (logo art in mockups included).
+  - Full name per Jon: "Granite Trade System Network". CONFIRM exact public wording + short form
+    (is it still "GTN"?) before it goes on a live page.
 
 ## Contact info (public-facing)
 - Phone: **NONE.** Do not publish a phone number anywhere. Remove phone fields / "Call Us" blocks, or replace with email + contact form.
