@@ -301,7 +301,7 @@ DEMOS = [
     {'title': 'Steel Fabrication Dashboard Demo','src': {}},
     {'title': 'Document & File Tools Demo',       'src': {}},
     {'title': 'AI Business Tools Demo',           'src': {}},
-    {'title': 'Granted Trades Network Demo',      'src': {}},
+    {'title': 'Granite Trades Network Demo',      'src': {}},
 ]
 
 # ----------------------------------------------------------------------
