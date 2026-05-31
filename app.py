@@ -422,7 +422,7 @@ GMA builds AI-powered business management software for the trades industry — l
 
 KEY FACTS:
 - Granite Trades Platform: $999 onboarding + $600/month. Full dashboard, no per-user fees. QuickBooks and Excel included free.
-- Granite Pro: $999 onboarding + $800/month. Everything in Trades Platform PLUS Lead Hunter Pro v2 with capped lead delivery (4 quality + 6 Class B per week).
+- Granite Pro: $999 onboarding + $800/month. Everything in Trades Platform PLUS the Lead Hunter Pro v2 toolkit, marketing automation, AI outreach drafting, and priority support.
 - Developer Templates: From $250 (basic) to $400 (larger systems). One-time purchase, source code.
 - Pay-per-lead: 5 tiers from $45 to $190 based on job value. Class B leads $20 each.
 - Based in New Hampshire. Founded by Jon Anderson, 30 years in the trades.
