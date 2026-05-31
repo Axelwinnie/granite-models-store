@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "app.py", "use": "@vercel/python", "config": { "includeFiles": ["templates/**", "readmes.py"] } },
+    { "src": "static/**", "use": "@vercel/static" },
+    { "src": "videos/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/videos/(.*)", "dest": "/videos/$1" },
+    { "src": "/(.*)", "dest": "app.py" }
+  ]
+}

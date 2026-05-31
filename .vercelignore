@@ -1,0 +1,9 @@
+.git
+__pycache__
+*.pyc
+*.bak_trades_os
+*.pre_phaseb
+data
+IMPLEMENTATION_PLAN_TRADES_OS.md
+PROJECT_DECISIONS.md
+landing.py
