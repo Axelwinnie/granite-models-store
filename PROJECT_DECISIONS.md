@@ -16,6 +16,12 @@ Last updated: 2026-05-31
 - Phone: **NONE.** Do not publish a phone number anywhere. Remove phone fields / "Call Us" blocks, or replace with email + contact form.
 - Email: **granitemodels@gmail.com** (matches existing SOCIAL in app.py).
   - Mockups show "info@granitemodels.com" → WRONG, use the gmail address.
+- Lead/form notification emails: send to **granitemodels@gmail.com ONLY** (Lorie recipient REMOVED,
+  done 2026-05-31). Further lead routing is handled inside Jon's operating system, not here.
+- Keep the **/contact, /leads, /pricing** pages — they're needed. They still carry OLD positioning
+  (22 trades / 30 years / lead-gen) and the old theme; correct them AFTER launch (homepage-first).
+  Plan to add proper backgrounds to those pages later.
+- Deploy process: Claude gets everything ready + pushed; **Jon manually deploys on Render** himself.
 - Physical/home address: **NONE.** Remove "123 Contractor Way, Builder, TX 75001" and any street address.
   - General region (New Hampshire) already appears in the footer; that's fine. No exact address.
 - Hours / timezone: TX/CT in mockups is placeholder. With no phone, drop "call hours."

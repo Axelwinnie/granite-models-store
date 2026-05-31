@@ -381,13 +381,7 @@ def _notify_lead(name, email, phone, business, trade, interest, message, source=
     headers = {'Authorization': f'Bearer {sg_key}', 'Content-Type': 'application/json'}
     try:
         import requests as _req
-        # Send to Lorie
-        _req.post('https://api.sendgrid.com/v3/mail/send', json={
-            'personalizations': [{'to': [{'email': 'lorieprymas@gmail.com'}], 'subject': subject}],
-            'from': {'email': 'support@granitemodels.store', 'name': 'Granite Models'},
-            'content': [{'type': 'text/html', 'value': body_html}]
-        }, headers=headers, timeout=10)
-        # Send to Jon
+        # Send to Granite Models inbox (lead routing within the operating system is handled separately)
         _req.post('https://api.sendgrid.com/v3/mail/send', json={
             'personalizations': [{'to': [{'email': 'granitemodels@gmail.com'}], 'subject': subject}],
             'from': {'email': 'support@granitemodels.store', 'name': 'Granite Models'},
