@@ -1,67 +1,231 @@
 {% extends "base.html" %}
-{% block title %}Granite Models Automations — From Job Sites to Software{% endblock %}
+{% block title %}Granite Models — The Operating System Built for the Trades{% endblock %}
+{% block description %}Granite Models is the Trades Operating System: trade-specific dashboards for 20 trades, contractor command center tools, AI business systems, demo videos, and the Granted Trades Network — built for serious tradesmen.{% endblock %}
+{% block og_title %}Granite Models — The Trades Operating System{% endblock %}
 
 {% block content %}
-<div class="container">
-  <section class="hero" style="text-align:center;padding:20px 0 12px">
-    <h1 style="margin-bottom:12px">Building What the Trades<br>Industry <em>Needs</em></h1>
-    <img src="/static/gma-logo.png" alt="Granite Models Automations" style="max-width:260px;width:100%;margin:0 auto 16px;display:block;filter:drop-shadow(0 12px 40px rgba(0,0,0,0.6))">
-    <div style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:8px">
-      <p class="hero-sub" style="margin:0;text-align:left">30 years in the trades. 300,000+ lines of production code.<br>I build automation systems that actually work — for people who actually work.</p>
-      <a href="/solutions" class="hero-cta">See Our Solutions →</a>
+<div class="tos">
+
+  <!-- ═══ 1 · HERO ═══ -->
+  <section class="tos-hero" id="top">
+    <div class="tos-imgph tos-hero-bg" data-slot="hero-multitrade-command-center" role="img"
+         aria-label="Hero background: rugged multi-trade jobsite collage — landscaper with mower and trimmer, steel worker with sparks, electrician at a panel, plumber with pipe, mason laying block, roofer on a roofline, HVAC tech, and a contractor reviewing a dashboard on a tablet.">
+      <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
+      <small>hero-multitrade-command-center</small>
+    </div>
+    <div class="tos-hero-inner">
+      <p class="tos-eyebrow">The Trades Operating System</p>
+      <h1 class="tos-hero-h1">The Operating System Built for the Trades</h1>
+      <p class="tos-hero-sub">
+        Granite Models gives contractors trade-specific dashboards, business tools, estimating systems,
+        documentation workflows, AI-powered support, and access to a private contractor network built
+        around the way real trade businesses work.
+      </p>
+      <div class="tos-cta-row">
+        <a href="#demo-videos" class="tos-btn tos-btn--primary">Watch Demo</a>
+        <a href="#trades" class="tos-btn tos-btn--steel">Explore Trades</a>
+        <!-- NEEDS_JON_FINAL_URL: Granted Trades Network live URL. Placeholder anchor for now. -->
+        <a href="#granted-trades-network" class="tos-btn tos-btn--ghost">Visit Granted Trades Network</a>
+      </div>
     </div>
   </section>
 
-  <div class="stats-bar" style="margin:12px 0 20px">
-    <div class="stat">
-      <div class="stat-num" data-target="50" data-suffix="+">0+</div>
-      <div class="stat-label">Systems Built</div>
+  <!-- ═══ 2 · MISSION ═══ -->
+  <section class="tos-section tos-mission">
+    <div class="tos-mission-grid">
+      <div class="tos-mission-copy">
+        <p class="tos-label">Built for the People Doing the Work</p>
+        <h2 class="tos-h2">This Is for the Small Contractors Carrying the Weight Every Day</h2>
+        <p class="tos-body">
+          Granite Models exists to help the tradesmen, owner-operators, small crews, and contractors who are
+          out there every day doing the work, solving problems, taking care of customers, and trying to keep
+          their businesses moving.
+        </p>
+        <p class="tos-body">
+          This platform is built from real field experience — not from a boardroom. After decades in the trades,
+          we know what it feels like to come home worn out and still have estimates, paperwork, calls, scheduling,
+          equipment issues, customer follow-ups, and business decisions waiting.
+        </p>
+        <p class="tos-body">
+          The goal is simple: build tools that save time, reduce stress, organize the business, and give
+          contractors better systems to work with.
+        </p>
+      </div>
+      <div class="tos-imgph tos-mission-img" data-slot="mission-owner-operator-tailgate" role="img"
+           aria-label="Mission image: a serious owner-operator at a truck tailgate reviewing paperwork and a tablet after a long day, tools and jobsite in the background.">
+        <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
+        <small>mission-owner-operator-tailgate</small>
+      </div>
     </div>
-    <div class="stat">
-      <div class="stat-num" data-target="300000" data-suffix="+">0+</div>
-      <div class="stat-label">Total Lines of Code</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" data-target="22">0</div>
-      <div class="stat-label">Trade Dashboards</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" data-target="30">0</div>
-      <div class="stat-label">Years in Trades</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" data-target="22">0</div>
-      <div class="stat-label">Industries Covered</div>
-    </div>
-  </div>
+  </section>
 
-  <section class="section" style="padding-top:12px">
-    <p class="section-label">FLAGSHIP SYSTEMS</p>
-    <h2 class="section-title">The Big Three</h2>
-    <p class="section-desc">These represent the scale and depth of what I build. Each one is a complete production system, not a tutorial project.</p>
-    <div class="card-grid">
-      {% for slug, p in projects.items() %}
-      <a href="/project/{{ slug }}" class="card" style="text-decoration:none">
-        <span class="card-num">{{ '%02d'|format(loop.index) }}</span>
-        <h3>{{ p.name }}</h3>
-        <p>{{ p.tagline }}</p>
-        {% if p.stats %}
-        <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap">
-          {% for k, v in p.stats.items() %}
-          <span class="tech-tag">{{ v }} {{ k.replace('_',' ').title() }}</span>
-          {% endfor %}
-        </div>
-        {% endif %}
-        <span class="card-link">View Details →</span>
-      </a>
+  <!-- ═══ 3 · ONE PLATFORM / TWENTY TRADES ═══ -->
+  <section class="tos-section tos-trades-section" id="trades">
+    <p class="tos-label">One Platform. Twenty Trades.</p>
+    <h2 class="tos-h2">Dashboards Built for 20 Different Trades</h2>
+    <p class="tos-lead">
+      Every trade runs differently. A landscaper does not operate like a steel shop. A masonry company does not
+      work like an HVAC business. That is why Granite Models is built around trade-specific dashboards, workflows,
+      and tools instead of one generic system forced onto every contractor.
+    </p>
+    {% include 'partials/_trades_grid.html' %}
+  </section>
+
+  <!-- ═══ 4 · CONTRACTOR COMMAND CENTER ═══ -->
+  <section class="tos-section tos-cc" id="command-center">
+    <div class="tos-cc-head">
+      <p class="tos-label">Contractor Command Center</p>
+      <h2 class="tos-h2">Run Your Business From One Command Center</h2>
+      <p class="tos-lead">
+        Granite Models helps contractors organize the daily work that usually gets spread across notebooks,
+        spreadsheets, text messages, folders, and disconnected apps. Your dashboard becomes the central place
+        to manage operations, track work, review documents, use tools, and keep your business moving.
+      </p>
+    </div>
+    <div class="tos-feature-grid">
+      <div class="tos-feature"><h3>Trade Dashboard</h3><p>A custom workspace built around your specific trade.</p></div>
+      <div class="tos-feature"><h3>Estimating Tools</h3><p>Keep estimates cleaner, faster, and more organized.</p></div>
+      <div class="tos-feature"><h3>Project &amp; Job Tracking</h3><p>See active work, job status, notes, and operational details in one place.</p></div>
+      <div class="tos-feature"><h3>Document Organization</h3><p>Keep files, job information, templates, and business records easier to find.</p></div>
+      <div class="tos-feature"><h3>AI Business Tools</h3><p>Use AI-assisted systems for planning, writing, organizing, and business support.</p></div>
+      <div class="tos-feature"><h3>Demo Videos</h3><p>See each dashboard and tool in action before choosing what fits your business.</p></div>
+    </div>
+    <div class="tos-imgph tos-cc-img" data-slot="contractor-command-center-dashboard" role="img"
+         aria-label="Contractor Command Center: a dark, industrial dashboard interface in a jobsite command-center style.">
+      <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
+      <small>contractor-command-center-dashboard</small>
+    </div>
+    <div class="tos-cta-row">
+      <a href="#demo-videos" class="tos-btn tos-btn--primary">Watch Dashboard Demos</a>
+      <a href="#trades" class="tos-btn tos-btn--steel">View Available Tools</a>
+    </div>
+  </section>
+
+  <!-- ═══ 5 · LANDSCAPING SPOTLIGHT ═══ -->
+  <section class="tos-section tos-spotlight">
+    <div class="tos-spotlight-grid">
+      <div class="tos-imgph tos-spotlight-img" data-slot="landscaping-stihl-echo-redmax-exmark-equipment" role="img"
+           aria-label="Landscaping spotlight: a landscaping crew with truck and trailer, an Exmark-style mower, trimmers and blowers, with a dashboard overlay. Equipment brands referenced: Stihl, Echo, RedMax, Exmark.">
+        <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
+        <small>landscaping-stihl-echo-redmax-exmark-equipment</small>
+      </div>
+      <div class="tos-spotlight-copy">
+        <p class="tos-label">Landscaping Dashboard Spotlight</p>
+        <h2 class="tos-h2">Landscaping Tools Built Around Real Equipment, Crews, and Jobs</h2>
+        <p class="tos-body">
+          For landscaping, hardscape, lawn care, snow, and property maintenance businesses, Granite Models can
+          support workflows around mowing, maintenance, estimates, job tracking, equipment, seasonal services,
+          crews, routes, and customer organization.
+        </p>
+        <p class="tos-body">
+          Built with the reality of the landscaping industry in mind, including the tools and equipment contractors
+          use every day: <strong>Stihl</strong>, <strong>Echo</strong>, <strong>RedMax</strong>, and
+          <strong>Exmark</strong> — mowers, trimmers, blowers, trailers, maintenance routes, hardscape work,
+          cleanup jobs, and seasonal service schedules.
+        </p>
+        <ul class="tos-pill-list">
+          <li>Mowing route dashboard</li>
+          <li>Equipment maintenance tracker</li>
+          <li>Crew assignment board</li>
+          <li>Seasonal service calendar</li>
+          <li>Estimate builder</li>
+          <li>Before/after job photo storage</li>
+          <li>Snow &amp; ice service tracking</li>
+          <li>Hardscape project organization</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 6 · GRANTED TRADES NETWORK ═══ -->
+  <section class="tos-section tos-network" id="granted-trades-network">
+    <p class="tos-label">Granted Trades Network</p>
+    <h2 class="tos-h2">Join the Private Network for Serious Contractors</h2>
+    <p class="tos-lead">
+      Granted Trades Network is live and built for contractors who want more than another software login. It is a
+      private contractor network connected to the Granite Models ecosystem, giving tradesmen a place to grow,
+      organize, connect, and build stronger business systems.
+    </p>
+    <div class="tos-pillar-grid">
+      <div class="tos-pillar"><h3>Trade-Focused Community</h3><p>Connect around real contractor work, not generic business talk.</p></div>
+      <div class="tos-pillar"><h3>Shared Resources</h3><p>Access tools, systems, templates, and operational resources built for the trades.</p></div>
+      <div class="tos-pillar"><h3>Business Growth Infrastructure</h3><p>Use Granite Models dashboards and systems alongside the network as the platform grows.</p></div>
+      <div class="tos-pillar"><h3>Contractor Feedback Loop</h3><p>Tell us what tools, dashboards, calculators, and workflows would actually make your trade easier.</p></div>
+    </div>
+    <div class="tos-imgph tos-network-img" data-slot="granted-trades-network-contractors" role="img"
+         aria-label="Granted Trades Network: contractors from different trades standing together in front of trucks and equipment, with a subtle network/map overlay.">
+      <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
+      <small>granted-trades-network-contractors</small>
+    </div>
+    <div class="tos-cta-row">
+      <!-- NEEDS_JON_FINAL_URL: replace placeholder anchor with the live Granted Trades Network URL. -->
+      <a href="#granted-trades-network" class="tos-btn tos-btn--primary">Explore Granted Trades Network</a>
+    </div>
+  </section>
+
+  <!-- ═══ 7 · BUILD WITH US (contractor feedback) ═══ -->
+  {% include 'partials/_build_with_us.html' %}
+
+  <!-- ═══ 8 · AVAILABLE CONTRACTOR OPPORTUNITIES / MARKETPLACE ═══ -->
+  <section class="tos-section tos-opps" id="opportunities">
+    <div class="tos-imgph tos-opps-img" data-slot="marketplace-opportunities-coming-soon" role="img"
+         aria-label="Marketplace preview: a carefully worded contractor opportunity board / listings section, marketplace expansion under development.">
+      <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
+      <small>marketplace-opportunities-coming-soon</small>
+    </div>
+    <p class="tos-label">Contractor Marketplace &middot; Expansion Under Development</p>
+    <h2 class="tos-h2">Available Contractor Opportunities</h2>
+    <p class="tos-lead">
+      Granite Models is building a larger contractor marketplace system. When project opportunities, contractor
+      resources, or business opportunities are available, they may be listed here for review. Lead marketplace
+      features are still being developed and expanded — current listings appear as available opportunities, and
+      lead generation is not yet positioned as the core service.
+    </p>
+    <div class="tos-cta-row">
+      <a href="/leads" class="tos-btn tos-btn--steel">View Available Opportunities</a>
+    </div>
+  </section>
+
+  <!-- ═══ 9 · DEMO VIDEO LIBRARY ═══ -->
+  <section class="tos-section tos-demos" id="demo-videos">
+    <p class="tos-label">Demo Video Library</p>
+    <h2 class="tos-h2">See the Dashboards Before You Use Them</h2>
+    <p class="tos-lead">
+      Watch demo videos showing how each trade dashboard works, what tools are included, and how Granite Models
+      can help organize your contracting business. Trade dashboard demos are being recorded and added here.
+    </p>
+    <div class="tos-demo-grid">
+      {% set demo_cats = [
+        'Trade Dashboard Demos', 'Estimating Tool Demos', 'Contractor Command Center Demo',
+        'Landscaping Dashboard Demo', 'Steel Fabrication Dashboard Demo', 'Document & File Tools Demo',
+        'AI Business Tools Demo', 'Granted Trades Network Demo'
+      ] %}
+      {% for cat in demo_cats %}
+      <div class="tos-demo-card">
+        <div class="tos-demo-thumb"><span class="tos-demo-play">&#9654;</span></div>
+        <h3>{{ cat }}</h3>
+        <p class="tos-demo-soon">Demo coming soon</p>
+      </div>
       {% endfor %}
     </div>
   </section>
 
-  <section class="section" style="padding-bottom:16px">
-    <p class="section-label">PATENT PENDING</p>
-    <h2 class="section-title">Innovation in Progress</h2>
-    <p class="section-desc">Three patent-pending systems: OmniVerse Apex Predator (consumer-grade supercomputing), Harvester Agent (autonomous mining orchestration), and Ironworks Engine (1-click ecosystem deployment). <a href="/roadmap" style="color:var(--gold)">See the Roadmap →</a></p>
+  <!-- ═══ 10 · CLOSING CTA ═══ -->
+  <section class="tos-section tos-final">
+    <h2 class="tos-h2">Built for Contractors Ready to Run Better Systems</h2>
+    <p class="tos-lead">
+      Granite Models brings trade dashboards, contractor tools, AI-powered operations, demo-based product
+      education, and the Granted Trades Network into one growing platform for serious contractors. Whether you
+      are running a small crew, growing a shop, managing jobs, or trying to get your business out of scattered
+      notebooks and spreadsheets, Granite Models is being built to help you work smarter and stay organized.
+    </p>
+    <div class="tos-cta-row tos-cta-center">
+      <a href="#demo-videos" class="tos-btn tos-btn--primary">Watch Demo</a>
+      <a href="#trades" class="tos-btn tos-btn--steel">Explore Trades</a>
+      <!-- NEEDS_JON_FINAL_URL -->
+      <a href="#granted-trades-network" class="tos-btn tos-btn--ghost">Visit Granted Trades Network</a>
+    </div>
   </section>
-</div>
+
+</div><!-- .tos -->
 {% endblock %}

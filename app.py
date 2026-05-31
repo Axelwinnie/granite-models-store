@@ -4,7 +4,8 @@ GRANITE MODELS — Portfolio Website v5
 """
 from flask import Flask, render_template, redirect, send_from_directory, request, flash, jsonify
 from readmes import READMES
-import os, json
+import os, json, sqlite3
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'granite-2026-portfolio')
@@ -237,6 +238,93 @@ SOCIAL = {
     'email': 'granitemodels@gmail.com',
 }
 
+# ----------------------------------------------------------------------
+# TRADES OS — 20 trade-specific dashboards (drives the homepage trade grid)
+# Steel Fabrication is a TRADE. "Stihl" (equipment brand) is handled separately
+# in the Landscaping spotlight copy — the two are intentionally never conflated.
+# ----------------------------------------------------------------------
+TRADES = [
+    {'name': 'Landscaping',          'blurb': 'Routes, crews, equipment, estimates, seasonal work, and property maintenance.', 'accent': '#5bbf4a'},
+    {'name': 'Steel Fabrication',    'blurb': 'Estimating, project tracking, shop workflows, approvals, and job documentation.', 'accent': '#7d8a99'},
+    {'name': 'Concrete',             'blurb': 'Pours, forms, schedules, material takeoffs, and crew coordination.',             'accent': '#9aa0a6'},
+    {'name': 'Masonry',              'blurb': 'Block, brick, stone, wall jobs, materials, labor planning, and job tracking.',   'accent': '#b5651d'},
+    {'name': 'Roofing',              'blurb': 'Measurements, estimates, crews, materials, and job-stage tracking.',             'accent': '#c0392b'},
+    {'name': 'HVAC',                 'blurb': 'Service work, installs, equipment records, scheduling, and maintenance.',        'accent': '#3b82f6'},
+    {'name': 'Plumbing',             'blurb': 'Service calls, installs, parts, scheduling, and customer history.',              'accent': '#2980b9'},
+    {'name': 'Electrical',           'blurb': 'Service, installs, panels, permits, scheduling, and documentation.',            'accent': '#e0a800'},
+    {'name': 'Excavation',           'blurb': 'Site work, equipment, dig schedules, materials, and job tracking.',             'accent': '#8b5a2b'},
+    {'name': 'Remodeling',           'blurb': 'Project phases, change orders, budgets, subs, and client updates.',             'accent': '#e67e22'},
+    {'name': 'Painting',             'blurb': 'Estimates, crews, materials, scheduling, and job documentation.',               'accent': '#9b59b6'},
+    {'name': 'Fencing',              'blurb': 'Measurements, materials, install scheduling, and job tracking.',                'accent': '#16a085'},
+    {'name': 'Flooring',             'blurb': 'Takeoffs, materials, install crews, scheduling, and job notes.',                'accent': '#a0522d'},
+    {'name': 'General Contracting',  'blurb': 'Multi-trade jobs, subs, budgets, schedules, and client management.',           'accent': '#d4a745'},
+    {'name': 'Snow & Ice',           'blurb': 'Routes, events, crews, equipment, and seasonal service tracking.',             'accent': '#74b9ff'},
+    {'name': 'Hardscape',            'blurb': 'Patios, walls, pavers, materials, crews, and project organization.',           'accent': '#7f8c8d'},
+    {'name': 'Property Maintenance', 'blurb': 'Recurring work, routes, crews, checklists, and customer organization.',        'accent': '#27ae60'},
+    {'name': 'Asphalt',              'blurb': 'Paving, sealcoating, crews, materials, and job scheduling.',                    'accent': '#34495e'},
+    {'name': 'Carpentry',            'blurb': 'Builds, materials, takeoffs, scheduling, and job documentation.',              'accent': '#cd853f'},
+    {'name': 'Specialty Trades',     'blurb': 'Custom dashboards built around how your specific trade actually runs.',        'accent': '#ff6b1a'},
+]
+
+# ----------------------------------------------------------------------
+# BUILD WITH US — contractor feedback persistence (SQLite at data/feedback.db)
+# Isolated from existing forms. Table is created on demand. Status workflow:
+# new / reviewed / planned / building / completed / declined / archived.
+# Never crashes the request; submissions are ALSO emailed via _notify_lead so
+# nothing is lost even if the DB write fails.
+# ----------------------------------------------------------------------
+FEEDBACK_DB = os.path.join(app.root_path, 'data', 'feedback.db')
+
+def _init_feedback_db():
+    """Create the feedback table if it does not already exist. Safe to call repeatedly."""
+    os.makedirs(os.path.dirname(FEEDBACK_DB), exist_ok=True)
+    conn = sqlite3.connect(FEEDBACK_DB)
+    try:
+        conn.execute('''CREATE TABLE IF NOT EXISTS feedback (
+            id              INTEGER PRIMARY KEY AUTOINCREMENT,
+            created_at      TEXT NOT NULL,
+            source          TEXT,
+            status          TEXT NOT NULL DEFAULT 'new',
+            name            TEXT,
+            company         TEXT,
+            trade           TEXT,
+            email           TEXT,
+            phone           TEXT,
+            problem         TEXT,
+            easier          TEXT,
+            tools_wanted    TEXT,
+            frequency       TEXT,
+            willing_to_test TEXT,
+            can_contact     TEXT
+        )''')
+        conn.commit()
+    finally:
+        conn.close()
+
+def _save_feedback(d):
+    """Persist a Build With Us submission. Returns row id, or None on failure (never raises)."""
+    try:
+        _init_feedback_db()
+        conn = sqlite3.connect(FEEDBACK_DB)
+        try:
+            cur = conn.execute('''INSERT INTO feedback
+                (created_at, source, status, name, company, trade, email, phone,
+                 problem, easier, tools_wanted, frequency, willing_to_test, can_contact)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)''', (
+                datetime.utcnow().isoformat(timespec='seconds') + 'Z',
+                d.get('source', 'build-with-us'), 'new',
+                d.get('name', ''), d.get('company', ''), d.get('trade', ''),
+                d.get('email', ''), d.get('phone', ''),
+                d.get('problem', ''), d.get('easier', ''), d.get('tools_wanted', ''),
+                d.get('frequency', ''), d.get('willing_to_test', ''), d.get('can_contact', '')))
+            conn.commit()
+            return cur.lastrowid
+        finally:
+            conn.close()
+    except Exception as e:
+        print(f'[FEEDBACK] DB error: {e}')
+        return None
+
 def _notify_lead(name, email, phone, business, trade, interest, message, source='pricing'):
     """Send lead notification to Lorie and Jon via email. Never crashes the app."""
     sg_key = os.environ.get('SENDGRID_API_KEY', '')
@@ -274,7 +362,38 @@ def _notify_lead(name, email, phone, business, trade, interest, message, source=
 @app.route('/')
 def index():
     flagships = {k: v for k, v in PROJECTS.items() if k in ('lead-hunter-pro', 'file-processor', 'granite-tester')}
-    return render_template('index.html', projects=flagships, social=SOCIAL)
+    return render_template('index.html', projects=flagships, social=SOCIAL,
+                           trades=TRADES, feedback_success=False)
+
+@app.route('/build-with-us', methods=['POST'])
+def build_with_us():
+    """Contractor feedback ('Tell Us What Would Make Your Job Easier').
+    Persists to SQLite AND emails a notification. Re-renders the homepage with a
+    confirmation. Isolated from /leads, /pricing, /contact and the Stripe flow."""
+    f = request.form
+    data = {
+        'name': f.get('name', ''), 'company': f.get('company', ''), 'trade': f.get('trade', ''),
+        'email': f.get('email', ''), 'phone': f.get('phone', ''),
+        'problem': f.get('problem', ''), 'easier': f.get('easier', ''),
+        'tools_wanted': f.get('tools_wanted', ''), 'frequency': f.get('frequency', ''),
+        'willing_to_test': f.get('willing_to_test', ''), 'can_contact': f.get('can_contact', ''),
+        'source': 'build-with-us',
+    }
+    # Honeypot: silently accept-and-drop obvious bots (field must stay empty).
+    if f.get('website', '').strip():
+        return redirect('/#build-with-us')
+    _save_feedback(data)
+    details = (f"Problem: {data['problem']}\n\n"
+               f"What would make the job easier: {data['easier']}\n\n"
+               f"Tools they wish existed: {data['tools_wanted']}\n\n"
+               f"Frequency it costs time/money/stress: {data['frequency']}\n"
+               f"Willing to test an early version: {data['willing_to_test']}\n"
+               f"Can we contact them: {data['can_contact']}")
+    _notify_lead(data['name'], data['email'], data['phone'], data['company'], data['trade'],
+                 'Build With Us — Contractor Idea', details, source='build-with-us')
+    flagships = {k: v for k, v in PROJECTS.items() if k in ('lead-hunter-pro', 'file-processor', 'granite-tester')}
+    return render_template('index.html', projects=flagships, social=SOCIAL,
+                           trades=TRADES, feedback_success=True)
 
 @app.route('/story')
 def story():

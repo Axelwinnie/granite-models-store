@@ -1,0 +1,12 @@
+{# Trades grid — driven by the TRADES list passed from app.py. #}
+<div class="tos-trades">
+  {% for t in trades %}
+  <div class="tos-trade-card" style="--trade-accent: {{ t.accent }}">
+    <span class="tos-trade-rail"></span>
+    <span class="tos-trade-num">{{ '%02d'|format(loop.index) }}</span>
+    <h3 class="tos-trade-name">{{ t.name }}</h3>
+    <p class="tos-trade-blurb">{{ t.blurb }}</p>
+    <a href="#demo-videos" class="tos-trade-link">View Dashboard Demo &rarr;</a>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,68 @@
+{# Build With Us — contractor feedback form. Posts to /build-with-us. #}
+<section class="tos-section tos-build" id="build-with-us">
+  <div class="tos-build-inner">
+    <p class="tos-label">Build With Us</p>
+    <h2 class="tos-h2">Tell Us What Would Make Your Job Easier</h2>
+    <p class="tos-lead">
+      Granite Models is being built for the contractors who are out there every day doing the work —
+      the small shops, owner-operators, crews, and tradesmen carrying the weight of the job, the business,
+      and their families at the same time. If there's a tool, dashboard, calculator, checklist, workflow,
+      training guide, equipment tracker, estimate system, or business feature that would make your trade
+      easier, tell us. This isn't about guessing what contractors need. It's about listening to the people
+      doing the work and building systems that actually help.
+    </p>
+
+    {% if feedback_success %}
+    <div class="tos-confirm">
+      <div class="tos-confirm-check">&#10003;</div>
+      <h3>Thank you.</h3>
+      <p>Your feedback helps us build better tools for real contractors, not generic software for people who have never done the work.</p>
+    </div>
+    {% else %}
+    <div class="tos-build-card">
+      <p class="tos-form-title">What Should We Build for Your Trade?</p>
+      <form method="POST" action="/build-with-us" class="tos-form">
+        {# Honeypot — must stay empty; hidden from real users. #}
+        <input type="text" name="website" tabindex="-1" autocomplete="off" class="tos-hp" aria-hidden="true">
+
+        <div class="tos-form-row">
+          <div class="tos-field"><label>Name *</label><input type="text" name="name" required placeholder="John Smith"></div>
+          <div class="tos-field"><label>Company Name</label><input type="text" name="company" placeholder="Smith Landscaping LLC"></div>
+        </div>
+        <div class="tos-form-row">
+          <div class="tos-field"><label>Trade / Industry</label><input type="text" name="trade" placeholder="Landscaping, HVAC, Steel Fabrication..."></div>
+          <div class="tos-field"><label>Email *</label><input type="email" name="email" required placeholder="john@smithlandscaping.com"></div>
+        </div>
+        <div class="tos-form-row">
+          <div class="tos-field"><label>Phone <span class="tos-opt">(optional)</span></label><input type="tel" name="phone" placeholder="(555) 555-5555"></div>
+        </div>
+        <div class="tos-field"><label>What problem are you dealing with?</label><input type="text" name="problem" placeholder="Short answer"></div>
+        <div class="tos-field"><label>What would make your job easier?</label><textarea name="easier" rows="3" placeholder="Tell us in your own words..."></textarea></div>
+        <div class="tos-field"><label>What tools do you wish existed for your business?</label><textarea name="tools_wanted" rows="3" placeholder="Dashboards, calculators, checklists, workflows..."></textarea></div>
+        <div class="tos-form-row">
+          <div class="tos-field">
+            <label>How often does this problem cost you time, money, or stress?</label>
+            <select name="frequency">
+              <option value="">Select...</option>
+              <option value="Every day">Every day</option>
+              <option value="Every week">Every week</option>
+              <option value="Every month">Every month</option>
+              <option value="Once in a while">Once in a while</option>
+            </select>
+          </div>
+        </div>
+        <div class="tos-field">
+          <label>Would you be willing to test an early version if we build it?</label>
+          <div class="tos-radio-group">
+            <label class="tos-radio"><input type="radio" name="willing_to_test" value="Yes"> Yes</label>
+            <label class="tos-radio"><input type="radio" name="willing_to_test" value="Maybe"> Maybe</label>
+            <label class="tos-radio"><input type="radio" name="willing_to_test" value="Not right now"> Not right now</label>
+          </div>
+        </div>
+        <label class="tos-check"><input type="checkbox" name="can_contact" value="Yes"> Can we contact you about your idea?</label>
+        <button type="submit" class="tos-btn tos-btn--primary tos-btn--full">Send Your Idea</button>
+      </form>
+    </div>
+    {% endif %}
+  </div>
+</section>
