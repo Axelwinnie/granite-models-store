@@ -1,0 +1,44 @@
+{# ---------------------------------------------------------------------------
+   Source-agnostic media macros. Imported by index.html.
+   img_slot(slot, alt, cls): renders <img> if static/img/<slot>.<ext> exists,
+     else the same labeled placeholder used during design.
+   demo_card(d): renders a YouTube embed, a self-hosted <video>, or a
+     "Demo coming soon" placeholder, based on d.src.
+   find_image() is registered as a Jinja global in app.py.
+--------------------------------------------------------------------------- #}
+
+{% macro img_slot(slot, alt, cls='') -%}
+  {%- set url = find_image(slot) -%}
+  {%- if url -%}
+  <img src="{{ url }}" alt="{{ alt }}" class="tos-img {{ cls }}" loading="lazy">
+  {%- else -%}
+  <div class="tos-imgph {{ cls }}" data-slot="{{ slot }}" role="img" aria-label="{{ alt }}">
+    <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
+    <small>{{ slot }}</small>
+  </div>
+  {%- endif -%}
+{%- endmacro %}
+
+{% macro demo_card(d) -%}
+<div class="tos-demo-card">
+  {%- if d.src.youtube -%}
+  <div class="tos-demo-frame">
+    <iframe src="https://www.youtube-nocookie.com/embed/{{ d.src.youtube }}?rel=0"
+            title="{{ d.title }}" loading="lazy" allowfullscreen
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  </div>
+  <h3>{{ d.title }}</h3>
+  {%- elif d.src.file -%}
+  <div class="tos-demo-frame">
+    <video controls preload="metadata">
+      <source src="/videos/{{ d.src.file }}" type="video/{{ 'mp4' if d.src.file.endswith('.mp4') else 'webm' }}">
+    </video>
+  </div>
+  <h3>{{ d.title }}</h3>
+  {%- else -%}
+  <div class="tos-demo-thumb"><span class="tos-demo-play">&#9654;</span></div>
+  <h3>{{ d.title }}</h3>
+  <p class="tos-demo-soon">Demo coming soon</p>
+  {%- endif -%}
+</div>
+{%- endmacro %}

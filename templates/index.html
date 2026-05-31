@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'partials/_media.html' import img_slot, demo_card %}
 {% block title %}Granite Models — The Operating System Built for the Trades{% endblock %}
 {% block description %}Granite Models is the Trades Operating System: trade-specific dashboards for 20 trades, contractor command center tools, AI business systems, demo videos, and the Granted Trades Network — built for serious tradesmen.{% endblock %}
 {% block og_title %}Granite Models — The Trades Operating System{% endblock %}
@@ -8,11 +9,9 @@
 
   <!-- ═══ 1 · HERO ═══ -->
   <section class="tos-hero" id="top">
-    <div class="tos-imgph tos-hero-bg" data-slot="hero-multitrade-command-center" role="img"
-         aria-label="Hero background: rugged multi-trade jobsite collage — landscaper with mower and trimmer, steel worker with sparks, electrician at a panel, plumber with pipe, mason laying block, roofer on a roofline, HVAC tech, and a contractor reviewing a dashboard on a tablet.">
-      <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
-      <small>hero-multitrade-command-center</small>
-    </div>
+    {{ img_slot('hero-multitrade-command-center',
+       'Hero background: rugged multi-trade jobsite collage — landscaper with mower and trimmer, steel worker with sparks, electrician at a panel, plumber with pipe, mason laying block, roofer on a roofline, HVAC tech, and a contractor reviewing a dashboard on a tablet.',
+       'tos-hero-bg') }}
     <div class="tos-hero-inner">
       <p class="tos-eyebrow">The Trades Operating System</p>
       <h1 class="tos-hero-h1">The Operating System Built for the Trades</h1>
@@ -51,11 +50,9 @@
           contractors better systems to work with.
         </p>
       </div>
-      <div class="tos-imgph tos-mission-img" data-slot="mission-owner-operator-tailgate" role="img"
-           aria-label="Mission image: a serious owner-operator at a truck tailgate reviewing paperwork and a tablet after a long day, tools and jobsite in the background.">
-        <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
-        <small>mission-owner-operator-tailgate</small>
-      </div>
+      {{ img_slot('mission-owner-operator-tailgate',
+         'Mission image: a serious owner-operator at a truck tailgate reviewing paperwork and a tablet after a long day, tools and jobsite in the background.',
+         'tos-mission-img') }}
     </div>
   </section>
 
@@ -90,11 +87,9 @@
       <div class="tos-feature"><h3>AI Business Tools</h3><p>Use AI-assisted systems for planning, writing, organizing, and business support.</p></div>
       <div class="tos-feature"><h3>Demo Videos</h3><p>See each dashboard and tool in action before choosing what fits your business.</p></div>
     </div>
-    <div class="tos-imgph tos-cc-img" data-slot="contractor-command-center-dashboard" role="img"
-         aria-label="Contractor Command Center: a dark, industrial dashboard interface in a jobsite command-center style.">
-      <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
-      <small>contractor-command-center-dashboard</small>
-    </div>
+    {{ img_slot('contractor-command-center-dashboard',
+       'Contractor Command Center: a dark, industrial dashboard interface in a jobsite command-center style.',
+       'tos-cc-img') }}
     <div class="tos-cta-row">
       <a href="#demo-videos" class="tos-btn tos-btn--primary">Watch Dashboard Demos</a>
       <a href="#trades" class="tos-btn tos-btn--steel">View Available Tools</a>
@@ -104,11 +99,9 @@
   <!-- ═══ 5 · LANDSCAPING SPOTLIGHT ═══ -->
   <section class="tos-section tos-spotlight">
     <div class="tos-spotlight-grid">
-      <div class="tos-imgph tos-spotlight-img" data-slot="landscaping-stihl-echo-redmax-exmark-equipment" role="img"
-           aria-label="Landscaping spotlight: a landscaping crew with truck and trailer, an Exmark-style mower, trimmers and blowers, with a dashboard overlay. Equipment brands referenced: Stihl, Echo, RedMax, Exmark.">
-        <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
-        <small>landscaping-stihl-echo-redmax-exmark-equipment</small>
-      </div>
+      {{ img_slot('landscaping-stihl-echo-redmax-exmark-equipment',
+         'Landscaping spotlight: a landscaping crew with truck and trailer, an Exmark-style mower, trimmers and blowers, with a dashboard overlay. Equipment brands referenced: Stihl, Echo, RedMax, Exmark.',
+         'tos-spotlight-img') }}
       <div class="tos-spotlight-copy">
         <p class="tos-label">Landscaping Dashboard Spotlight</p>
         <h2 class="tos-h2">Landscaping Tools Built Around Real Equipment, Crews, and Jobs</h2>
@@ -152,11 +145,9 @@
       <div class="tos-pillar"><h3>Business Growth Infrastructure</h3><p>Use Granite Models dashboards and systems alongside the network as the platform grows.</p></div>
       <div class="tos-pillar"><h3>Contractor Feedback Loop</h3><p>Tell us what tools, dashboards, calculators, and workflows would actually make your trade easier.</p></div>
     </div>
-    <div class="tos-imgph tos-network-img" data-slot="granted-trades-network-contractors" role="img"
-         aria-label="Granted Trades Network: contractors from different trades standing together in front of trucks and equipment, with a subtle network/map overlay.">
-      <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
-      <small>granted-trades-network-contractors</small>
-    </div>
+    {{ img_slot('granted-trades-network-contractors',
+       'Granted Trades Network: contractors from different trades standing together in front of trucks and equipment, with a subtle network/map overlay.',
+       'tos-network-img') }}
     <div class="tos-cta-row">
       <!-- NEEDS_JON_FINAL_URL: replace placeholder anchor with the live Granted Trades Network URL. -->
       <a href="#granted-trades-network" class="tos-btn tos-btn--primary">Explore Granted Trades Network</a>
@@ -168,11 +159,9 @@
 
   <!-- ═══ 8 · AVAILABLE CONTRACTOR OPPORTUNITIES / MARKETPLACE ═══ -->
   <section class="tos-section tos-opps" id="opportunities">
-    <div class="tos-imgph tos-opps-img" data-slot="marketplace-opportunities-coming-soon" role="img"
-         aria-label="Marketplace preview: a carefully worded contractor opportunity board / listings section, marketplace expansion under development.">
-      <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
-      <small>marketplace-opportunities-coming-soon</small>
-    </div>
+    {{ img_slot('marketplace-opportunities-coming-soon',
+       'Marketplace preview: a carefully worded contractor opportunity board / listings section, marketplace expansion under development.',
+       'tos-opps-img') }}
     <p class="tos-label">Contractor Marketplace &middot; Expansion Under Development</p>
     <h2 class="tos-h2">Available Contractor Opportunities</h2>
     <p class="tos-lead">
@@ -195,18 +184,7 @@
       can help organize your contracting business. Trade dashboard demos are being recorded and added here.
     </p>
     <div class="tos-demo-grid">
-      {% set demo_cats = [
-        'Trade Dashboard Demos', 'Estimating Tool Demos', 'Contractor Command Center Demo',
-        'Landscaping Dashboard Demo', 'Steel Fabrication Dashboard Demo', 'Document & File Tools Demo',
-        'AI Business Tools Demo', 'Granted Trades Network Demo'
-      ] %}
-      {% for cat in demo_cats %}
-      <div class="tos-demo-card">
-        <div class="tos-demo-thumb"><span class="tos-demo-play">&#9654;</span></div>
-        <h3>{{ cat }}</h3>
-        <p class="tos-demo-soon">Demo coming soon</p>
-      </div>
-      {% endfor %}
+      {% for d in demos %}{{ demo_card(d) }}{% endfor %}
     </div>
   </section>
 

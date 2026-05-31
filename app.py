@@ -267,6 +267,44 @@ TRADES = [
 ]
 
 # ----------------------------------------------------------------------
+# MEDIA — source-agnostic assets so images and demo videos can drop in
+# incrementally without template edits. The page is always shippable:
+#   * Images: drop a file at static/img/<slot>.<ext>; img_slot() renders it,
+#     else a labeled placeholder.
+#   * Demo videos: each entry maps to one of
+#       {'youtube': 'VIDEO_ID'}  -> embedded (privacy-enhanced) YouTube player
+#       {'file': 'name.webm'}    -> self-hosted /videos/<file>
+#       {}                        -> "Demo coming soon" placeholder
+#   Hosting is therefore NOT locked in and can be mixed per video.
+# ----------------------------------------------------------------------
+IMG_DIR = os.path.join(app.root_path, 'static', 'img')
+_IMG_EXTS = ('.webp', '.avif', '.jpg', '.jpeg', '.png')
+
+def _find_image(slot):
+    """Return the /static/img URL for a slot if a matching asset exists, else None."""
+    try:
+        for ext in _IMG_EXTS:
+            if os.path.exists(os.path.join(IMG_DIR, slot + ext)):
+                return '/static/img/' + slot + ext
+    except Exception:
+        pass
+    return None
+
+# Available in every template (incl. imported macros) without `with context`.
+app.jinja_env.globals['find_image'] = _find_image
+
+DEMOS = [
+    {'title': 'Trade Dashboard Demos',           'src': {}},
+    {'title': 'Estimating Tool Demos',           'src': {}},
+    {'title': 'Contractor Command Center Demo',  'src': {}},
+    {'title': 'Landscaping Dashboard Demo',      'src': {}},
+    {'title': 'Steel Fabrication Dashboard Demo','src': {}},
+    {'title': 'Document & File Tools Demo',       'src': {}},
+    {'title': 'AI Business Tools Demo',           'src': {}},
+    {'title': 'Granted Trades Network Demo',      'src': {}},
+]
+
+# ----------------------------------------------------------------------
 # BUILD WITH US — contractor feedback persistence (SQLite at data/feedback.db)
 # Isolated from existing forms. Table is created on demand. Status workflow:
 # new / reviewed / planned / building / completed / declined / archived.
@@ -363,7 +401,7 @@ def _notify_lead(name, email, phone, business, trade, interest, message, source=
 def index():
     flagships = {k: v for k, v in PROJECTS.items() if k in ('lead-hunter-pro', 'file-processor', 'granite-tester')}
     return render_template('index.html', projects=flagships, social=SOCIAL,
-                           trades=TRADES, feedback_success=False)
+                           trades=TRADES, demos=DEMOS, feedback_success=False)
 
 @app.route('/build-with-us', methods=['POST'])
 def build_with_us():
@@ -393,7 +431,7 @@ def build_with_us():
                  'Build With Us — Contractor Idea', details, source='build-with-us')
     flagships = {k: v for k, v in PROJECTS.items() if k in ('lead-hunter-pro', 'file-processor', 'granite-tester')}
     return render_template('index.html', projects=flagships, social=SOCIAL,
-                           trades=TRADES, feedback_success=True)
+                           trades=TRADES, demos=DEMOS, feedback_success=True)
 
 @app.route('/story')
 def story():

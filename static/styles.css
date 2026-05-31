@@ -691,6 +691,8 @@ img { max-width: 100%; display: block; }
   color: var(--tos-orange); text-transform: uppercase;
 }
 .tos-imgph small { font-size: 12px; color: var(--tos-text-3); font-family: monospace; }
+/* Real image, dropped in via img_slot(). Inherits each slot's sizing class. */
+.tos-img { width: 100%; height: 100%; min-height: inherit; object-fit: cover; border-radius: 12px; display: block; }
 
 /* — 1 · HERO — */
 .tos-hero { position: relative; padding: 0; overflow: hidden; border-bottom: 1px solid var(--tos-line); }
@@ -811,6 +813,9 @@ img { max-width: 100%; display: block; }
 }
 .tos-demo-card h3 { font-size: 15px; font-weight: 700; color: #fff; margin: 14px 16px 4px; }
 .tos-demo-soon { font-size: 12px; color: var(--tos-text-3); margin: 0 16px 16px; text-transform: uppercase; letter-spacing: 1px; }
+/* Responsive 16:9 frame for an embedded YouTube iframe or self-hosted <video>. */
+.tos-demo-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; border-bottom: 1px solid var(--tos-line); }
+.tos-demo-frame iframe, .tos-demo-frame video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* — 10 · FINAL CTA — */
 .tos-final { text-align: center; border-top: 1px solid var(--tos-line); }
