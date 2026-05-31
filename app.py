@@ -259,9 +259,9 @@ TRADES = [
     {'name': 'Flooring',             'blurb': 'Takeoffs, materials, install crews, scheduling, and job notes.',                'accent': '#a0522d'},
     {'name': 'General Contracting',  'blurb': 'Multi-trade jobs, subs, budgets, schedules, and client management.',           'accent': '#d4a745'},
     {'name': 'Snow & Ice',           'blurb': 'Routes, events, crews, equipment, and seasonal service tracking.',             'accent': '#74b9ff'},
-    {'name': 'Hardscape',            'blurb': 'Patios, walls, pavers, materials, crews, and project organization.',           'accent': '#7f8c8d'},
+    {'name': 'Hardscape',            'blurb': 'Patios, walls, pavers, materials, crews, and project organization.',           'accent': '#7f8c8d', 'demo': 'hardscape-dashboard-demo.webm'},
     {'name': 'Property Maintenance', 'blurb': 'Recurring work, routes, crews, checklists, and customer organization.',        'accent': '#27ae60'},
-    {'name': 'Asphalt',              'blurb': 'Paving, sealcoating, crews, materials, and job scheduling.',                    'accent': '#34495e'},
+    {'name': 'Asphalt',              'blurb': 'Paving, sealcoating, crews, materials, and job scheduling.',                    'accent': '#34495e', 'demo': 'asphalt-sealcoat-demo.webm'},
     {'name': 'Carpentry',            'blurb': 'Builds, materials, takeoffs, scheduling, and job documentation.',              'accent': '#cd853f'},
     {'name': 'Specialty Trades',     'blurb': 'Custom dashboards built around how your specific trade actually runs.',        'accent': '#ff6b1a'},
 ]

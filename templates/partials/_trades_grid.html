@@ -1,12 +1,29 @@
-{# Trades grid — driven by the TRADES list passed from app.py. #}
+{# Trades grid — driven by the TRADES list passed from app.py.
+   A trade with a `demo` (self-hosted /videos/<file>) gets a working "View
+   Dashboard Demo" button that opens the clip in a modal. Trades without one
+   keep the anchor to the demo library. #}
 <div class="tos-trades">
   {% for t in trades %}
+  {% set tid = t.name | lower | replace(' ', '-') | replace('&', 'and') %}
   <div class="tos-trade-card" style="--trade-accent: {{ t.accent }}">
     <span class="tos-trade-rail"></span>
     <span class="tos-trade-num">{{ '%02d'|format(loop.index) }}</span>
     <h3 class="tos-trade-name">{{ t.name }}</h3>
     <p class="tos-trade-blurb">{{ t.blurb }}</p>
+    {% if t.demo %}
+    <a href="#" class="tos-trade-link" onclick="document.getElementById('demo-{{ tid }}').showModal();return false;">View Dashboard Demo &rarr;</a>
+    <dialog id="demo-{{ tid }}" class="tos-demo-dialog">
+      <div class="tos-demo-dialog-head">
+        <span>{{ t.name }} Dashboard Demo</span>
+        <button type="button" class="tos-dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">&times;</button>
+      </div>
+      <video controls preload="metadata">
+        <source src="/videos/{{ t.demo }}" type="video/{{ 'mp4' if t.demo.endswith('.mp4') else 'webm' }}">
+      </video>
+    </dialog>
+    {% else %}
     <a href="#demo-videos" class="tos-trade-link">View Dashboard Demo &rarr;</a>
+    {% endif %}
   </div>
   {% endfor %}
 </div>

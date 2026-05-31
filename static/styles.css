@@ -737,7 +737,14 @@ img { max-width: 100%; display: block; }
 }
 .tos-trade-name { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
 .tos-trade-blurb { font-size: 13.5px; line-height: 1.6; color: var(--tos-text-2); margin-bottom: 14px; }
-.tos-trade-link { font-size: 13px; font-weight: 700; color: var(--trade-accent, var(--tos-orange)); }
+.tos-trade-link { font-size: 13px; font-weight: 700; color: var(--trade-accent, var(--tos-orange)); cursor: pointer; }
+/* Trade demo modal (native <dialog>) */
+.tos-demo-dialog { width: min(900px, 92vw); padding: 0; border: 1px solid #2a313d; border-radius: 12px; background: #0a0c10; color: #eef1f5; overflow: hidden; }
+.tos-demo-dialog::backdrop { background: rgba(0,0,0,0.82); }
+.tos-demo-dialog-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 14px; border-bottom: 1px solid #1c2230; }
+.tos-demo-dialog video { width: 100%; display: block; background: #000; }
+.tos-dialog-close { background: none; border: none; color: #9aa3b0; font-size: 24px; line-height: 1; cursor: pointer; padding: 0 4px; }
+.tos-dialog-close:hover { color: #ff6b1a; }
 
 /* — 4 · COMMAND CENTER — */
 .tos-cc { background: var(--tos-panel); border-top: 1px solid var(--tos-line); border-bottom: 1px solid var(--tos-line); border-radius: 0; }
