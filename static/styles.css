@@ -632,8 +632,8 @@ img { max-width: 100%; display: block; }
   --tos-panel-2:   #181d26;
   --tos-line:      rgba(255,255,255,0.08);
   --tos-line-2:    rgba(255,255,255,0.14);
-  --tos-orange:    #ff6b1a;
-  --tos-orange-dk: #e85d10;
+  --tos-orange:    #d4a745;
+  --tos-orange-dk: #b88a2e;
   --tos-steel:     #4a90d9;
   --tos-text:      #eef1f5;
   --tos-text-2:    #9aa3b0;
@@ -698,13 +698,15 @@ img { max-width: 100%; display: block; }
 .tos-hero { position: relative; padding: 0; overflow: hidden; border-bottom: 1px solid var(--tos-line); }
 .tos-hero-bg {
   position: absolute; inset: 0; min-height: 100%; border: none; border-radius: 0;
-  z-index: 0; opacity: 0.5;
+  z-index: 0;
 }
+img.tos-hero-bg { opacity: 1; object-fit: cover; object-position: right center; }
+.tos-imgph.tos-hero-bg { opacity: 0.5; }
 .tos-hero-bg .tos-imgph-tag, .tos-hero-bg small { position: relative; }
 .tos-hero-inner {
   position: relative; z-index: 1; max-width: 1180px; margin: 0 auto;
   padding: 96px 32px 88px;
-  background: linear-gradient(90deg, rgba(10,12,16,0.92) 0%, rgba(10,12,16,0.78) 55%, rgba(10,12,16,0.45) 100%);
+  background: linear-gradient(90deg, rgba(8,10,14,0.97) 0%, rgba(8,10,14,0.86) 38%, rgba(8,10,14,0.55) 70%, rgba(8,10,14,0.30) 100%);
 }
 .tos-eyebrow {
   font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 4px;
@@ -767,6 +769,12 @@ img { max-width: 100%; display: block; }
 .tos-tool-card .tos-btn { margin-top: 12px; }
 .tos-btn--sm { padding: 9px 18px; font-size: 13px; }
 .tos-coming { font-size: 13px; color: var(--tos-text-3); margin-top: 16px; }
+
+/* ═══ Full designed image as hero, with clickable hotspots over drawn buttons ═══ */
+.tos-hero-img { position: relative; line-height: 0; background: var(--gm-black, #06060b); }
+.tos-hero-img-full { width: 100%; display: block; }
+.tos-hot { position: absolute; display: block; z-index: 3; border-radius: 8px; }
+.tos-hot:hover { box-shadow: 0 0 0 2px var(--gold) inset; background: rgba(212,167,69,0.08); }
 
 /* — 4 · COMMAND CENTER — */
 .tos-cc { background: var(--tos-panel); border-top: 1px solid var(--tos-line); border-bottom: 1px solid var(--tos-line); border-radius: 0; }

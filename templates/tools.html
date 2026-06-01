@@ -7,23 +7,22 @@
 {% block content %}
 <div class="tos">
 
-  <!-- ═══ HERO ═══ -->
-  <section class="tos-hero">
-    {{ img_slot('tools-hero',
-       'Trade tools hero: contractors at a jobsite at dusk with a truck and equipment, and a laptop showing the Granite Models dashboard.',
-       'tos-hero-bg') }}
-    <div class="tos-hero-inner">
-      <p class="tos-eyebrow" style="color:var(--gold)">Trade Tools &amp; Dashboards</p>
-      <h1 class="tos-hero-h1">Tools for <span style="color:var(--gold)">Trade Contractors</span></h1>
-      <p class="tos-hero-sub">
-        Buy a single tool, run a full trade dashboard, or grow into the platform. Pay monthly. Cancel anytime.
-      </p>
-      <div class="tos-cta-row">
-        <a href="#tools" class="tos-btn tos-btn--primary">Browse Tools</a>
-        <a href="#dashboards" class="tos-btn tos-btn--steel">See Dashboards</a>
-      </div>
-    </div>
+  <!-- ═══ HERO (full designed image + clickable hotspots over the 3 cards) ═══ -->
+  <section class="tos-hero-img">
+    <img src="/static/img/tools-hero.webp" class="tos-hero-img-full"
+         alt="Tools for Trade Contractors — buy a single tool, use a trade dashboard, or grow into the GMA platform.">
+    <!-- transparent clickable areas over the three cards drawn on the image -->
+    <a class="tos-hot" href="#tools"      style="left:4%;top:56%;width:13%;height:22%;" aria-label="Buy one tool"></a>
+    <a class="tos-hot" href="#dashboards" style="left:18%;top:56%;width:13%;height:22%;" aria-label="Use a trade dashboard"></a>
+    <a class="tos-hot" href="/pricing"    style="left:32%;top:56%;width:13%;height:22%;" aria-label="Upgrade to the full platform"></a>
   </section>
+  <div class="tos">
+    <div class="tos-cta-row tos-cta-center" style="padding:22px 32px 4px;">
+      <a href="#tools" class="tos-btn tos-btn--primary">Browse Tools</a>
+      <a href="#dashboards" class="tos-btn tos-btn--steel">See Dashboards</a>
+      <a href="/demo-videos" class="tos-btn tos-btn--ghost">Watch Demos</a>
+    </div>
+  </div>
 
   <!-- ═══ TOOLS (TOP HALF) ═══ -->
   <section class="tos-section" id="tools">
