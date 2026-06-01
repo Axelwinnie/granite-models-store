@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Build With Us — Granite Models{% endblock %}
+{% block description %}Tell us what would make your job easier. Granite Models builds tools, dashboards, and systems based on what real contractors actually need.{% endblock %}
+{% block og_title %}Build With Us — Granite Models{% endblock %}
+
+{% block content %}
+<div class="tos">
+  <section class="tos-section" style="padding-bottom:0;">
+    <p class="tos-label" style="color:var(--gold)">Build With Us</p>
+    <h1 class="tos-hero-h1" style="font-size:clamp(30px,4.5vw,52px);">We Build <span style="color:var(--gold)">What You Need</span></h1>
+    <p class="tos-lead">
+      Granite Models exists to make your job easier. That's why we listen first — you tell us what would
+      help your business run better, and we build it.
+    </p>
+  </section>
+  {% include 'partials/_build_with_us.html' %}
+</div>
+{% endblock %}

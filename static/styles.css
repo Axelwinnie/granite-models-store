@@ -779,6 +779,15 @@ img.tos-hero-bg { opacity: 1; object-fit: cover; object-position: right center; 
 .tos-page-img { position: relative; line-height: 0; max-width: 1100px; margin: 0 auto; background: #06060b; }
 .tos-page-img-full { width: 100%; display: block; }
 
+/* ═══ CONTACT page ═══ */
+.tos-contact-grid { display: grid; grid-template-columns: 1.4fr 0.8fr; gap: 24px; align-items: start; }
+.tos-reach { padding-top: 4px; }
+.tos-reach-item { padding: 14px 0; border-bottom: 1px solid var(--tos-line); display: flex; flex-direction: column; gap: 3px; }
+.tos-reach-item strong { color: #fff; font-family: var(--font-display); font-size: 15px; }
+.tos-reach-item a { color: var(--gold); font-weight: 600; }
+.tos-reach-item span { font-size: 13px; color: var(--tos-text-2); }
+@media (max-width: 760px) { .tos-contact-grid { grid-template-columns: 1fr; } }
+
 /* — 4 · COMMAND CENTER — */
 .tos-cc { background: var(--tos-panel); border-top: 1px solid var(--tos-line); border-bottom: 1px solid var(--tos-line); border-radius: 0; }
 .tos-feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin: 8px 0 28px; }

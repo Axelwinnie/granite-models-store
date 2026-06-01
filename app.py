@@ -405,7 +405,7 @@ def build_with_us():
     Persists to SQLite AND emails a notification. Re-renders the homepage with a
     confirmation. Isolated from /leads, /pricing, /contact and the Stripe flow."""
     if request.method == 'GET':
-        return redirect('/#build-with-us')
+        return render_template('build_with_us.html', social=SOCIAL, feedback_success=False)
     f = request.form
     data = {
         'name': f.get('name', ''), 'company': f.get('company', ''), 'trade': f.get('trade', ''),
@@ -417,7 +417,7 @@ def build_with_us():
     }
     # Honeypot: silently accept-and-drop obvious bots (field must stay empty).
     if f.get('website', '').strip():
-        return redirect('/#build-with-us')
+        return render_template('build_with_us.html', social=SOCIAL, feedback_success=True)
     _save_feedback(data)
     details = (f"Problem: {data['problem']}\n\n"
                f"What would make the job easier: {data['easier']}\n\n"
@@ -427,9 +427,7 @@ def build_with_us():
                f"Can we contact them: {data['can_contact']}")
     _notify_lead(data['name'], data['email'], data['phone'], data['company'], data['trade'],
                  'Build With Us — Contractor Idea', details, source='build-with-us')
-    flagships = {k: v for k, v in PROJECTS.items() if k in ('lead-hunter-pro', 'file-processor', 'granite-tester')}
-    return render_template('index.html', projects=flagships, social=SOCIAL,
-                           trades=TRADES, demos=DEMOS, feedback_success=True)
+    return render_template('build_with_us.html', social=SOCIAL, feedback_success=True)
 
 @app.route('/dashboards')
 def dashboards():
@@ -439,6 +437,14 @@ def dashboards():
 @app.route('/granite-trades-network')
 def granite_trades_network():
     return render_template('granite_trades_network.html', social=SOCIAL)
+
+@app.route('/opportunities')
+def opportunities():
+    return render_template('page_opportunities.html', social=SOCIAL)
+
+@app.route('/about')
+def about():
+    return render_template('about.html', social=SOCIAL)
 
 @app.route('/demo-videos')
 def demo_videos():
