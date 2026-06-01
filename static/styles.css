@@ -756,6 +756,18 @@ img { max-width: 100%; display: block; }
 .tos-dash-name { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: #fff; margin: 0 0 8px; }
 .tos-dash-demo { font-size: 13px; font-weight: 700; color: var(--trade-accent, var(--tos-orange)); cursor: pointer; }
 
+/* ═══ TOOLS & DASHBOARDS — tool cards ═══ */
+.tos-tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 14px; }
+.tos-tool-card { background: var(--tos-panel); border: 1px solid var(--tos-line); border-left: 3px solid #5bbf4a; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; }
+.tos-tool-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.tos-tool-head strong { font-family: var(--font-display); font-size: 16px; color: #fff; }
+.tos-tool-card p { font-size: 13.5px; line-height: 1.6; color: var(--tos-text-2); margin-bottom: 12px; flex: 1; }
+.tos-tool-card .price { font-family: var(--font-display); font-weight: 800; font-size: 22px; color: var(--gold); }
+.tos-tool-card .per { font-size: 13px; color: var(--tos-text-2); }
+.tos-tool-card .tos-btn { margin-top: 12px; }
+.tos-btn--sm { padding: 9px 18px; font-size: 13px; }
+.tos-coming { font-size: 13px; color: var(--tos-text-3); margin-top: 16px; }
+
 /* — 4 · COMMAND CENTER — */
 .tos-cc { background: var(--tos-panel); border-top: 1px solid var(--tos-line); border-bottom: 1px solid var(--tos-line); border-radius: 0; }
 .tos-feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin: 8px 0 28px; }

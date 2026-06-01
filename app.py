@@ -433,7 +433,8 @@ def build_with_us():
 
 @app.route('/dashboards')
 def dashboards():
-    return render_template('dashboards.html', social=SOCIAL, trades=TRADES)
+    # Tools and dashboards are now one page.
+    return redirect('/tools')
 
 @app.route('/granite-trades-network')
 def granite_trades_network():
@@ -540,7 +541,7 @@ def pricing():
 # ----------------------------------------------------------------------
 @app.route('/tools')
 def tools():
-    return render_template('tools.html', social=SOCIAL)
+    return render_template('tools.html', social=SOCIAL, trades=TRADES)
 
 @app.route('/route-scheduler')
 def route_scheduler():

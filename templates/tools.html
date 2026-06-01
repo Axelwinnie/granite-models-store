@@ -1,220 +1,96 @@
 {% extends "base.html" %}
 {% from 'partials/_media.html' import img_slot %}
-{% block title %}Tools — Granite Models Automations{% endblock %}
-{% block description %}Standalone tools for trade contractors. Buy one tool, use a trade dashboard, or upgrade to the full GMA platform. Route Scheduler available now at $50/month with a 7-day free trial.{% endblock %}
-{% block og_title %}GMA Tools — Standalone Software for Trade Contractors{% endblock %}
+{% block title %}Trade Tools & Dashboards — Granite Models{% endblock %}
+{% block description %}Standalone tools and trade-specific dashboards for contractors — buy one tool, run a full dashboard, or grow into the platform. Pay monthly, cancel anytime.{% endblock %}
+{% block og_title %}Trade Tools & Dashboards — Granite Models{% endblock %}
 
 {% block content %}
 <div class="tos">
+
+  <!-- ═══ HERO ═══ -->
   <section class="tos-hero">
     {{ img_slot('tools-hero',
-       'Trade tools hero: contractors at a jobsite at dusk with a truck and equipment, and a laptop showing the Granite Models dashboard with jobs, schedule, and revenue.',
+       'Trade tools hero: contractors at a jobsite at dusk with a truck and equipment, and a laptop showing the Granite Models dashboard.',
        'tos-hero-bg') }}
     <div class="tos-hero-inner">
-      <p class="tos-eyebrow" style="color:var(--gold)">Tools</p>
+      <p class="tos-eyebrow" style="color:var(--gold)">Trade Tools &amp; Dashboards</p>
       <h1 class="tos-hero-h1">Tools for <span style="color:var(--gold)">Trade Contractors</span></h1>
       <p class="tos-hero-sub">
-        Buy a single tool. Roll it into a full trades dashboard. Grow into the GMA platform.
-        Start with what you need today.
+        Buy a single tool, run a full trade dashboard, or grow into the platform. Pay monthly. Cancel anytime.
       </p>
-    </div>
-  </section>
-  <div style="max-width:1180px;margin:0 auto;padding:18px 32px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;border-top:1px solid var(--tos-line);background:var(--tos-bg);">
-    <div style="flex:1;min-width:170px;"><div style="font-family:var(--font-display);font-weight:700;color:#fff;font-size:15px;">Built for Contractors</div><div style="font-size:13px;color:var(--tos-text-2);">By contractors.</div></div>
-    <div style="flex:1;min-width:170px;"><div style="font-family:var(--font-display);font-weight:700;color:#fff;font-size:15px;">All in One Place</div><div style="font-size:13px;color:var(--tos-text-2);">Tools. Data. People.</div></div>
-    <div style="flex:1;min-width:170px;"><div style="font-family:var(--font-display);font-weight:700;color:#fff;font-size:15px;">Secure &amp; Reliable</div><div style="font-size:13px;color:var(--tos-text-2);">Your data. Your business.</div></div>
-    <div style="flex:1;min-width:170px;"><div style="font-family:var(--font-display);font-weight:700;color:#fff;font-size:15px;">Always Improving</div><div style="font-size:13px;color:var(--tos-text-2);">New tools. More value.</div></div>
-  </div>
-</div>
-
-<div class="container">
-
-  <section class="section--sm" style="padding-top:28px;">
-    <div class="card-grid" style="grid-template-columns:repeat(3, 1fr);gap:16px;">
-      <div class="card">
-        <h3 style="color:var(--gold);margin-bottom:8px;">Buy one tool</h3>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Pick a single tool that solves the one thing slowing you down. Pay monthly. Cancel anytime.</p>
-      </div>
-      <div class="card">
-        <h3 style="color:var(--green);margin-bottom:8px;">Use a trade dashboard</h3>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">A bundled dashboard for your trade with jobs, crews, invoicing, CRM, equipment, and AI in one place.</p>
-      </div>
-      <div class="card">
-        <h3 style="color:var(--blue);margin-bottom:8px;">Upgrade to the full platform</h3>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">The Granite Pro stack adds lead generation, territory exclusivity, and priority support on top of the dashboard.</p>
+      <div class="tos-cta-row">
+        <a href="#tools" class="tos-btn tos-btn--primary">Browse Tools</a>
+        <a href="#dashboards" class="tos-btn tos-btn--steel">See Dashboards</a>
       </div>
     </div>
   </section>
 
-  <section class="section--sm" style="padding-top:0;">
-    <h3 style="margin-bottom:16px;">Available Now</h3>
-    <div class="card" style="border-left:2px solid var(--green);">
-      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
-        <span class="badge badge--production">AVAILABLE NOW</span>
-        <span style="font-family:var(--font-display);font-weight:700;color:var(--text);font-size:18px;">Route Scheduler</span>
+  <!-- ═══ TOOLS (TOP HALF) ═══ -->
+  <section class="tos-section" id="tools">
+    <p class="tos-label">Tools · Live Now</p>
+    <h2 class="tos-h2">Standalone Tools, Available Today</h2>
+    <p class="tos-lead">Buy one tool that solves the thing slowing you down. See them running on the <a href="/demo-videos" style="color:var(--gold)">demo videos page</a>.</p>
+    <div class="tos-tool-grid">
+      <div class="tos-tool-card">
+        <div class="tos-tool-head"><span class="badge badge--production">LIVE</span><strong>Route Scheduler</strong></div>
+        <p>Photo-to-route in 30 seconds — optimized routes, weekly crew schedules, weather-aware rescheduling. Built for crew-based trades.</p>
+        <div><span class="price">$50</span><span class="per">/mo · 7-day free trial</span></div>
+        <a href="https://routes.granitemodels.store/start" class="tos-btn tos-btn--primary tos-btn--sm">Start Free Trial</a>
       </div>
-      <p style="margin-bottom:12px;">Photo-to-route in 30 seconds. Mobile-first PWA that turns a list of stops into an optimized route, anchored at your shop. Weekly schedule per crew, weather-aware rescheduling, photo intake with Claude Vision OCR. Built for lawn, landscape, paving, snow, and any crew-based trade where the route is the day.</p>
-      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:12px;">
-        <div>
-          <span style="font-size:24px;font-weight:700;color:var(--gold);">$50</span><span style="color:var(--text-muted);"> /month</span>
-        </div>
-        <div>
-          <span style="font-size:18px;font-weight:700;color:var(--green);">7 days</span><span style="color:var(--text-muted);"> free trial</span>
-        </div>
-        <div>
-          <span style="font-size:14px;color:var(--text-muted);">Standalone tool. Cancel anytime. No per-user fees.</span>
-        </div>
+      <div class="tos-tool-card">
+        <div class="tos-tool-head"><span class="badge badge--production">LIVE</span><strong>AI Answering Service</strong></div>
+        <p>Answers your calls, books jobs, and takes messages — so you never miss work while you're on the job.</p>
+        <div><span class="price">$50</span><span class="per">/mo starting</span></div>
+        <a href="/contact" class="tos-btn tos-btn--primary tos-btn--sm">Get Started</a>
       </div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <a href="https://routes.granitemodels.store/start" class="hero-cta">Start Free Trial &rarr;</a>
-        <a href="/route-scheduler" class="hero-cta" style="background:transparent;border:1px solid var(--gold);color:var(--gold);">Learn more</a>
+      <div class="tos-tool-card">
+        <div class="tos-tool-head"><span class="badge badge--production">LIVE</span><strong>Ticket Service Toolbox</strong></div>
+        <p>A maintenance and service-ticket system — log and track tickets, manage requests, equipment, and records in one place.</p>
+        <div><span class="price">$250</span><span class="per">/mo starting</span></div>
+        <a href="/contact" class="tos-btn tos-btn--primary tos-btn--sm">Get Started</a>
+      </div>
+      <div class="tos-tool-card">
+        <div class="tos-tool-head"><span class="badge badge--production">LIVE</span><strong>Steel Shape Library</strong></div>
+        <p>Searchable AISC steel shapes (W, M, HP, S, C, HSS, pipe, angle) with weights and dimensions in seconds.</p>
+        <div><span class="price">$50</span><span class="per">/mo starting</span></div>
+        <a href="/contact" class="tos-btn tos-btn--primary tos-btn--sm">Get Started</a>
       </div>
     </div>
+    <p class="tos-coming">Coming soon: File Processor / DIG · Scope ID · Steel Estimator · File Vault · Job Site Designer</p>
+  </section>
 
-    <div class="card" style="border-left:2px solid var(--green);margin-top:16px;">
-      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
-        <span class="badge badge--production">LIVE</span>
-        <span style="font-family:var(--font-display);font-weight:700;color:var(--text);font-size:18px;">AI Answering Service</span>
-      </div>
-      <p style="margin-bottom:12px;">Answers your calls, books jobs, and takes messages &mdash; so you never miss work while you&rsquo;re out on the job. Live and ready now.</p>
-      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:12px;">
-        <div><span style="font-size:24px;font-weight:700;color:var(--gold);">$50</span><span style="color:var(--text-muted);"> /month starting</span></div>
-        <div><span style="font-size:14px;color:var(--text-muted);">Standalone tool. Cancel anytime.</span></div>
-      </div>
-      <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">Demo video coming soon.</p>
-      <a href="/contact" class="hero-cta">Get Started &rarr;</a>
-    </div>
+  <!-- ═══ DASHBOARDS (BOTTOM HALF) ═══ -->
+  <section class="tos-section tos-cc" id="dashboards">
+    <p class="tos-label">Dashboards · 20 Trades</p>
+    <h2 class="tos-h2">Dashboards Built for 20 Trades</h2>
+    <p class="tos-lead">
+      Every trade runs different. Each dashboard is built around how your business actually works — not a
+      one-size-fits-all template. <a href="/demo-videos" style="color:var(--gold)">Watch the dashboard demos &rarr;</a>
+    </p>
+    <ul class="tos-pill-list">
+      {% for t in trades %}<li>{{ t.name }}</li>{% endfor %}
+    </ul>
 
-    <div class="card" style="border-left:2px solid var(--green);margin-top:16px;">
-      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
-        <span class="badge badge--production">LIVE</span>
-        <span style="font-family:var(--font-display);font-weight:700;color:var(--text);font-size:18px;">Ticket Service Toolbox</span>
-      </div>
-      <p style="margin-bottom:12px;">A maintenance and service-ticket system for your shop &mdash; log and track tickets, manage requests, equipment, and records, and keep the work organized in one place.</p>
-      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:12px;">
-        <div><span style="font-size:24px;font-weight:700;color:var(--gold);">$250</span><span style="color:var(--text-muted);"> /month starting</span></div>
-        <div><span style="font-size:14px;color:var(--text-muted);">Standalone tool. Cancel anytime.</span></div>
-      </div>
-      <video controls preload="metadata" style="width:100%;max-width:680px;border-radius:8px;margin-bottom:12px;display:block;background:#000;">
-        <source src="/videos/ticket-service-toolbox-demo.webm" type="video/webm">
-      </video>
-      <a href="/contact" class="hero-cta">Get Started &rarr;</a>
-    </div>
-
-    <div class="card" style="border-left:2px solid var(--green);margin-top:16px;">
-      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
-        <span class="badge badge--production">LIVE</span>
-        <span style="font-family:var(--font-display);font-weight:700;color:var(--text);font-size:18px;">Steel Shape Library</span>
-      </div>
-      <p style="margin-bottom:12px;">A searchable steel shape library for fabricators &mdash; look up AISC shapes (W, M, HP, S, C, HSS, pipe, angle and more) with weights and dimensions in seconds, right when you&rsquo;re estimating or detailing.</p>
-      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:12px;">
-        <div><span style="font-size:24px;font-weight:700;color:var(--gold);">$50</span><span style="color:var(--text-muted);"> /month starting</span></div>
-        <div><span style="font-size:14px;color:var(--text-muted);">Standalone tool. Cancel anytime.</span></div>
-      </div>
-      <video controls preload="metadata" style="width:100%;max-width:680px;border-radius:8px;margin-bottom:12px;display:block;background:#000;">
-        <source src="/videos/steel-shape-library-demo.webm" type="video/webm">
-      </video>
-      <a href="/contact" class="hero-cta">Get Started &rarr;</a>
+    <div class="tos-build-card" style="margin-top:28px;">
+      <p class="tos-label" style="margin-bottom:8px;">Steel Fabrication · In Development</p>
+      <h3 style="font-family:var(--font-display);font-size:20px;color:#fff;margin-bottom:10px;">Building a Mini Operating System for the Shop</h3>
+      <p class="tos-body" style="margin-bottom:8px;">
+        The steel fabrication system isn't finished yet — but a lot of the pieces are already built and
+        working: a <strong>shop dashboard</strong>, a <strong>service ticket toolbox</strong>, a
+        <strong>steel shape library</strong>, and a <strong>scope identification program</strong>, tied
+        together with AI-assisted support. The dashboard and each tool are <strong>separate paid products</strong>.
+      </p>
+      <a href="/demo-videos" style="color:var(--gold);font-weight:700;">Watch the steel demos &rarr;</a>
     </div>
   </section>
 
-  <section class="section--sm" style="padding-top:0;">
-    <h3 style="margin-bottom:16px;">Coming Soon</h3>
-    <div class="card-grid" style="grid-template-columns:repeat(2, 1fr);gap:16px;">
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-          <span class="badge badge--rebuilding">COMING SOON</span>
-          <span style="font-family:var(--font-display);font-weight:700;">File Processor / DIG</span>
-        </div>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Automated document intake and sorting for any trade. Sorts drawings, specs, BOMs, permits, inspection reports into branded delivery bundles. Steel fab + CNC routing supported.</p>
-      </div>
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-          <span class="badge badge--rebuilding">COMING SOON</span>
-          <span style="font-family:var(--font-display);font-weight:700;">Scope ID</span>
-        </div>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Identifies and tags scope items from drawings and specs so estimators don&rsquo;t miss line items.</p>
-      </div>
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-          <span class="badge badge--rebuilding">COMING SOON</span>
-          <span style="font-family:var(--font-display);font-weight:700;">Steel Estimator</span>
-        </div>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Steel fabrication estimating with AISC library lookups, weight calculations, and shop-rate pricing.</p>
-      </div>
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-          <span class="badge badge--rebuilding">COMING SOON</span>
-          <span style="font-family:var(--font-display);font-weight:700;">File Vault</span>
-        </div>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Compliance-grade document storage with version history, signature capture, and audit trails.</p>
-      </div>
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-          <span class="badge badge--rebuilding">COMING SOON</span>
-          <span style="font-family:var(--font-display);font-weight:700;">Job Site Designer</span>
-        </div>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Visual job-site layout planning for crews. Drag-and-drop equipment, materials, and crew positions on a site map.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section--sm" style="padding-top:0;">
-    <h3 style="margin-bottom:16px;">Trade Dashboards</h3>
-    <div class="card" style="border-left:2px solid var(--blue);">
-      <p style="margin-bottom:12px;">A trade dashboard bundles multiple business functions for a single trade &mdash; jobs, scheduling, crews, equipment, invoicing, CRM, and AI assistance &mdash; in one connected system. Standalone tools like Route Scheduler can plug into a trade dashboard later if you outgrow them.</p>
-      <p style="margin-bottom:12px;color:var(--text-muted);font-size:14px;">Available by trade / consult required:</p>
-      <div class="pricing-list" style="grid-template-columns:repeat(3, 1fr);">
-        <span>Landscaping</span>
-        <span>Plumbing</span>
-        <span>HVAC</span>
-        <span>Concrete</span>
-        <span>Electrical</span>
-        <span>Painting</span>
-        <span>Septic</span>
-        <span>Irrigation</span>
-        <span>Roofing</span>
-        <span>Masonry</span>
-      </div>
-      <div style="margin-top:16px;">
-        <a href="/contact" class="hero-cta">Talk to GMA about a trade dashboard &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section--sm" style="padding-top:0;">
-    <h3 style="margin-bottom:16px;">Bundle Path</h3>
-    <div class="card-grid" style="grid-template-columns:repeat(2, 1fr);gap:16px;">
-      <div class="card">
-        <h3 style="margin-bottom:8px;">Trades Platform</h3>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;margin-bottom:8px;">Full trade dashboard with jobs, crews, invoicing, CRM, equipment, AI assistant, QuickBooks + Excel integration. No per-user fees.</p>
-        <a href="/pricing" style="font-size:14px;color:var(--gold);">See pricing &rarr;</a>
-      </div>
-      <div class="card">
-        <h3 style="margin-bottom:8px;">Granite Pro</h3>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;margin-bottom:8px;">Everything in Trades Platform plus Lead Hunter Pro V2 lead generation, territory exclusivity, and priority support.</p>
-        <a href="/pricing" style="font-size:14px;color:var(--gold);">See pricing &rarr;</a>
-      </div>
-      <div class="card">
-        <h3 style="margin-bottom:8px;">Custom Builds</h3>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;margin-bottom:8px;">Bespoke systems, integrations, automations. $100&ndash;$150/hr, $500 minimum.</p>
-        <a href="/pricing" style="font-size:14px;color:var(--gold);">See pricing &rarr;</a>
-      </div>
-      <div class="card">
-        <h3 style="margin-bottom:8px;">Granite Browser</h3>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;margin-bottom:8px;">Trade community at $30/mo. Connect with other contractors, post jobs, swap knowledge.</p>
-        <a href="/pricing" style="font-size:14px;color:var(--gold);">See pricing &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="get-started">
-    <p class="section-label">GET STARTED</p>
-    <h2 class="section-title">Start with one tool. Grow into the full platform.</h2>
-    <p class="section-desc">Try Route Scheduler today, or talk to us about which path fits your business best.</p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px;">
-      <a href="https://routes.granitemodels.store/start" class="hero-cta">Start Free Trial &rarr;</a>
-      <a href="/contact" class="hero-cta" style="background:transparent;border:1px solid var(--gold);color:var(--gold);">Talk to GMA about a full dashboard</a>
+  <!-- ═══ CTA ═══ -->
+  <section class="tos-section tos-final">
+    <h2 class="tos-h2">Start With One Tool. Grow Into the Platform.</h2>
+    <div class="tos-cta-row tos-cta-center">
+      <a href="/demo-videos" class="tos-btn tos-btn--primary">Watch Demos</a>
+      <a href="/pricing" class="tos-btn tos-btn--steel">See Pricing</a>
+      <a href="/contact" class="tos-btn tos-btn--ghost">Contact Us</a>
     </div>
   </section>
 
