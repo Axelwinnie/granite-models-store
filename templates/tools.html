@@ -1,18 +1,35 @@
 {% extends "base.html" %}
+{% from 'partials/_media.html' import img_slot %}
 {% block title %}Tools — Granite Models Automations{% endblock %}
 {% block description %}Standalone tools for trade contractors. Buy one tool, use a trade dashboard, or upgrade to the full GMA platform. Route Scheduler available now at $50/month with a 7-day free trial.{% endblock %}
 {% block og_title %}GMA Tools — Standalone Software for Trade Contractors{% endblock %}
 
 {% block content %}
+<div class="tos">
+  <section class="tos-hero">
+    {{ img_slot('tools-hero',
+       'Trade tools hero: contractors at a jobsite at dusk with a truck and equipment, and a laptop showing the Granite Models dashboard with jobs, schedule, and revenue.',
+       'tos-hero-bg') }}
+    <div class="tos-hero-inner">
+      <p class="tos-eyebrow" style="color:var(--gold)">Tools</p>
+      <h1 class="tos-hero-h1">Tools for <span style="color:var(--gold)">Trade Contractors</span></h1>
+      <p class="tos-hero-sub">
+        Buy a single tool. Roll it into a full trades dashboard. Grow into the GMA platform.
+        Start with what you need today.
+      </p>
+    </div>
+  </section>
+  <div style="max-width:1180px;margin:0 auto;padding:18px 32px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;border-top:1px solid var(--tos-line);background:var(--tos-bg);">
+    <div style="flex:1;min-width:170px;"><div style="font-family:var(--font-display);font-weight:700;color:#fff;font-size:15px;">Built for Contractors</div><div style="font-size:13px;color:var(--tos-text-2);">By contractors.</div></div>
+    <div style="flex:1;min-width:170px;"><div style="font-family:var(--font-display);font-weight:700;color:#fff;font-size:15px;">All in One Place</div><div style="font-size:13px;color:var(--tos-text-2);">Tools. Data. People.</div></div>
+    <div style="flex:1;min-width:170px;"><div style="font-family:var(--font-display);font-weight:700;color:#fff;font-size:15px;">Secure &amp; Reliable</div><div style="font-size:13px;color:var(--tos-text-2);">Your data. Your business.</div></div>
+    <div style="flex:1;min-width:170px;"><div style="font-family:var(--font-display);font-weight:700;color:#fff;font-size:15px;">Always Improving</div><div style="font-size:13px;color:var(--tos-text-2);">New tools. More value.</div></div>
+  </div>
+</div>
+
 <div class="container">
 
-  <section class="section" style="padding-bottom:40px;">
-    <p class="section-label">TOOLS</p>
-    <h2 class="section-title">Tools for Trade Contractors</h2>
-    <p class="section-desc">Buy a single tool. Roll it into a full trade dashboard. Or grow into the GMA platform. Start with what you need today.</p>
-  </section>
-
-  <section class="section--sm" style="padding-top:0;">
+  <section class="section--sm" style="padding-top:28px;">
     <div class="card-grid" style="grid-template-columns:repeat(3, 1fr);gap:16px;">
       <div class="card">
         <h3 style="color:var(--gold);margin-bottom:8px;">Buy one tool</h3>
@@ -53,6 +70,36 @@
         <a href="/route-scheduler" class="hero-cta" style="background:transparent;border:1px solid var(--gold);color:var(--gold);">Learn more</a>
       </div>
     </div>
+
+    <div class="card" style="border-left:2px solid var(--green);margin-top:16px;">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+        <span class="badge badge--production">LIVE</span>
+        <span style="font-family:var(--font-display);font-weight:700;color:var(--text);font-size:18px;">AI Answering Service</span>
+      </div>
+      <p style="margin-bottom:12px;">Answers your calls, books jobs, and takes messages &mdash; so you never miss work while you&rsquo;re out on the job. Live and ready now.</p>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:12px;">
+        <div><span style="font-size:24px;font-weight:700;color:var(--gold);">$50</span><span style="color:var(--text-muted);"> /month starting</span></div>
+        <div><span style="font-size:14px;color:var(--text-muted);">Standalone tool. Cancel anytime.</span></div>
+      </div>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">Demo video coming soon.</p>
+      <a href="/contact" class="hero-cta">Get Started &rarr;</a>
+    </div>
+
+    <div class="card" style="border-left:2px solid var(--green);margin-top:16px;">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+        <span class="badge badge--production">LIVE</span>
+        <span style="font-family:var(--font-display);font-weight:700;color:var(--text);font-size:18px;">Ticket Service Toolbox</span>
+      </div>
+      <p style="margin-bottom:12px;">A maintenance and service-ticket system for your shop &mdash; log and track tickets, manage requests, equipment, and records, and keep the work organized in one place.</p>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:12px;">
+        <div><span style="font-size:24px;font-weight:700;color:var(--gold);">$250</span><span style="color:var(--text-muted);"> /month starting</span></div>
+        <div><span style="font-size:14px;color:var(--text-muted);">Standalone tool. Cancel anytime.</span></div>
+      </div>
+      <video controls preload="metadata" style="width:100%;max-width:680px;border-radius:8px;margin-bottom:12px;display:block;background:#000;">
+        <source src="/videos/ticket-service-toolbox-demo.webm" type="video/webm">
+      </video>
+      <a href="/contact" class="hero-cta">Get Started &rarr;</a>
+    </div>
   </section>
 
   <section class="section--sm" style="padding-top:0;">
@@ -78,13 +125,6 @@
           <span style="font-family:var(--font-display);font-weight:700;">Steel Estimator</span>
         </div>
         <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Steel fabrication estimating with AISC library lookups, weight calculations, and shop-rate pricing.</p>
-      </div>
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-          <span class="badge badge--rebuilding">COMING SOON</span>
-          <span style="font-family:var(--font-display);font-weight:700;">AI Answering Service</span>
-        </div>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Picks up the phone when you can&rsquo;t. Books estimates, captures leads, routes urgent calls.</p>
       </div>
       <div class="card">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
