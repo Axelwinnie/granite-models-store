@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% from 'partials/_media.html' import img_slot %}
+{% block title %}Granite Trades Network — The Private Network for Serious Contractors{% endblock %}
+{% block description %}Granite Trades Network (GTN) is a private platform for serious contractors that comes with your Granite Models dashboard subscription — connect, share knowledge, access resources, and grow.{% endblock %}
+{% block og_title %}Granite Trades Network — Granite Models{% endblock %}
+
+{% block content %}
+<div class="tos">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="tos-hero">
+    {{ img_slot('gtn-hero',
+       'Granite Trades Network hero: a group of contractors in a shop talking together, Granite Models branding behind them.',
+       'tos-hero-bg') }}
+    <div class="tos-hero-inner">
+      <p class="tos-eyebrow" style="color:var(--gold)">Granite Trades Network</p>
+      <h1 class="tos-hero-h1">A Private Network for <span style="color:var(--gold)">Serious Contractors</span></h1>
+      <p class="tos-hero-sub">
+        Granite Trades Network is a private platform for contractors who want more than another software
+        login — a place to connect, share knowledge, access resources, and build stronger businesses.
+        It comes with your Granite Models dashboard subscription.
+      </p>
+      <div class="tos-cta-row">
+        <!-- NEEDS_JON_FINAL_URL: live GTN portal URL. -->
+        <a href="#how" class="tos-btn tos-btn--primary">See How It Works</a>
+        <a href="/pricing" class="tos-btn tos-btn--steel">Get Access</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRIVATE / VERIFIED BADGE ═══ -->
+  <section class="tos-section" style="padding-top:0;">
+    <div class="tos-build-card" style="max-width:760px;">
+      <p class="tos-label" style="margin-bottom:8px;">Private. Verified. Trade Focused.</p>
+      <p class="tos-body" style="margin:0;">This is not a social media group. It's a network built for contractors, by contractors.</p>
+    </div>
+  </section>
+
+  <!-- ═══ WHY JOIN ═══ -->
+  <section class="tos-section tos-network">
+    <p class="tos-label">Why Join</p>
+    <h2 class="tos-h2">Why Join Granite Trades Network?</h2>
+    <p class="tos-lead">GTN connects contractors who are serious about building better businesses and stronger futures.</p>
+    <div class="tos-pillar-grid">
+      <div class="tos-pillar"><h3>Trade-Only Network</h3><p>Connect with real contractors in your trade and others.</p></div>
+      <div class="tos-pillar"><h3>Share &amp; Learn</h3><p>Ask questions, share experiences, and get real answers.</p></div>
+      <div class="tos-pillar"><h3>Tools &amp; Resources</h3><p>Access templates, checklists, systems, and operational resources.</p></div>
+      <div class="tos-pillar"><h3>Grow Your Business</h3><p>Learn, implement, and scale with the right systems and support.</p></div>
+      <div class="tos-pillar"><h3>Future Opportunities</h3><p>Be first in line for new marketplace features and business opportunities.</p></div>
+      <div class="tos-pillar"><h3>Built on Trust</h3><p>Verified contractors. No spam. No fluff. Just real people.</p></div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section class="tos-section tos-cc" id="how">
+    <p class="tos-label">How It Works</p>
+    <h2 class="tos-h2">Built to Work With Your Dashboard</h2>
+    <p class="tos-lead">GTN is connected to the Granite Models ecosystem. Subscribe to a dashboard, and access comes with it.</p>
+    <div class="tos-feature-grid">
+      <div class="tos-feature"><h3>1 · Subscribe</h3><p>Start with a Granite Models dashboard for your trade.</p></div>
+      <div class="tos-feature"><h3>2 · Get Verified</h3><p>We keep the network real contractors only — clean and valuable.</p></div>
+      <div class="tos-feature"><h3>3 · Get Access</h3><p>Your subscription unlocks the private GTN platform and community.</p></div>
+      <div class="tos-feature"><h3>4 · Connect</h3><p>Join discussions, share knowledge, and connect with other contractors.</p></div>
+      <div class="tos-feature"><h3>5 · Grow</h3><p>Use the network, tools, and resources to grow your business.</p></div>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT'S INSIDE ═══ -->
+  <section class="tos-section">
+    <p class="tos-label">Inside GTN</p>
+    <h2 class="tos-h2">What You'll Find Inside</h2>
+    <div class="tos-pillar-grid">
+      <div class="tos-pillar"><h3>Discussion Forums</h3><p>Get answers and share real-world experience.</p></div>
+      <div class="tos-pillar"><h3>Templates &amp; Systems</h3><p>Use proven templates, checklists, and systems.</p></div>
+      <div class="tos-pillar"><h3>Trade Resources</h3><p>Guides, training, and operational resources.</p></div>
+      <div class="tos-pillar"><h3>Contractor Directory</h3><p>Connect with trusted contractors and pros.</p></div>
+      <div class="tos-pillar"><h3>Opportunities</h3><p>Access new project and business opportunities as they open up.</p></div>
+      <div class="tos-pillar"><h3>Early Access</h3><p>Be the first to see and use new features.</p></div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="tos-section tos-final">
+    <h2 class="tos-h2">Ready to Join the Network?</h2>
+    <p class="tos-lead">Granite Trades Network comes with your dashboard subscription. Build connections. Get resources. Create opportunities.</p>
+    <div class="tos-cta-row tos-cta-center">
+      <a href="/pricing" class="tos-btn tos-btn--primary">Get Access</a>
+      <a href="/contact" class="tos-btn tos-btn--steel">Talk to Us</a>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

@@ -435,6 +435,10 @@ def build_with_us():
 def dashboards():
     return render_template('dashboards.html', social=SOCIAL, trades=TRADES)
 
+@app.route('/granite-trades-network')
+def granite_trades_network():
+    return render_template('granite_trades_network.html', social=SOCIAL)
+
 @app.route('/demo-videos')
 def demo_videos():
     vids = [
