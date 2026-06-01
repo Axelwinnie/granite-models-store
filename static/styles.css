@@ -775,6 +775,9 @@ img.tos-hero-bg { opacity: 1; object-fit: cover; object-position: right center; 
 .tos-hero-img-full { width: 100%; display: block; }
 .tos-hot { position: absolute; display: block; z-index: 3; border-radius: 8px; }
 .tos-hot:hover { box-shadow: 0 0 0 2px var(--gold) inset; background: rgba(212,167,69,0.08); }
+/* Full page design image with clickable hotspots */
+.tos-page-img { position: relative; line-height: 0; max-width: 1100px; margin: 0 auto; background: #06060b; }
+.tos-page-img-full { width: 100%; display: block; }
 
 /* — 4 · COMMAND CENTER — */
 .tos-cc { background: var(--tos-panel); border-top: 1px solid var(--tos-line); border-bottom: 1px solid var(--tos-line); border-radius: 0; }
