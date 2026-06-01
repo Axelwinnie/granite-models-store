@@ -1,19 +1,64 @@
 {% extends "base.html" %}
+{% from 'partials/_media.html' import img_slot %}
 {% block title %}Granite Models — The Operating System Built for the Trades{% endblock %}
-{% block description %}Granite Models is the Trades Operating System: dashboards, estimating tools, operations systems, documentation, AI tools, and the Granite Trades Network — built for 20 trades.{% endblock %}
+{% block description %}Granite Models is the Trades Operating System: trade-specific dashboards, estimating tools, operations systems, documentation, AI tools, and the Granite Trades Network — built for 20 trades.{% endblock %}
 {% block og_title %}Granite Models — The Trades Operating System{% endblock %}
 
 {% block content %}
-<div class="tos-page-img">
-  <img src="/static/img/page-home.webp" class="tos-page-img-full"
-       alt="Granite Models — The Operating System Built for the Trades.">
-  <a class="tos-hot" href="/demo-videos"            style="left:33.2%;top:15.6%;width:10.7%;height:2.9%;" aria-label="Watch Demo"></a>
-  <a class="tos-hot" href="/tools"                  style="left:44.9%;top:15.6%;width:16.1%;height:2.9%;" aria-label="Explore Trades"></a>
-  <a class="tos-hot" href="/tools"                  style="left:78.1%;top:24.5%;width:18.1%;height:2.7%;" aria-label="View all trades"></a>
-  <a class="tos-hot" href="/demo-videos"            style="left:2.7%;top:39.4%;width:26.6%;height:2.9%;"  aria-label="Watch Command Center demo"></a>
-  <a class="tos-hot" href="/granite-trades-network" style="left:50.8%;top:49.2%;width:15.6%;height:2.9%;" aria-label="Visit Granite Trades Network"></a>
-  <a class="tos-hot" href="/build-with-us"          style="left:2.7%;top:52.9%;width:27.5%;height:2.9%;"  aria-label="Share your ideas"></a>
-  <a class="tos-hot" href="/opportunities"          style="left:51.3%;top:52.9%;width:20%;height:2.9%;"   aria-label="View opportunities"></a>
-  <a class="tos-hot" href="/demo-videos"            style="left:37.1%;top:66.9%;width:23.9%;height:2.8%;" aria-label="Browse all demo videos"></a>
+<div class="tos">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="tos-hero">
+    {{ img_slot('home-hero', 'Trade contractors on a jobsite — the trades that Granite Models is built for.', 'tos-hero-bg') }}
+    <div class="tos-hero-inner">
+      <p class="tos-eyebrow" style="color:var(--gold)">The Trades Operating System</p>
+      <h1 class="tos-hero-h1">The Operating System <span style="color:var(--gold)">Built for the Trades</span></h1>
+      <p class="tos-hero-sub">
+        Dashboards, estimating tools, operations systems, documentation, AI-powered tools, and a private
+        contractor network — built for the way real trade businesses work.
+      </p>
+      <div class="tos-cta-row">
+        <a href="/demo-videos" class="tos-btn tos-btn--primary">Watch Demo</a>
+        <a href="/tools" class="tos-btn tos-btn--steel">Explore Trades</a>
+        <a href="/granite-trades-network" class="tos-btn tos-btn--ghost">Visit GTN</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VALUE STRIP ═══ -->
+  <section class="tos-section" style="padding:28px 32px;">
+    <div class="tos-feature-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+      <div class="tos-feature"><h3>Built for 20 Trades</h3><p>Trade-specific dashboards, not one-size-fits-all.</p></div>
+      <div class="tos-feature"><h3>Tools That Save Time</h3><p>Estimating, scheduling, documents, AI support.</p></div>
+      <div class="tos-feature"><h3>Private Contractor Network</h3><p>Granite Trades Network for serious contractors.</p></div>
+      <div class="tos-feature"><h3>Built by a Tradesman</h3><p>25+ years in the field, not a boardroom.</p></div>
+    </div>
+  </section>
+
+  <!-- ═══ EXPLORE (link-out cards) ═══ -->
+  <section class="tos-section tos-cc">
+    <p class="tos-label">One Platform. Twenty Trades.</p>
+    <h2 class="tos-h2">Explore the Platform</h2>
+    <div class="tos-feature-grid">
+      <a href="/tools" class="tos-feature tos-feature--link"><h3>Tools &amp; Dashboards &rarr;</h3><p>Standalone tools and trade-specific dashboards for 20 trades.</p></a>
+      <a href="/demo-videos" class="tos-feature tos-feature--link"><h3>Demo Videos &rarr;</h3><p>See the dashboards and tools in action before you use them.</p></a>
+      <a href="/granite-trades-network" class="tos-feature tos-feature--link"><h3>Granite Trades Network &rarr;</h3><p>A private network for serious contractors.</p></a>
+      <a href="/opportunities" class="tos-feature tos-feature--link"><h3>Opportunities &rarr;</h3><p>Available opportunities — marketplace expansion under development.</p></a>
+      <a href="/build-with-us" class="tos-feature tos-feature--link"><h3>Build With Us &rarr;</h3><p>Tell us what would make your job easier — we build it.</p></a>
+      <a href="/about" class="tos-feature tos-feature--link"><h3>About &rarr;</h3><p>Built by a tradesman, for the trades.</p></a>
+    </div>
+  </section>
+
+  <!-- ═══ CLOSING ═══ -->
+  <section class="tos-section tos-final">
+    <h2 class="tos-h2">Built for the People Doing the Work</h2>
+    <p class="tos-lead">Granite Models exists to help the small contractors, owner-operators, and crews who carry the real weight of the job. Build smarter, stay organized, win more work.</p>
+    <div class="tos-cta-row tos-cta-center">
+      <a href="/demo-videos" class="tos-btn tos-btn--primary">Watch Demo</a>
+      <a href="/tools" class="tos-btn tos-btn--steel">Explore Trades</a>
+      <a href="/build-with-us" class="tos-btn tos-btn--ghost">Share Your Ideas</a>
+    </div>
+  </section>
+
 </div>
 {% endblock %}

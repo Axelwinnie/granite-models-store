@@ -1,14 +1,43 @@
 {% extends "base.html" %}
+{% from 'partials/_media.html' import img_slot %}
 {% block title %}Opportunities — Granite Models{% endblock %}
 {% block description %}Opportunities built for contractors. Marketplace expansion under development — available opportunities, contractor resources, and partnerships.{% endblock %}
 {% block og_title %}Opportunities — Granite Models{% endblock %}
 
 {% block content %}
-<div class="tos-page-img">
-  <img src="/static/img/page-opportunities.webp" class="tos-page-img-full"
-       alt="Opportunities Built for Contractors — marketplace expansion under development. Available opportunities, trusted network, built for trades.">
-  <a class="tos-hot" href="/leads"                  style="left:5%;top:22.5%;width:18%;height:3%;"  aria-label="Browse Opportunities"></a>
-  <a class="tos-hot" href="/contact"                style="left:13%;top:61.5%;width:18%;height:3.2%;" aria-label="Post a project"></a>
-  <a class="tos-hot" href="/granite-trades-network" style="left:40%;top:61.5%;width:15%;height:3.2%;" aria-label="Join Granite Trades Network"></a>
+<div class="tos">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="tos-hero">
+    {{ img_slot('opportunities-hero', 'A contractor reviewing opportunities on a tablet at a jobsite at dusk.', 'tos-hero-bg') }}
+    <div class="tos-hero-inner">
+      <p class="tos-eyebrow" style="color:var(--gold)">Opportunities &middot; Marketplace Expansion Under Development</p>
+      <h1 class="tos-hero-h1">Opportunities <span style="color:var(--gold)">Built for Contractors</span></h1>
+      <p class="tos-hero-sub">
+        Granite Models is building a larger contractor marketplace. As project opportunities, contractor
+        resources, and partnerships become available, they'll appear here for review.
+      </p>
+      <div class="tos-cta-row">
+        <a href="/leads" class="tos-btn tos-btn--primary">Browse Available Opportunities</a>
+        <a href="/granite-trades-network" class="tos-btn tos-btn--steel">Join the Network</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT'S COMING ═══ -->
+  <section class="tos-section tos-cc">
+    <p class="tos-label">What's Coming</p>
+    <h2 class="tos-h2">A Marketplace, Built for the Trades</h2>
+    <div class="tos-feature-grid">
+      <div class="tos-feature"><h3>Available Opportunities</h3><p>Project opportunities and contractor resources, listed here as they become available.</p></div>
+      <div class="tos-feature"><h3>Built for Trades</h3><p>By contractors, for contractors — no pay-to-play, no hidden fees.</p></div>
+      <div class="tos-feature"><h3>More Coming Soon</h3><p>Bidding, job awards, and more tools are in development.</p></div>
+    </div>
+    <div class="tos-cta-row">
+      <a href="/leads" class="tos-btn tos-btn--primary">View Available Opportunities</a>
+      <a href="/contact" class="tos-btn tos-btn--steel">Contact Us</a>
+    </div>
+  </section>
+
 </div>
 {% endblock %}

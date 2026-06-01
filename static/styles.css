@@ -795,6 +795,9 @@ img.tos-hero-bg { opacity: 1; object-fit: cover; object-position: right center; 
 .tos-feature h3 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 8px; }
 .tos-feature p { font-size: 14px; line-height: 1.6; color: var(--tos-text-2); }
 .tos-cc-img { min-height: 280px; margin-bottom: 28px; }
+.tos-feature--link { display: block; text-decoration: none; transition: border-color .2s, transform .15s; }
+.tos-feature--link:hover { border-color: var(--gold); transform: translateY(-2px); }
+.tos-feature--link h3 { color: var(--gold); }
 
 /* — 5 · LANDSCAPING SPOTLIGHT — */
 .tos-spotlight-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: center; }
