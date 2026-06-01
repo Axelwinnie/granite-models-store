@@ -746,6 +746,16 @@ img { max-width: 100%; display: block; }
 .tos-dialog-close { background: none; border: none; color: #9aa3b0; font-size: 24px; line-height: 1; cursor: pointer; padding: 0 4px; }
 .tos-dialog-close:hover { color: #ff6b1a; }
 
+/* ═══ DASHBOARDS PAGE — trade grid ═══ */
+.tos-dash-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+.tos-dash-card { background: var(--tos-panel); border: 1px solid var(--tos-line); border-radius: 10px; overflow: hidden; transition: transform .18s, border-color .2s; }
+.tos-dash-card:hover { transform: translateY(-3px); border-color: var(--trade-accent, var(--tos-orange)); }
+.tos-dash-img { width: 100%; height: 130px; object-fit: cover; display: block; border-radius: 0; border-bottom: 2px solid var(--trade-accent, var(--tos-orange)); }
+.tos-dash-img.tos-imgph { min-height: 130px; border-radius: 0; }
+.tos-dash-body { padding: 12px 14px 14px; }
+.tos-dash-name { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: #fff; margin: 0 0 8px; }
+.tos-dash-demo { font-size: 13px; font-weight: 700; color: var(--trade-accent, var(--tos-orange)); cursor: pointer; }
+
 /* — 4 · COMMAND CENTER — */
 .tos-cc { background: var(--tos-panel); border-top: 1px solid var(--tos-line); border-bottom: 1px solid var(--tos-line); border-radius: 0; }
 .tos-feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin: 8px 0 28px; }

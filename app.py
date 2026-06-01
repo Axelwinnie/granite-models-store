@@ -431,6 +431,10 @@ def build_with_us():
     return render_template('index.html', projects=flagships, social=SOCIAL,
                            trades=TRADES, demos=DEMOS, feedback_success=True)
 
+@app.route('/dashboards')
+def dashboards():
+    return render_template('dashboards.html', social=SOCIAL, trades=TRADES)
+
 @app.route('/story')
 def story():
     return render_template('story.html', social=SOCIAL)

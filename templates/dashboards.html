@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% from 'partials/_media.html' import img_slot %}
+{% block title %}Dashboards Built for 20 Trades — Granite Models{% endblock %}
+{% block description %}Trade-specific dashboards for 20 trades — tools, layouts, workflows, and reports designed around how your business actually operates. Not a one-size-fits-all template.{% endblock %}
+{% block og_title %}Dashboards Built for 20 Trades — Granite Models{% endblock %}
+
+{% block content %}
+<div class="tos">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="tos-hero">
+    {{ img_slot('dashboards-hero',
+       'Dashboards hero: a laptop showing the Granite Models command center (active jobs, estimates, schedule) on a jobsite with a steel worker and sparks.',
+       'tos-hero-bg') }}
+    <div class="tos-hero-inner">
+      <p class="tos-eyebrow" style="color:var(--gold)">Dashboards</p>
+      <h1 class="tos-hero-h1">Dashboards <span style="color:var(--gold)">Built for 20 Trades</span></h1>
+      <p class="tos-hero-sub">
+        Every trade runs different. That's why Granite Models gives you a dashboard built around the way
+        your business actually operates — tools, layouts, workflows, and reports designed for your trade,
+        not a one-size-fits-all template.
+      </p>
+      <div class="tos-cta-row">
+        <a href="/#demo-videos" class="tos-btn tos-btn--primary">Watch Dashboard Overview</a>
+        <a href="#all-trades" class="tos-btn tos-btn--steel">Browse All Trades</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 20 TRADES GRID ═══ -->
+  <section class="tos-section" id="all-trades">
+    <p class="tos-label">20 Trades. 1 Powerful Platform.</p>
+    <h2 class="tos-h2">Choose Your Trade</h2>
+    <p class="tos-lead">Choose your trade to see a dashboard built around your daily operations, tools, and workflows.</p>
+    <div class="tos-dash-grid">
+      {% for t in trades %}
+      {% set slug = t.name | lower | replace(' ', '-') | replace('&', 'and') %}
+      <div class="tos-dash-card" style="--trade-accent: {{ t.accent }}">
+        {{ img_slot('trade-' ~ slug, t.name ~ ' dashboard preview', 'tos-dash-img') }}
+        <div class="tos-dash-body">
+          <h3 class="tos-dash-name">{{ t.name }}</h3>
+          {% if t.demo %}
+          <a href="#" class="tos-dash-demo" onclick="document.getElementById('dash-{{ slug }}').showModal();return false;">View Demo &rarr;</a>
+          <dialog id="dash-{{ slug }}" class="tos-demo-dialog">
+            <div class="tos-demo-dialog-head"><span>{{ t.name }} Dashboard Demo</span><button type="button" class="tos-dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">&times;</button></div>
+            <video controls preload="metadata"><source src="/videos/{{ t.demo }}" type="video/{{ 'mp4' if t.demo.endswith('.mp4') else 'webm' }}"></video>
+          </dialog>
+          {% else %}
+          <a href="/#demo-videos" class="tos-dash-demo">View Demo &rarr;</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- ═══ WHY TRADE-SPECIFIC ═══ -->
+  <section class="tos-section tos-cc">
+    <p class="tos-label">Why It Matters</p>
+    <h2 class="tos-h2">Why Trade-Specific Dashboards Matter</h2>
+    <p class="tos-lead">Generic software wasn't built for the trades. Ours is.</p>
+    <div class="tos-feature-grid">
+      <div class="tos-feature"><h3>Workflows that match your trade</h3><p>Your dashboard is built around how your business actually works.</p></div>
+      <div class="tos-feature"><h3>Save time every day</h3><p>Less clicking, less searching, more getting the job done.</p></div>
+      <div class="tos-feature"><h3>Right tools, right where you need them</h3><p>Only the tools that matter for your trade.</p></div>
+      <div class="tos-feature"><h3>Built to grow with you</h3><p>Start small and unlock more as your business expands.</p></div>
+      <div class="tos-feature"><h3>Better organization</h3><p>Keep jobs, documents, equipment, and customers easy to manage.</p></div>
+      <div class="tos-feature"><h3>Real-world, field-tested systems</h3><p>Built from decades in the trades, not a boardroom.</p></div>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT'S INSIDE ═══ -->
+  <section class="tos-section">
+    <p class="tos-label">Under the Hood</p>
+    <h2 class="tos-h2">What's Inside Every Dashboard</h2>
+    <div class="tos-feature-grid">
+      <div class="tos-feature"><h3>Job Management</h3><p>Track jobs from start to finish.</p></div>
+      <div class="tos-feature"><h3>Estimating Tools</h3><p>Create accurate estimates faster.</p></div>
+      <div class="tos-feature"><h3>Scheduling</h3><p>Manage crews, schedules, and timelines.</p></div>
+      <div class="tos-feature"><h3>Documents</h3><p>Store files, contracts, photos, and more.</p></div>
+      <div class="tos-feature"><h3>Equipment Tracking</h3><p>Track equipment, maintenance, and usage.</p></div>
+      <div class="tos-feature"><h3>Reports &amp; Analytics</h3><p>See the numbers that help you grow.</p></div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="tos-section tos-final">
+    <h2 class="tos-h2">See Your Trade Dashboard in Action</h2>
+    <p class="tos-lead">Watch real demos of how each dashboard works and how it can help your business.</p>
+    <div class="tos-cta-row tos-cta-center">
+      <a href="/#demo-videos" class="tos-btn tos-btn--primary">Watch Demo Videos</a>
+      <a href="/#build-with-us" class="tos-btn tos-btn--steel">Tell Us What You Need</a>
+      <a href="/contact" class="tos-btn tos-btn--ghost">Contact Us</a>
+    </div>
+  </section>
+
+</div>
+{% endblock %}
