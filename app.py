@@ -316,8 +316,9 @@ FEEDBACK_DB = os.path.join(app.root_path, 'data', 'feedback.db')
 def _init_feedback_db():
     """Create the feedback table if it does not already exist. Safe to call repeatedly."""
     os.makedirs(os.path.dirname(FEEDBACK_DB), exist_ok=True)
-    conn = sqlite3.connect(FEEDBACK_DB)
+    conn = sqlite3.connect(FEEDBACK_DB, timeout=10)
     try:
+        conn.execute('PRAGMA busy_timeout=5000')
         conn.execute('''CREATE TABLE IF NOT EXISTS feedback (
             id              INTEGER PRIMARY KEY AUTOINCREMENT,
             created_at      TEXT NOT NULL,
@@ -343,8 +344,9 @@ def _save_feedback(d):
     """Persist a Build With Us submission. Returns row id, or None on failure (never raises)."""
     try:
         _init_feedback_db()
-        conn = sqlite3.connect(FEEDBACK_DB)
+        conn = sqlite3.connect(FEEDBACK_DB, timeout=10)
         try:
+            conn.execute('PRAGMA busy_timeout=5000')
             cur = conn.execute('''INSERT INTO feedback
                 (created_at, source, status, name, company, trade, email, phone,
                  problem, easier, tools_wanted, frequency, willing_to_test, can_contact)
@@ -364,7 +366,7 @@ def _save_feedback(d):
         return None
 
 def _notify_lead(name, email, phone, business, trade, interest, message, source='pricing'):
-    """Send lead notification to Lorie and Jon via email. Never crashes the app."""
+    """Send lead notification to the Granite Models inbox via email. Never crashes the app."""
     sg_key = os.environ.get('SENDGRID_API_KEY', '')
     body_html = f"""
     <h2>New Lead from granitemodels.store ({source} page)</h2>
@@ -397,11 +399,13 @@ def index():
     return render_template('index.html', projects=flagships, social=SOCIAL,
                            trades=TRADES, demos=DEMOS, feedback_success=False)
 
-@app.route('/build-with-us', methods=['POST'])
+@app.route('/build-with-us', methods=['GET', 'POST'])
 def build_with_us():
     """Contractor feedback ('Tell Us What Would Make Your Job Easier').
     Persists to SQLite AND emails a notification. Re-renders the homepage with a
     confirmation. Isolated from /leads, /pricing, /contact and the Stripe flow."""
+    if request.method == 'GET':
+        return redirect('/#build-with-us')
     f = request.form
     data = {
         'name': f.get('name', ''), 'company': f.get('company', ''), 'trade': f.get('trade', ''),
