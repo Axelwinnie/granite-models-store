@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% from 'partials/_media.html' import img_slot, demo_card %}
+{% block title %}Demo Videos — See It in Action | Granite Models{% endblock %}
+{% block description %}Watch real demo videos of Granite Models dashboards, tools, and business systems built for contractors. No sales pitch — just real tools built for real work.{% endblock %}
+{% block og_title %}Demo Videos — Granite Models{% endblock %}
+
+{% block content %}
+<div class="tos">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="tos-hero">
+    {{ img_slot('demo-videos-hero',
+       'Demo videos hero: a laptop showing the Granite Models command center on a workbench with a hard hat and work gloves.',
+       'tos-hero-bg') }}
+    <div class="tos-hero-inner">
+      <p class="tos-eyebrow" style="color:var(--gold)">Demo Videos</p>
+      <h1 class="tos-hero-h1">See It in Action. <span style="color:var(--gold)">Before You Use It.</span></h1>
+      <p class="tos-hero-sub">
+        Watch real demo videos of Granite Models dashboards, tools, and business systems built for
+        contractors. No sales pitch. Just real tools built for real work.
+      </p>
+      <div class="tos-cta-row">
+        <a href="#library" class="tos-btn tos-btn--primary">Watch the Demos</a>
+        <a href="/dashboards" class="tos-btn tos-btn--steel">Explore Dashboards</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DEMO LIBRARY ═══ -->
+  <section class="tos-section tos-demos" id="library">
+    <p class="tos-label">Demo Video Library</p>
+    <h2 class="tos-h2">Watch How It Works</h2>
+    <p class="tos-lead">
+      Real demos of the dashboards and tools that are live today. More are recorded and added as each
+      one is finished.
+    </p>
+    <div class="tos-demo-grid">
+      {% for v in vids %}{{ demo_card(v) }}{% endfor %}
+    </div>
+  </section>
+
+  <!-- ═══ WHY WATCH ═══ -->
+  <section class="tos-section tos-cc">
+    <p class="tos-label">Why Watch</p>
+    <h2 class="tos-h2">Why Watch the Demos?</h2>
+    <div class="tos-feature-grid">
+      <div class="tos-feature"><h3>Save Time</h3><p>See how the tools work before you invest time learning them.</p></div>
+      <div class="tos-feature"><h3>See Real Results</h3><p>Watch real workflows designed for real contractor businesses.</p></div>
+      <div class="tos-feature"><h3>Smarter Decisions</h3><p>Choose the right tools and dashboards that fit your trade.</p></div>
+      <div class="tos-feature"><h3>No Sales Pitch</h3><p>Just real demos showing how the system works for you.</p></div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="tos-section tos-final">
+    <h2 class="tos-h2">Ready to See How It Works?</h2>
+    <p class="tos-lead">Watch the demos. Explore the tools. Build a stronger business.</p>
+    <div class="tos-cta-row tos-cta-center">
+      <a href="/dashboards" class="tos-btn tos-btn--primary">Explore Dashboards</a>
+      <a href="/tools" class="tos-btn tos-btn--steel">Browse Tools</a>
+      <a href="/contact" class="tos-btn tos-btn--ghost">Contact Us</a>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

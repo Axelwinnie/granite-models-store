@@ -435,6 +435,21 @@ def build_with_us():
 def dashboards():
     return render_template('dashboards.html', social=SOCIAL, trades=TRADES)
 
+@app.route('/demo-videos')
+def demo_videos():
+    vids = [
+        {'title': 'Steel Fabrication Dashboard',   'src': {'file': 'steel-fab-shop-dashboard-demo.webm'}},
+        {'title': 'Steel Shape Library',           'src': {'file': 'steel-shape-library-demo.webm'}},
+        {'title': 'Ticket Service Toolbox',        'src': {'file': 'ticket-service-toolbox-demo.webm'}},
+        {'title': 'Hardscape Dashboard',           'src': {'file': 'hardscape-dashboard-demo.webm'}},
+        {'title': 'Asphalt & Sealcoat Dashboard',  'src': {'file': 'asphalt-sealcoat-demo.webm'}},
+        {'title': 'Command Center Overview',        'src': {}},
+        {'title': 'Estimating Tools Demo',          'src': {}},
+        {'title': 'AI Business Tools Demo',          'src': {}},
+        {'title': 'Granite Trades Network Demo',     'src': {}},
+    ]
+    return render_template('demo_videos.html', social=SOCIAL, vids=vids)
+
 @app.route('/story')
 def story():
     return render_template('story.html', social=SOCIAL)
