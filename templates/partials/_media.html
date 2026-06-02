@@ -12,10 +12,7 @@
   {%- if url -%}
   <img src="{{ url }}" alt="{{ alt }}" class="tos-img {{ cls }}" loading="lazy">
   {%- else -%}
-  <div class="tos-imgph {{ cls }}" data-slot="{{ slot }}" role="img" aria-label="{{ alt }}">
-    <span class="tos-imgph-tag">IMAGE PLACEHOLDER</span>
-    <small>{{ slot }}</small>
-  </div>
+  <div class="tos-imgph {{ cls }}" data-slot="{{ slot }}" role="img" aria-label="{{ alt }}"></div>
   {%- endif -%}
 {%- endmacro %}
 

@@ -679,12 +679,8 @@ img { max-width: 100%; display: block; }
 
 /* — image placeholders — */
 .tos-imgph {
-  position: relative; display: flex; flex-direction: column; align-items: center;
-  justify-content: center; gap: 6px; min-height: 220px; border-radius: 12px;
-  background:
-    repeating-linear-gradient(45deg, rgba(255,107,26,0.04) 0 14px, transparent 14px 28px),
-    var(--tos-panel);
-  border: 1px dashed rgba(255,107,26,0.35); color: var(--tos-text-3); text-align: center;
+  position: relative; min-height: 220px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--tos-panel-2) 0%, var(--tos-panel) 100%);
 }
 .tos-imgph-tag {
   font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 2px;

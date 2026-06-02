@@ -354,6 +354,8 @@ DASHBOARDS = [
      'desc': 'Installs, pumping routes, inspections, and compliance records.', 'runtime': ''},
     {'slug': 'insulation',       'name': 'Insulation',       'accent': '#af7ac5', 'featured': False,
      'desc': 'Estimates, materials, crews, scheduling, and job tracking.', 'runtime': ''},
+    {'slug': 'mechanic-auto',    'name': 'Mechanic / Auto',  'accent': '#e74c3c', 'featured': False,
+     'desc': 'Repair orders, parts, scheduling, invoicing, and customer history.', 'runtime': ''},
 ]
 
 VIDEO_DIR = os.path.join(app.root_path, 'videos')
