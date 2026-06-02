@@ -46,7 +46,14 @@
         <div class="tos-tool-head"><span class="badge badge--production">LIVE</span><strong>Ticket Service Toolbox</strong></div>
         <p>A maintenance and service-ticket system — log and track tickets, manage requests, equipment, and records in one place.</p>
         <div><span class="price">$250</span><span class="per">/mo starting</span></div>
-        <a href="/contact" class="tos-btn tos-btn--primary tos-btn--sm">Get Started</a>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button type="button" class="tos-btn tos-btn--primary tos-btn--sm" onclick="document.getElementById('dlg-toolbox').showModal()">Watch Demo</button>
+          <a href="/contact" class="tos-btn tos-btn--steel tos-btn--sm">Get Started</a>
+        </div>
+        <dialog id="dlg-toolbox" class="tos-demo-dialog">
+          <div class="tos-demo-dialog-head"><span>Ticket Service Toolbox Demo</span><button type="button" class="tos-dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">&times;</button></div>
+          <video controls preload="none"><source src="/videos/ticket-service-toolbox-demo.webm" type="video/webm"></video>
+        </dialog>
       </div>
       <div class="tos-tool-card">
         <div class="tos-tool-head"><span class="badge badge--production">LIVE</span><strong>Steel Shape Library</strong></div>
