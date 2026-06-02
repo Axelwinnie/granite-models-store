@@ -40,7 +40,17 @@
         <div class="tos-tool-head"><span class="badge badge--production">LIVE</span><strong>AI Answering Service</strong></div>
         <p>Answers your calls, books jobs, and takes messages — so you never miss work while you're on the job. <strong>Requires your own paid account set up for your business</strong> (our demo uses our account).</p>
         <div><span class="price">$100</span><span class="per">/mo starting</span></div>
-        <a href="/contact" class="tos-btn tos-btn--primary tos-btn--sm">Get Started</a>
+        {% set aivid = find_video('ai-answering-service-demo') %}
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          {% if aivid %}<button type="button" class="tos-btn tos-btn--primary tos-btn--sm" onclick="document.getElementById('dlg-ai').showModal()">Watch Demo</button>{% endif %}
+          <a href="/contact" class="tos-btn {{ 'tos-btn--steel' if aivid else 'tos-btn--primary' }} tos-btn--sm">Get Started</a>
+        </div>
+        {% if aivid %}
+        <dialog id="dlg-ai" class="tos-demo-dialog">
+          <div class="tos-demo-dialog-head"><span>AI Answering Service Demo</span><button type="button" class="tos-dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">&times;</button></div>
+          <video controls preload="none"><source src="{{ aivid }}" type="video/{{ 'mp4' if aivid.endswith('.mp4') else 'webm' }}"></video>
+        </dialog>
+        {% endif %}
       </div>
       <div class="tos-tool-card">
         <div class="tos-tool-head"><span class="badge badge--production">LIVE</span><strong>Ticket Service Toolbox</strong></div>

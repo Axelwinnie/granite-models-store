@@ -1,66 +1,43 @@
-# DEMO PLACEMENT MAP — Trade Dashboard Demos
+# DEMO PLACEMENT MAP — Trade Dashboard + Tool Demos
 
-Source manifest: `DEMO_VIDEOS_MANIFEST.txt` (19 demos, ~1920x1080 WebM, in OneDrive).
-Goal: every demo lands on its **exact** trade card on /tools (Dashboards gallery). No mix-ups.
+Source: `MANIFEST.txt` — 8 zip parts, 22 demos, clean web-ready names (`<name>-demo.webm`).
 
-## How publishing works
-The gallery auto-detects a demo when a file named **`videos/dash-<slug>.webm`** exists.
-So placement = rename each uploaded demo to its target name below, drop it in `videos/`, deploy.
+## Auto-publish on drop (no renaming needed)
+The gallery now detects a trade demo by EITHER name:
+`videos/dash-<slug>.webm`  **OR**  `videos/<slug>-demo.webm`.
+Jon's clean names are `<slug>-demo.webm`, which match the gallery slugs — so:
+**just unzip the files into `videos/` and they publish automatically.**
 
-## DETERMINISTIC MAP (manifest prefix → trade → target file)
-The rename is driven ONLY by the filename prefix (before `_interactive_demo`). Exact map:
+## TRADE DEMOS (drop into videos/, auto-publish)
+landscaping-demo · steel-fabrication-demo · hvac-demo · plumbing-demo · construction-demo ·
+electrical-demo · painting-demo · excavation-demo · hardscape-demo · irrigation-demo ·
+pool-pond-demo · concrete-demo · sealcoat-demo · paving-demo · fencing-demo · logging-demo ·
+septic-demo · insulation-demo · mechanic-auto-demo · **line-striping-demo** (new card added)
 
-| Manifest prefix | Trade card        | slug             | Target filename                |
-|-----------------|-------------------|------------------|--------------------------------|
-| concrete        | Concrete          | concrete         | dash-concrete.webm             |
-| construction    | Construction      | construction     | dash-construction.webm         |
-| electrical      | Electrical        | electrical       | dash-electrical.webm           |
-| excavation      | Excavation        | excavation       | dash-excavation.webm           |
-| fencing         | Fencing           | fencing          | dash-fencing.webm              |
-| hardscape       | Hardscape         | hardscape        | dash-hardscape.webm            |
-| hvac            | HVAC              | hvac             | dash-hvac.webm                 |
-| insulation      | Insulation        | insulation       | dash-insulation.webm           |
-| irrigation      | Irrigation        | irrigation       | dash-irrigation.webm           |
-| **landscape**   | Landscaping       | landscaping      | dash-landscaping.webm          |
-| logging         | Logging           | logging          | dash-logging.webm              |
-| **mechanic**    | Mechanic / Auto   | mechanic-auto    | dash-mechanic-auto.webm        |
-| painting        | Painting          | painting         | dash-painting.webm             |
-| paving          | Paving            | paving           | dash-paving.webm               |
-| plumbing        | Plumbing          | plumbing         | dash-plumbing.webm             |
-| **pool**        | Pool & Pond       | pool-pond        | dash-pool-pond.webm            |
-| sealcoat        | Sealcoat          | sealcoat         | dash-sealcoat.webm             |
-| septic          | Septic            | septic           | dash-septic.webm               |
-| **steel**       | Steel Fabrication | steel-fabrication| dash-steel-fabrication.webm    |
+All filenames already equal `<slug>-demo.webm` → land on the correct card automatically.
 
-**Watch the 5 renames in bold** — the prefix differs from the slug:
-landscape→landscaping, mechanic→mechanic-auto, pool→pool-pond, steel→steel-fabrication.
+## NO demo provided → stay "Coming Soon"
+- **Masonry**, **Roofing** (not in the manifest).
 
-## Trades with NO demo yet (stay "Demo Coming Soon")
-- **Masonry** (no manifest video)
-- **Roofing** (no manifest video)
+## TOOL DEMOS (special handling)
+- `ticket-service-toolbox-demo.webm` → **overwrite** the existing redacted file at
+  `videos/ticket-service-toolbox-demo.webm` (the NEW interactive version; card already wired).
+- `ai-answering-service-demo.webm` → drop into `videos/`; the AI Answering Service card shows a
+  "Watch Demo" button automatically (wired conditionally on the file existing).
 
-## Deterministic rename logic (run when videos are uploaded)
-```python
-PREFIX_TO_SLUG = {
-  'concrete':'concrete','construction':'construction','electrical':'electrical',
-  'excavation':'excavation','fencing':'fencing','hardscape':'hardscape','hvac':'hvac',
-  'insulation':'insulation','irrigation':'irrigation','landscape':'landscaping',
-  'logging':'logging','mechanic':'mechanic-auto','painting':'painting','paving':'paving',
-  'plumbing':'plumbing','pool':'pool-pond','sealcoat':'sealcoat','septic':'septic',
-  'steel':'steel-fabrication',
-}
-# for each uploaded *.webm:
-#   prefix = name.split('_interactive_demo')[0].lower()
-#   slug   = PREFIX_TO_SLUG[prefix]
-#   copy -> videos/dash-<slug>.webm
-```
+## ZIP PARTS (per manifest)
+PART1: toolbox, paving, ai-answering | PART2: hardscape, irrigation, pool-pond |
+PART3: plumbing, insulation, excavation | PART4: construction, line-striping, electrical |
+PART5: fencing, logging, concrete | PART6: painting, sealcoat, hvac |
+PART7: landscaping, septic, steel-fabrication | PART8: mechanic-auto
 
-## Verification after placement (mandatory — no mix-ups)
-For EACH of the 19: open /tools, click that trade's card, confirm the video that plays is the
-correct trade (landscaping shows lawn jobs, HVAC shows furnace jobs, steel shows fab, etc.).
-Cross-check count: 19 cards "Demo Available", Masonry + Roofing still "Coming Soon".
+## PROCEDURE (when zips uploaded)
+1. unzip each PART → copy *.webm into `videos/`.
+2. confirm count: 20 trade cards "Demo Available" (+ Masonry/Roofing "Coming Soon");
+   toolbox + AI cards show Watch Demo.
+3. spot-check 3-4 cards play the correct trade.
+4. commit + push.
 
 ## STATUS
-- [x] Gallery + auto-detect built; Mechanic/Auto card added.
-- [ ] Awaiting the 19 .webm files (only the manifest .txt was uploaded so far).
-- [ ] On upload: rename per map → verify each → deploy.
+- [x] Auto-detect supports `<slug>-demo.webm`; Line Striping card added; AI card wired.
+- [ ] Awaiting the 8 zip files (only MANIFEST.txt uploaded so far).

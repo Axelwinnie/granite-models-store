@@ -356,21 +356,29 @@ DASHBOARDS = [
      'desc': 'Estimates, materials, crews, scheduling, and job tracking.', 'runtime': ''},
     {'slug': 'mechanic-auto',    'name': 'Mechanic / Auto',  'accent': '#e74c3c', 'featured': False,
      'desc': 'Repair orders, parts, scheduling, invoicing, and customer history.', 'runtime': ''},
+    {'slug': 'line-striping',    'name': 'Line Striping',    'accent': '#f1c40f', 'featured': False,
+     'desc': 'Lot layouts, striping jobs, materials, crews, and scheduling.', 'runtime': ''},
 ]
 
 VIDEO_DIR = os.path.join(app.root_path, 'videos')
 _VID_EXTS = ('.webm', '.mp4')
 
-def _find_dash_video(slug):
-    """Return /videos/dash-<slug>.<ext> if a demo file exists, else None (auto-publish)."""
+def _find_video(name):
+    """Return /videos/<name>.<ext> if a file exists, else None."""
     try:
         for ext in _VID_EXTS:
-            if os.path.exists(os.path.join(VIDEO_DIR, 'dash-' + slug + ext)):
-                return '/videos/dash-' + slug + ext
+            if os.path.exists(os.path.join(VIDEO_DIR, name + ext)):
+                return '/videos/' + name + ext
     except Exception:
         pass
     return None
 
+def _find_dash_video(slug):
+    """Auto-detect a trade demo by either naming convention (auto-publish on drop):
+       videos/dash-<slug>.<ext>  OR  videos/<slug>-demo.<ext>"""
+    return _find_video('dash-' + slug) or _find_video(slug + '-demo')
+
+app.jinja_env.globals['find_video'] = _find_video
 app.jinja_env.globals['find_dash_video'] = _find_dash_video
 
 # ----------------------------------------------------------------------
