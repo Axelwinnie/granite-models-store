@@ -60,18 +60,58 @@
 
   <!-- ═══ DASHBOARDS (BOTTOM HALF) ═══ -->
   <section class="tos-section tos-cc" id="dashboards">
-    <p class="tos-label">Dashboards · 20 Trades</p>
-    <h2 class="tos-h2">Dashboards Built for 20 Trades</h2>
-    <p class="tos-lead">
-      Every trade runs different. Each dashboard is built around how your business actually works — not a
-      one-size-fits-all template. <a href="/demo-videos" style="color:var(--gold)">Watch the dashboard demos &rarr;</a>
-    </p>
-    <ul class="tos-pill-list">
-      {% for t in trades %}<li>{{ t.name }}</li>{% endfor %}
-    </ul>
+    <p class="tos-label">Dashboards &middot; 20 Trades</p>
+    <h2 class="tos-h2">Trade Dashboard Demos</h2>
+    <p class="tos-lead">Pick your trade and watch the dashboard in action. New demos are added as they're recorded.</p>
+
+    {# ── Featured demo (editable via the `featured` flag in app.py) ── #}
+    {% set feat = (dashboards | selectattr('featured') | list | first) or dashboards[0] %}
+    {% set featvid = find_dash_video(feat.slug) %}
+    <div class="tos-feat" style="--trade-accent:{{ feat.accent }}">
+      <div class="tos-feat-thumb">
+        {{ img_slot('dash-' ~ feat.slug, feat.name ~ ' dashboard demo', 'tos-feat-img') }}
+        {% if featvid %}<button class="tos-gplay tos-gplay--lg" type="button" onclick="document.getElementById('dlg-{{feat.slug}}').showModal()" aria-label="Watch {{feat.name}} demo">&#9654;</button>{% endif %}
+      </div>
+      <div class="tos-feat-body">
+        <span class="tos-gtag">Featured Demo</span>
+        <h3>{{ feat.name }} Dashboard</h3>
+        <p>{{ feat.desc }}</p>
+        {% if featvid %}
+        <button class="tos-btn tos-btn--primary" type="button" onclick="document.getElementById('dlg-{{feat.slug}}').showModal()">Watch Demo</button>
+        {% else %}<span class="tos-soon-pill">Demo Coming Soon</span>{% endif %}
+      </div>
+    </div>
+
+    {# ── Gallery grid (lazy thumbnails, click-to-play) ── #}
+    <div class="tos-gallery">
+      {% for d in dashboards %}
+      {% set vid = find_dash_video(d.slug) %}
+      <div class="tos-gcard" style="--trade-accent:{{ d.accent }}">
+        <div class="tos-gthumb">
+          {{ img_slot('dash-' ~ d.slug, d.name ~ ' dashboard', 'tos-gimg') }}
+          <span class="tos-gstatus {{ 'is-live' if vid else 'is-soon' }}">{{ 'Demo Available' if vid else 'Coming Soon' }}</span>
+          {% if vid %}<button class="tos-gplay" type="button" onclick="document.getElementById('dlg-{{d.slug}}').showModal()" aria-label="Watch {{d.name}} demo">&#9654;</button>{% endif %}
+        </div>
+        <div class="tos-gcard-body">
+          <h3>{{ d.name }}{% if d.runtime %} <span class="tos-grun">{{ d.runtime }}</span>{% endif %}</h3>
+          <p>{{ d.desc }}</p>
+          {% if vid %}<button class="tos-glink" type="button" onclick="document.getElementById('dlg-{{d.slug}}').showModal()">Watch Demo &rarr;</button>
+          {% else %}<span class="tos-glink tos-glink--soon">Demo Coming Soon</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {# ── Video players: preload="none" so nothing loads until clicked ── #}
+    {% for d in dashboards %}{% set vid = find_dash_video(d.slug) %}{% if vid %}
+    <dialog id="dlg-{{d.slug}}" class="tos-demo-dialog">
+      <div class="tos-demo-dialog-head"><span>{{ d.name }} Dashboard Demo</span><button type="button" class="tos-dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">&times;</button></div>
+      <video controls preload="none"><source src="{{ vid }}" type="video/{{ 'mp4' if vid.endswith('.mp4') else 'webm' }}"></video>
+    </dialog>
+    {% endif %}{% endfor %}
 
     <div class="tos-build-card" style="margin-top:28px;">
-      <p class="tos-label" style="margin-bottom:8px;">Steel Fabrication · In Development</p>
+      <p class="tos-label" style="margin-bottom:8px;">Steel Fabrication &middot; In Development</p>
       <h3 style="font-family:var(--font-display);font-size:20px;color:#fff;margin-bottom:10px;">Building a Mini Operating System for the Shop</h3>
       <p class="tos-body" style="margin-bottom:8px;">
         The steel fabrication system isn't finished yet — but a lot of the pieces are already built and

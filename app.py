@@ -305,6 +305,73 @@ DEMOS = [
 ]
 
 # ----------------------------------------------------------------------
+# DASHBOARD GALLERY — scalable demo gallery for the Tools & Dashboards page.
+# Demos drop in later with NO code change: name the files by slug and they
+# appear automatically:
+#   * thumbnail  ->  static/img/dash-<slug>.(webp|jpg|png)
+#   * demo video ->  videos/dash-<slug>.(webm|mp4)
+# Until both exist a card shows "Demo Coming Soon". `featured` marks the one
+# highlighted at the top (editable anytime).
+# ----------------------------------------------------------------------
+DASHBOARDS = [
+    {'slug': 'landscaping',      'name': 'Landscaping',      'accent': '#5bbf4a', 'featured': True,
+     'desc': 'Routes, crews, equipment, estimates, and seasonal service work.', 'runtime': ''},
+    {'slug': 'steel-fabrication', 'name': 'Steel Fabrication', 'accent': '#7d8a99', 'featured': False,
+     'desc': 'Estimating, shop workflows, cut lists, fabrication tracking, and QC.', 'runtime': ''},
+    {'slug': 'hvac',             'name': 'HVAC',             'accent': '#3b82f6', 'featured': False,
+     'desc': 'Service calls, installs, equipment records, scheduling, and maintenance.', 'runtime': ''},
+    {'slug': 'plumbing',         'name': 'Plumbing',         'accent': '#2980b9', 'featured': False,
+     'desc': 'Service, installs, parts, scheduling, and customer history.', 'runtime': ''},
+    {'slug': 'construction',     'name': 'Construction',     'accent': '#d4a745', 'featured': False,
+     'desc': 'Multi-phase jobs, subs, budgets, schedules, and client updates.', 'runtime': ''},
+    {'slug': 'electrical',       'name': 'Electrical',       'accent': '#e0a800', 'featured': False,
+     'desc': 'Service, installs, panels, permits, and documentation.', 'runtime': ''},
+    {'slug': 'painting',         'name': 'Painting',         'accent': '#9b59b6', 'featured': False,
+     'desc': 'Estimates, crews, materials, scheduling, and job photos.', 'runtime': ''},
+    {'slug': 'excavation',       'name': 'Excavation',       'accent': '#8b5a2b', 'featured': False,
+     'desc': 'Site work, equipment, dig schedules, and materials.', 'runtime': ''},
+    {'slug': 'hardscape',        'name': 'Hardscape',        'accent': '#7f8c8d', 'featured': False,
+     'desc': 'Patios, walls, pavers, materials, crews, and projects.', 'runtime': ''},
+    {'slug': 'irrigation',       'name': 'Irrigation',       'accent': '#16a085', 'featured': False,
+     'desc': 'Install and service, zones, controllers, and seasonal startups.', 'runtime': ''},
+    {'slug': 'pool-pond',        'name': 'Pool & Pond',      'accent': '#1abc9c', 'featured': False,
+     'desc': 'Builds, service routes, chemicals, equipment, and maintenance.', 'runtime': ''},
+    {'slug': 'concrete',         'name': 'Concrete',         'accent': '#9aa0a6', 'featured': False,
+     'desc': 'Pours, forms, schedules, takeoffs, and crew coordination.', 'runtime': ''},
+    {'slug': 'masonry',          'name': 'Masonry',          'accent': '#b5651d', 'featured': False,
+     'desc': 'Block, brick, stone, materials, labor planning, and tracking.', 'runtime': ''},
+    {'slug': 'roofing',          'name': 'Roofing',          'accent': '#c0392b', 'featured': False,
+     'desc': 'Measurements, estimates, crews, materials, and job stages.', 'runtime': ''},
+    {'slug': 'sealcoat',         'name': 'Sealcoat',         'accent': '#34495e', 'featured': False,
+     'desc': 'Routes, lots, materials, crews, and seasonal scheduling.', 'runtime': ''},
+    {'slug': 'paving',           'name': 'Paving',           'accent': '#566573', 'featured': False,
+     'desc': 'Asphalt jobs, crews, materials, equipment, and scheduling.', 'runtime': ''},
+    {'slug': 'fencing',          'name': 'Fencing',          'accent': '#27ae60', 'featured': False,
+     'desc': 'Measurements, materials, install scheduling, and tracking.', 'runtime': ''},
+    {'slug': 'logging',          'name': 'Logging',          'accent': '#6b4f2a', 'featured': False,
+     'desc': 'Tracts, equipment, loads, crews, and hauling.', 'runtime': ''},
+    {'slug': 'septic',           'name': 'Septic',           'accent': '#7d6608', 'featured': False,
+     'desc': 'Installs, pumping routes, inspections, and compliance records.', 'runtime': ''},
+    {'slug': 'insulation',       'name': 'Insulation',       'accent': '#af7ac5', 'featured': False,
+     'desc': 'Estimates, materials, crews, scheduling, and job tracking.', 'runtime': ''},
+]
+
+VIDEO_DIR = os.path.join(app.root_path, 'videos')
+_VID_EXTS = ('.webm', '.mp4')
+
+def _find_dash_video(slug):
+    """Return /videos/dash-<slug>.<ext> if a demo file exists, else None (auto-publish)."""
+    try:
+        for ext in _VID_EXTS:
+            if os.path.exists(os.path.join(VIDEO_DIR, 'dash-' + slug + ext)):
+                return '/videos/dash-' + slug + ext
+    except Exception:
+        pass
+    return None
+
+app.jinja_env.globals['find_dash_video'] = _find_dash_video
+
+# ----------------------------------------------------------------------
 # BUILD WITH US — contractor feedback persistence (SQLite at data/feedback.db)
 # Isolated from existing forms. Table is created on demand. Status workflow:
 # new / reviewed / planned / building / completed / declined / archived.
@@ -547,7 +614,7 @@ def pricing():
 # ----------------------------------------------------------------------
 @app.route('/tools')
 def tools():
-    return render_template('tools.html', social=SOCIAL, trades=TRADES)
+    return render_template('tools.html', social=SOCIAL, trades=TRADES, dashboards=DASHBOARDS)
 
 @app.route('/route-scheduler')
 def route_scheduler():
