@@ -602,6 +602,22 @@ def terms():
     return render_template('terms.html', social=SOCIAL)
 
 
+@app.route('/welcome')
+def welcome():
+    """Post-checkout landing page. Stripe redirects here after payment so a new
+    subscriber sees clear next steps (we email them a private access link)
+    instead of dead-ending on Stripe's confirmation page.
+    Optional query params: tool=<name>, mode=trial|paid (whitelisted)."""
+    tool = request.args.get('tool', '').strip()
+    if tool not in ('AI Answering Service', 'Ticket Service Toolbox',
+                    'Steel Shape Library', 'Route Scheduler'):
+        tool = ''
+    mode = request.args.get('mode', '').strip().lower()
+    if mode not in ('trial', 'paid'):
+        mode = ''
+    return render_template('welcome.html', social=SOCIAL, tool=tool, mode=mode)
+
+
 @app.route('/pricing', methods=['GET', 'POST'])
 def pricing():
     if request.method == 'POST':
