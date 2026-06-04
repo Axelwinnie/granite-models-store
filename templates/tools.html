@@ -39,11 +39,11 @@
       <div class="tos-tool-card">
         <div class="tos-tool-head"><span class="badge badge--production">LIVE</span><strong>AI Answering Service</strong></div>
         <p>Answers your calls, books jobs, and takes messages — so you never miss work while you're on the job. <strong>Requires your own paid account set up for your business</strong> (our demo uses our account).</p>
-        <div><span class="price">$100</span><span class="per">/mo starting</span></div>
+        <div><span class="price">$100</span><span class="per">/mo · 7-day free trial</span></div>
         {% set aivid = find_video('ai-answering-service-demo') %}
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          {% if aivid %}<button type="button" class="tos-btn tos-btn--primary tos-btn--sm" onclick="document.getElementById('dlg-ai').showModal()">Watch Demo</button>{% endif %}
-          <a href="/contact" class="tos-btn {{ 'tos-btn--steel' if aivid else 'tos-btn--primary' }} tos-btn--sm">Get Started</a>
+          <a href="https://buy.stripe.com/fZu6oH8n41zn2ftdoddZ60b" class="tos-btn tos-btn--primary tos-btn--sm">Start Free Trial</a>
+          {% if aivid %}<button type="button" class="tos-btn tos-btn--steel tos-btn--sm" onclick="document.getElementById('dlg-ai').showModal()">Watch Demo</button>{% endif %}
         </div>
         {% if aivid %}
         <dialog id="dlg-ai" class="tos-demo-dialog">
@@ -55,10 +55,10 @@
       <div class="tos-tool-card">
         <div class="tos-tool-head"><span class="badge badge--production">LIVE</span><strong>Ticket Service Toolbox</strong></div>
         <p>A maintenance and service-ticket system — log and track tickets, manage requests, equipment, and records in one place.</p>
-        <div><span class="price">$250</span><span class="per">/mo starting</span></div>
+        <div><span class="price">$250</span><span class="per">/mo · 7-day free trial</span></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <button type="button" class="tos-btn tos-btn--primary tos-btn--sm" onclick="document.getElementById('dlg-toolbox').showModal()">Watch Demo</button>
-          <a href="/contact" class="tos-btn tos-btn--steel tos-btn--sm">Get Started</a>
+          <a href="https://buy.stripe.com/dRmaEX0UC0vj7zN6ZPdZ60c" class="tos-btn tos-btn--primary tos-btn--sm">Start Free Trial</a>
+          <button type="button" class="tos-btn tos-btn--steel tos-btn--sm" onclick="document.getElementById('dlg-toolbox').showModal()">Watch Demo</button>
         </div>
         <dialog id="dlg-toolbox" class="tos-demo-dialog">
           <div class="tos-demo-dialog-head"><span>Ticket Service Toolbox Demo</span><button type="button" class="tos-dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">&times;</button></div>
@@ -68,8 +68,8 @@
       <div class="tos-tool-card">
         <div class="tos-tool-head"><span class="badge badge--production">LIVE</span><strong>Steel Shape Library</strong></div>
         <p>Searchable AISC steel shapes (W, M, HP, S, C, HSS, pipe, angle) with weights and dimensions in seconds.</p>
-        <div><span class="price">$50</span><span class="per">/mo starting</span></div>
-        <a href="/contact" class="tos-btn tos-btn--primary tos-btn--sm">Get Started</a>
+        <div><span class="price">$50</span><span class="per">/mo · cancel anytime</span></div>
+        <a href="https://buy.stripe.com/28E7sLfPw3HvcU73NDdZ60d" class="tos-btn tos-btn--primary tos-btn--sm">Subscribe</a>
       </div>
     </div>
     <p class="tos-coming">Coming soon: File Processor / DIG · Scope ID · Steel Estimator · File Vault · Job Site Designer</p>
