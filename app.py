@@ -705,7 +705,7 @@ KEY FACTS:
 - Pay-per-lead: 5 tiers from $45 to $190 based on job value. Class B leads $20 each.
 - Based in New Hampshire. Founded by Jon Anderson, 30 years in the trades.
 - 50+ production systems, 22 trade-specific dashboards.
-- Granite Browser community platform coming soon at $30/month.
+- Granite Trades Network: a private contractor community platform, included free with any dashboard subscription.
 
 RULES:
 - Keep responses concise (2-3 sentences max).
