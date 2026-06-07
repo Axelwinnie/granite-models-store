@@ -79,7 +79,12 @@
   <section class="tos-section tos-cc" id="dashboards">
     <p class="tos-label">Dashboards &middot; 20 Trades</p>
     <h2 class="tos-h2">Trade Dashboard Demos</h2>
-    <p class="tos-lead">Pick your trade and watch the dashboard in action. New demos are added as they're recorded.</p>
+    <p class="tos-lead">Pick your trade and watch the dashboard in action. New demos are added as they're recorded. Every dashboard runs on the <strong>Granite Trades Platform</strong> — one subscription, your full trade dashboard.</p>
+    {% set platform_url = 'https://buy.stripe.com/14A28r46O7XL8DR0BrdZ60e' %}
+    <div class="tos-cta-row" style="margin-bottom:20px;align-items:center;">
+      <a href="{{ platform_url }}" class="tos-btn tos-btn--primary">Subscribe — $600/mo</a>
+      <span style="color:var(--text-muted);font-size:13px;">$999 onboarding · Granite Trades Network included free · cancel anytime</span>
+    </div>
 
     {# ── Featured demo (editable via the `featured` flag in app.py) ── #}
     {% set feat = (dashboards | selectattr('featured') | list | first) or dashboards[0] %}
@@ -93,9 +98,11 @@
         <span class="tos-gtag">Featured Demo</span>
         <h3>{{ feat.name }} Dashboard</h3>
         <p>{{ feat.desc }}</p>
-        {% if featvid %}
-        <button class="tos-btn tos-btn--primary" type="button" onclick="document.getElementById('dlg-{{feat.slug}}').showModal()">Watch Demo</button>
-        {% else %}<span class="tos-soon-pill">Demo Coming Soon</span>{% endif %}
+        <div class="tos-cta-row">
+          <a href="{{ platform_url }}" class="tos-btn tos-btn--primary">Subscribe — $600/mo</a>
+          {% if featvid %}<button class="tos-btn tos-btn--steel" type="button" onclick="document.getElementById('dlg-{{feat.slug}}').showModal()">Watch Demo</button>
+          {% else %}<span class="tos-soon-pill">Demo Coming Soon</span>{% endif %}
+        </div>
       </div>
     </div>
 
@@ -113,6 +120,7 @@
           <h3>{{ d.name }}{% if d.runtime %} <span class="tos-grun">{{ d.runtime }}</span>{% endif %}</h3>
           <p>{{ d.desc }}</p>
           {% if vid %}<button class="tos-glink" type="button" onclick="document.getElementById('dlg-{{d.slug}}').showModal()">Watch Demo &rarr;</button>
+          <a href="{{ platform_url }}" class="tos-btn tos-btn--primary tos-btn--sm" style="margin-top:10px;">Subscribe — $600/mo</a>
           {% else %}<span class="tos-glink tos-glink--soon">Demo Coming Soon</span>{% endif %}
         </div>
       </div>
@@ -124,6 +132,7 @@
     <dialog id="dlg-{{d.slug}}" class="tos-demo-dialog">
       <div class="tos-demo-dialog-head"><span>{{ d.name }} Dashboard Demo</span><button type="button" class="tos-dialog-close" onclick="this.closest('dialog').close()" aria-label="Close">&times;</button></div>
       <video controls preload="none"><source src="{{ vid }}" type="video/{{ 'mp4' if vid.endswith('.mp4') else 'webm' }}"></video>
+      <div style="text-align:center;margin-top:12px;"><a href="{{ platform_url }}" class="tos-btn tos-btn--primary">Subscribe — $600/mo</a></div>
     </dialog>
     {% endif %}{% endfor %}
 
