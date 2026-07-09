@@ -525,18 +525,11 @@ def about():
 
 @app.route('/demo-videos')
 def demo_videos():
-    vids = [
-        {'title': 'Steel Fabrication Dashboard',   'src': {'file': 'steel-fab-shop-dashboard-demo.webm'}},
-        {'title': 'Steel Shape Library',           'src': {'file': 'steel-shape-library-demo.webm'}},
-        {'title': 'Ticket Service Toolbox',        'src': {'file': 'ticket-service-toolbox-demo.webm'}},
-        {'title': 'Hardscape Dashboard',           'src': {'file': 'hardscape-dashboard-demo.webm'}},
-        {'title': 'Asphalt & Sealcoat Dashboard',  'src': {'file': 'asphalt-sealcoat-demo.webm'}},
-        {'title': 'Command Center Overview',        'src': {}},
-        {'title': 'Estimating Tools Demo',          'src': {}},
-        {'title': 'AI Business Tools Demo',          'src': {}},
-        {'title': 'Granite Trades Network Demo',     'src': {}},
-    ]
-    return render_template('demo_videos.html', social=SOCIAL, vids=vids)
+    # Demo Videos page retired: 4 of its 5 hardcoded video filenames never
+    # matched the files in videos/ (players 404'd). The Tools & Dashboards
+    # page auto-detects every real demo file via _find_dash_video(), so all
+    # working demos live there. 301 keeps old external links alive.
+    return redirect('/tools', code=301)
 
 @app.route('/story')
 def story():
