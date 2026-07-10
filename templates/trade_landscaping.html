@@ -1,0 +1,361 @@
+{% extends "base.html" %}
+{% block title %}Landscaping Software That Runs the Whole Company — Granite Models{% endblock %}
+{% block description %}Jobs, crews, routes, and cash — one landscaping dashboard, built for landscapers by a landscaper. No add-ons, no seat creep. $600/mo all-in with free onboarding.{% endblock %}
+{% block og_title %}Landscaping Software That Runs the Whole Company — Granite Models{% endblock %}
+
+{% block content %}
+{# ══════════════════════════════════════════════════════════════════════
+   /trades/landscaping — flagship trade page, Direction C "Jobsite Cinema".
+   Approved mockup: GMA_LANDSCAPING_FLAGSHIP_MOCKUP_1.html (Jon, 2026-07-10).
+   ALL styles are scoped under #lsp so nothing leaks into the rest of the
+   site (base nav/footer keep their own styling). The only intentional
+   exception is the mobile footer padding rule, which makes room for this
+   page's sticky bottom CTA — it only applies while this page's CSS is
+   loaded.
+   NOTE: the <style> block sits inside {% raw %} because CSS like
+   "@media(...){#lsp ...}" contains "{#", which Jinja would otherwise
+   parse as a comment opener.
+   ══════════════════════════════════════════════════════════════════════ #}
+{% raw %}
+<style>
+  #lsp{
+    --lsp-bg:#07080a; --lsp-panel:rgba(10,12,16,.55); --lsp-panel-solid:#0e1014;
+    --lsp-line:rgba(255,255,255,.12); --lsp-line-soft:rgba(255,255,255,.07);
+    --lsp-text:#f2efe9; --lsp-text-2:#b9b3a6; --lsp-text-3:#7d7869;
+    --lsp-gold:#d4a745; --lsp-gold-hover:#e6bd5c; --lsp-gold-press:#b88a2e;
+    --lsp-trade:#5bbf4a; --lsp-radius:14px;
+    background:var(--lsp-bg);color:var(--lsp-text);
+    font-family:'Outfit','Segoe UI Variable Display','Segoe UI',system-ui,-apple-system,sans-serif;
+    font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  #lsp img{max-width:100%;display:block}
+  #lsp a{color:inherit;text-decoration:none}
+  #lsp .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  #lsp section{padding:96px 0}
+  @media(max-width:700px){#lsp section{padding:56px 0}}
+
+  /* ---------- buttons ---------- */
+  #lsp .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--lsp-gold);color:#141005;font-weight:700;border-radius:10px;
+    padding:12px 22px;font-size:15px;min-height:48px;border:0;cursor:pointer;
+    transition:background .15s ease}
+  #lsp .btn:hover{background:var(--lsp-gold-hover)} #lsp .btn:active{background:var(--lsp-gold-press)}
+  #lsp .btn-ghost{background:transparent;color:var(--lsp-text);border:1px solid var(--lsp-line);font-weight:600}
+  #lsp .btn-ghost:hover{background:rgba(255,255,255,.06)}
+
+  /* ---------- hero (full-bleed under the 64px sticky site nav) ---------- */
+  #lsp header{position:relative;min-height:calc(100svh - 64px);display:flex;align-items:flex-end;overflow:hidden}
+  #lsp .hero-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;
+    animation:lspHeroScale 8s ease forwards}
+  @keyframes lspHeroScale{from{transform:scale(1.06)}to{transform:scale(1.0)}}
+  @media(prefers-reduced-motion:reduce){#lsp .hero-art{animation:none}}
+  #lsp .hero-scrim{position:absolute;inset:0;background:
+    linear-gradient(100deg,rgba(7,8,10,.72) 0%,rgba(7,8,10,.38) 34%,rgba(7,8,10,0) 58%),
+    linear-gradient(180deg,rgba(7,8,10,.45) 0%,rgba(7,8,10,0) 26%,rgba(7,8,10,0) 46%,rgba(7,8,10,.78) 78%,rgba(7,8,10,.97) 100%)}
+  @media(max-width:640px){#lsp .hero-scrim{background:
+    linear-gradient(180deg,rgba(7,8,10,.60) 0%,rgba(7,8,10,.38) 34%,rgba(7,8,10,.62) 55%,rgba(7,8,10,.92) 78%,rgba(7,8,10,.99) 100%)}}
+  #lsp .hero-in{position:relative;width:100%;padding:140px 0 72px}
+  #lsp .overline{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--lsp-text-2);margin-bottom:18px}
+  #lsp .overline i{width:26px;height:3px;background:var(--lsp-trade);border-radius:2px}
+  #lsp h1{font-size:clamp(40px,7vw,84px);font-weight:800;line-height:1.05;letter-spacing:-.02em;
+    color:#fff;text-shadow:0 6px 40px rgba(0,0,0,.55);max-width:14ch;margin:0}
+  /* .hero-sub also exists in the global stylesheet — every property is set
+     here so the site rule can't bleed through */
+  #lsp .hero-sub{margin:22px 0 0;font-size:clamp(17px,2vw,21px);color:var(--lsp-text-2);
+    max-width:52ch;line-height:1.65}
+  #lsp .hero-ctas{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  #lsp .chips{margin-top:38px;display:flex;gap:10px;flex-wrap:wrap}
+  #lsp .chip{background:var(--lsp-panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border:1px solid var(--lsp-line);border-radius:999px;padding:9px 18px;font-size:14px;color:var(--lsp-text-2)}
+  #lsp .chip b{color:var(--lsp-text);font-weight:600}
+
+  /* ---------- section headings ---------- */
+  #lsp h2{font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin:0}
+  #lsp .sec-sub{margin-top:12px;color:var(--lsp-text-2);max-width:62ch}
+  #lsp .sec-head{margin-bottom:44px}
+
+  /* ---------- demo block ---------- */
+  #lsp .demo-grid{display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:stretch}
+  @media(max-width:900px){#lsp .demo-grid{grid-template-columns:1fr}}
+  #lsp .glass{background:var(--lsp-panel);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border:1px solid var(--lsp-line);border-radius:var(--lsp-radius)}
+  #lsp .video-card{overflow:hidden;position:relative}
+  #lsp .video-card video{width:100%;height:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#000}
+  #lsp .demo-side{padding:32px;display:flex;flex-direction:column;gap:16px;justify-content:center}
+  #lsp .demo-side h3{font-size:22px;font-weight:700;line-height:1.3;margin:0}
+  #lsp .demo-side p{color:var(--lsp-text-2);font-size:15.5px;margin:0}
+  #lsp .founder-line{display:flex;align-items:center;gap:12px;margin-top:6px}
+  #lsp .avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#2a2416,#153312);
+    border:1px solid var(--lsp-line);display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:15px;color:var(--lsp-gold);flex:none}
+  #lsp .founder-line small{color:var(--lsp-text-3);font-size:13px;line-height:1.4}
+
+  /* ---------- pain cards ---------- */
+  #lsp .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:900px){#lsp .pain-grid{grid-template-columns:1fr}}
+  #lsp .pain{padding:34px 30px;display:flex;flex-direction:column;gap:16px}
+  #lsp .pain q{font-size:20px;font-weight:600;line-height:1.4;color:#fff;quotes:'\201C' '\201D'}
+  #lsp .pain q::before,#lsp .pain q::after{color:var(--lsp-text-3)}
+  #lsp .pain p{color:var(--lsp-text-2);font-size:15.5px;margin:0}
+  #lsp .pain .fix{margin-top:auto;padding-top:14px;border-top:1px solid var(--lsp-line-soft);
+    font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--lsp-text-2)}
+
+  /* ---------- real UI band ---------- */
+  #lsp .ui-band{background:var(--lsp-panel-solid);border-top:1px solid var(--lsp-line-soft);
+    border-bottom:1px solid var(--lsp-line-soft)}
+  #lsp .shot{border-radius:var(--lsp-radius);overflow:hidden;border:1px solid var(--lsp-line);
+    box-shadow:0 30px 80px rgba(0,0,0,.55),0 4px 16px rgba(0,0,0,.4);background:#000;margin:0}
+  #lsp .shot img{width:100%}
+  #lsp .shot-label{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;
+    font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lsp-text-2)}
+  #lsp .shot-label i{width:8px;height:8px;border-radius:50%;background:var(--lsp-trade)}
+  #lsp .ui-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px 24px;margin-top:48px}
+  @media(max-width:900px){#lsp .ui-grid{grid-template-columns:1fr}}
+
+  /* ---------- pricing ---------- */
+  #lsp .free-onb{display:inline-block;background:rgba(212,167,69,.12);border:1px solid rgba(212,167,69,.4);
+    color:var(--lsp-gold);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:13px;
+    border-radius:999px;padding:10px 22px;margin-bottom:22px}
+  #lsp .plans{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+  @media(max-width:820px){#lsp .plans{grid-template-columns:1fr}}
+  #lsp .plan{padding:38px 34px}
+  #lsp .plan .name{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lsp-text-2)}
+  #lsp .plan .price{font-size:52px;font-weight:800;letter-spacing:-.02em;margin:10px 0 2px;
+    font-variant-numeric:tabular-nums}
+  #lsp .plan .price small{font-size:17px;font-weight:500;color:var(--lsp-text-2);letter-spacing:0}
+  #lsp .plan .who{color:var(--lsp-text-3);font-size:14px;margin-bottom:20px}
+  #lsp .plan ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15.5px;
+    color:var(--lsp-text-2);margin:0;padding:0}
+  #lsp .plan li::before{content:'—';color:var(--lsp-gold);margin-right:10px}
+  #lsp .plan .btn{margin-top:26px;width:100%}
+  #lsp .anchor-reframe{margin-top:34px;padding:26px 30px;font-size:15.5px;color:var(--lsp-text-2)}
+  #lsp .anchor-reframe b{color:var(--lsp-text)}
+  #lsp .anchor-reframe small{display:block;margin-top:10px;color:var(--lsp-text-3);font-size:12.5px}
+
+  /* ---------- trust footer ---------- */
+  #lsp .trust{border-top:1px solid var(--lsp-line-soft)}
+  #lsp .trust-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+  @media(max-width:900px){#lsp .trust-grid{grid-template-columns:1fr}}
+  #lsp .trust h4{font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--lsp-text-2);margin:0 0 18px}
+  #lsp .trust p,#lsp .trust li{color:var(--lsp-text-2);font-size:15px}
+  #lsp .trust p{margin:0}
+  #lsp .days{list-style:none;display:flex;flex-direction:column;gap:12px;margin:0;padding:0}
+  #lsp .days b{color:var(--lsp-text);font-weight:600}
+  #lsp .faq{list-style:none;display:flex;flex-direction:column;gap:12px;margin:0;padding:0}
+  #lsp .faq b{color:var(--lsp-text);font-weight:600;display:block}
+  #lsp .foot-meta{margin-top:72px;padding-top:28px;border-top:1px solid var(--lsp-line-soft);
+    display:flex;gap:18px;flex-wrap:wrap;align-items:center;color:var(--lsp-text-3);font-size:13.5px}
+  #lsp .foot-meta .lsp-logo{font-weight:800;letter-spacing:.14em;font-size:13px;color:var(--lsp-gold);white-space:nowrap}
+  #lsp .foot-meta .lsp-logo span{color:var(--lsp-text);font-weight:500}
+
+  /* ---------- mobile sticky CTA ---------- */
+  #lsp .sticky-cta{display:none}
+  @media(max-width:640px){
+    #lsp .sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;
+      padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+      background:rgba(7,8,10,.85);backdrop-filter:blur(14px);border-top:1px solid var(--lsp-line-soft)}
+    #lsp .sticky-cta .btn{width:100%}
+    #lsp{padding-bottom:76px}
+    /* make room under the sticky CTA so the site footer stays reachable
+       (page-scoped: this rule only loads with this page) */
+    .footer{padding-bottom:96px}
+  }
+</style>
+{% endraw %}
+
+<div id="lsp">
+
+<header>
+  <img class="hero-art" src="/static/img/trades/landscaping-hero.webp"
+       alt="Landscaping crew truck and trailer with two zero-turn mowers at golden hour on a striped estate lawn"
+       fetchpriority="high">
+  <div class="hero-scrim"></div>
+  <div class="wrap hero-in">
+    <div class="overline"><i></i>Granite Models &middot; Landscaping</div>
+    <h1>Stop crisscrossing the county.</h1>
+    <p class="hero-sub">Jobs, crews, routes, and cash — one dashboard, built for landscapers by a landscaper. No add-ons. No seat creep. No $29 plan that turns into $400.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="#demo">See it live</a>
+      <a class="btn btn-ghost" href="/contact">Book a real demo with the founder</a>
+    </div>
+    <div class="chips">
+      <span class="chip"><b>Routes</b> that stop wasting fuel</span>
+      <span class="chip"><b>Overdue money</b> you can finally see</span>
+      <span class="chip"><b>One login</b> instead of three apps</span>
+    </div>
+  </div>
+</header>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Watch it run a real day.</h2>
+      <p class="sec-sub">Ninety seconds. The actual product — scheduling a crew, routing the day, sending the invoice.</p>
+    </div>
+    <div class="demo-grid">
+      <div class="glass video-card">
+        {% set vid = find_dash_video('landscaping') %}
+        {% if vid %}
+        <video controls preload="none" poster="/static/img/trades/landscaping-demo-poster.webp">
+          <source src="{{ vid }}" type="video/{{ 'mp4' if vid.endswith('.mp4') else 'webm' }}">
+          Your browser can't play this demo — <a href="{{ vid }}" style="color:var(--lsp-gold)">download it here</a>.
+        </video>
+        {% else %}
+        <img src="/static/img/trades/landscaping-demo-poster.webp" alt="Landscaping dashboard demo preview">
+        {% endif %}
+      </div>
+      <div class="glass demo-side">
+        <h3>Book a real demo with the founder</h3>
+        <p>No SDR, no script, no 45-minute discovery call. You get the person who built it — and who mows with it.</p>
+        <div class="founder-line">
+          <div class="avatar">JA</div>
+          <small><b style="color:var(--lsp-text)">Jon Anderson</b><br>Granite Models — New Hampshire</small>
+        </div>
+        <a class="btn" href="/contact">Book the demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>You've said one of these this month.</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="glass pain">
+        <q>We're crisscrossing the whole county some days for no reason.</q>
+        <p>Trucks burn hours and fuel because the week was planned on a whiteboard at 6 AM.</p>
+        <div class="fix">Fixed by &middot; Route Scheduler + week grid</div>
+      </div>
+      <div class="glass pain">
+        <q>I don't know what's overdue or what's actually been billed.</q>
+        <p>The work got done. The invoice went&hellip; somewhere. Aging buckets show every dollar someone owes you — and one button chases it.</p>
+        <div class="fix">Fixed by &middot; Invoice aging + Mark Paid</div>
+      </div>
+      <div class="glass pain">
+        <q>I've got three apps open and still can't tell if I made money today.</q>
+        <p>Revenue, active jobs, who's clocked in, what's about to break — one screen, live, before your first coffee.</p>
+        <div class="fix">Fixed by &middot; The owner dashboard</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ui-band" id="ui">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>This is the actual product.</h2>
+      <p class="sec-sub">Not a mockup, not a concept deck — these are live screens from the landscaping dashboard, the same one your crew logs into on the truck.</p>
+    </div>
+    <div>
+      <div class="shot-label"><i></i>Owner dashboard — revenue, crews, alerts</div>
+      <figure class="shot"><img src="/static/img/trades/landscaping-ui-dashboard.webp" loading="lazy" alt="Owner dashboard: monthly revenue, active jobs, crew status, equipment alerts"></figure>
+    </div>
+    <div class="ui-grid">
+      <div>
+        <div class="shot-label"><i></i>Schedule — the whole week, every crew</div>
+        <figure class="shot"><img src="/static/img/trades/landscaping-ui-schedule.webp" loading="lazy" alt="Weekly schedule grid across six crews"></figure>
+      </div>
+      <div>
+        <div class="shot-label"><i></i>Invoices — aging you can act on</div>
+        <figure class="shot"><img src="/static/img/trades/landscaping-ui-invoices.webp" loading="lazy" alt="Invoice list with aging buckets and overdue tracking"></figure>
+      </div>
+      <div>
+        <div class="shot-label"><i></i>Payroll — hours to dollars, one click</div>
+        <figure class="shot"><img src="/static/img/trades/landscaping-ui-payroll.webp" loading="lazy" alt="Payroll export with regular and overtime hours"></figure>
+      </div>
+      <div>
+        <div class="shot-label"><i></i>Fleet Pro — trucks, trailers, maintenance</div>
+        <figure class="shot"><img src="/static/img/trades/landscaping-ui-fleet.webp" loading="lazy" alt="Fleet management with vehicles and maintenance status"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;max-width:760px;margin-left:auto;margin-right:auto">
+      <span class="free-onb">Free onboarding &middot; setup included</span>
+      <h2>Everything included. No add-ons, no seat creep.</h2>
+      <p class="sec-sub" style="margin-left:auto;margin-right:auto">One price runs the whole company — every module, every crew member, every truck. The demo above is the product you get.</p>
+    </div>
+    <div class="plans">
+      <div class="glass plan">
+        <div class="name">Trades</div>
+        <div class="price">$600<small>/mo</small></div>
+        <div class="who">For owner-operators and 2&ndash;5 person crews</div>
+        <ul>
+          <li>The full landscaping dashboard — jobs, quotes, invoicing, scheduling</li>
+          <li>Crew clock-in, payroll export, customer portal</li>
+          <li>Every crew member included — no per-seat pricing</li>
+          <li>Free onboarding: your data migrated, your crews trained</li>
+        </ul>
+        <a class="btn" href="https://buy.stripe.com/14AeVdgTA7XLaLZ2JzdZ60f?client_reference_id=landscaping">Subscribe — $600/mo</a>
+      </div>
+      <div class="glass plan">
+        <div class="name">Pro</div>
+        <div class="price">$800<small>/mo</small></div>
+        <div class="who">For multi-crew operations that run routes daily</div>
+        <ul>
+          <li>Everything in Trades</li>
+          <li>Fleet Pro — vehicles, maintenance, fuel</li>
+          <li>Route Scheduler — tight daily routes, less windshield time</li>
+          <li>AI answering + winter ops when the season flips</li>
+        </ul>
+        <a class="btn" href="https://buy.stripe.com/cNifZh8n43Hv3jx2JzdZ60g?client_reference_id=landscaping">Subscribe — $800/mo</a>
+      </div>
+    </div>
+    <div class="glass anchor-reframe">
+      <b>Do the math on the "cheap" plan.</b> The $29 field-software starter is a login, not a company:
+      marketing is +$79/mo, the receptionist is +$29/mo, pipeline is +$49/mo — and the features crews
+      actually run on live in the $149&ndash;$399 tiers. Before add-ons. Per month. Forever.
+      <small>Competitor public pricing captured 2026-07-09.</small>
+    </div>
+  </div>
+</section>
+
+<section class="trust" id="trust">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div>
+        <h4>From the founder</h4>
+        <div class="founder-line" style="margin-bottom:16px">
+          <div class="avatar">JA</div>
+          <small><b style="color:var(--lsp-text)">Jon Anderson</b><br>Granite Models Automations &middot; New Hampshire</small>
+        </div>
+        <p>I'm a landscaper. I built this because I was the guy crisscrossing the county with three apps open and money I couldn't see. It runs my routes — it'll run yours. If it doesn't, tell me to my face on the demo call.</p>
+      </div>
+      <div>
+        <h4>Your first 14 days</h4>
+        <ul class="days">
+          <li><b>Day 1&ndash;2</b> — your customers, properties, and open invoices migrated for you</li>
+          <li><b>Week 1</b> — crews scheduled, clock-in live, first routes planned</li>
+          <li><b>Day 14</b> — invoices out, aging visible, you know what you made</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Straight answers</h4>
+        <ul class="faq">
+          <li><b>Contract?</b> Month-to-month. Leave whenever.</li>
+          <li><b>Setup?</b> Included — free onboarding, we do the migration.</li>
+          <li><b>Training?</b> Included, with the founder, not a help-desk video.</li>
+          <li><b>Crew size?</b> Built for 1&ndash;10 crews. If you're bigger, ask.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-meta">
+      <span class="lsp-logo">GRANITE <span>MODELS</span></span>
+      <span>granitemodels.store</span>
+      <span>Built in New Hampshire for the trades</span>
+      <span style="margin-left:auto">&copy; 2026 Granite Models Automations</span>
+    </div>
+  </div>
+</section>
+
+<div class="sticky-cta"><a class="btn" href="#demo">See it live</a></div>
+
+</div>
+{% endblock %}
