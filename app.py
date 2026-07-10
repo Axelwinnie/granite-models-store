@@ -643,6 +643,20 @@ def route_scheduler():
 def tools_route_scheduler_alias():
     return redirect('/route-scheduler', code=302)
 
+# ----------------------------------------------------------------------
+# /trades/<trade> — flagship trade landing pages (Direction C "Jobsite
+# Cinema" design, approved 2026-07-10). Landscaping is the first one.
+# /trades itself points at Tools & Dashboards until more pages exist.
+# ----------------------------------------------------------------------
+@app.route('/trades/landscaping')
+def trade_landscaping():
+    return render_template('trade_landscaping.html', social=SOCIAL)
+
+@app.route('/trades')
+@app.route('/trades/')
+def trades_index():
+    return redirect('/tools', code=302)
+
 @app.route('/robots.txt')
 def robots():
     return app.send_static_file('robots.txt')
@@ -653,7 +667,8 @@ def serve_video(filename):
 
 @app.route('/sitemap.xml')
 def sitemap():
-    pages = ['/', '/solutions', '/leads', '/pricing', '/roadmap', '/contact', '/story', '/systems', '/process']
+    pages = ['/', '/solutions', '/leads', '/pricing', '/roadmap', '/contact', '/story', '/systems', '/process',
+             '/tools', '/trades/landscaping']
     pages += [f'/project/{slug}' for slug in PROJECTS]
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     for p in pages:
