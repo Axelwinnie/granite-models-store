@@ -707,9 +707,8 @@ CHAT_SYSTEM_PROMPT = """You are a friendly, professional customer service assist
 GMA builds AI-powered business management software for the trades industry — landscaping, HVAC, plumbing, steel fabrication, construction, electrical, and 16 more trades.
 
 KEY FACTS:
-- Granite Trades Platform: $999 onboarding + $600/month. Full dashboard, no per-user fees. QuickBooks and Excel included free.
-- Granite Pro: $999 onboarding + $800/month. Everything in the Trades Platform PLUS the Automation Learning System (automation that learns the business) and priority support. Trade tools and leads are separate add-ons, not included in Pro.
-- Developer Templates: From $250 (basic) to $400 (larger systems). One-time purchase, source code.
+- Granite Trades Platform: $600/month, free onboarding. Full dashboard, no per-user fees. QuickBooks and Excel included free.
+- Granite Pro: $800/month, free onboarding. Everything in the Trades Platform PLUS the Automation Learning System (automation that learns the business) and priority support. Trade tools and leads are separate add-ons, not included in Pro.
 - Pay-per-lead: 5 tiers from $45 to $190 based on job value. Class B leads $20 each.
 - Based in New Hampshire. Founded by Jon Anderson, 30 years in the trades.
 - 50+ production systems, 22 trade-specific dashboards.
