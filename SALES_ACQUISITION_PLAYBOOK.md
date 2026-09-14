@@ -340,9 +340,167 @@ Do not bypass platform controls, evade rate limits, mass-spam users, or collect 
 
 ---
 
+## 9. Proposed Hybrid Retainer & Credit Pricing Model
+
+Status: proposed commercial architecture for pricing redesign. The example dollar amounts below are reference ranges, not locked public pricing.
+
+### Structure
+Use a recurring baseline retainer plus metered or bundled expansion capacity.
+
+The baseline retainer funds the persistent operating layer that exists whether or not a client requests a new build that month:
+
+- Hosting/server overhead
+- API and integration upkeep
+- Automation health monitoring
+- Agent monitoring and routine diagnostics
+- Minor configuration changes
+- Routine maintenance
+- A defined included allowance of agent execution, service credits, or maintenance work
+
+Reference range for evaluation: **$299–$499/month**, subject to margin modeling and final service-tier design.
+
+### Credits / Expansion Packs
+New workflows, substantial modifications, migrations, large data-processing jobs, or compute-heavy execution consume separately priced credits or fixed expansion packs.
+
+Examples:
+
+- New single-app automation
+- New multi-app workflow
+- CRM migration or data cleanup
+- High-volume data transformation
+- Custom API integration
+- Major workflow redesign
+- Additional agent execution beyond plan allowance
+
+Credits should represent a customer-understandable unit of delivered capacity, not raw tokens. Internal token, GPU, API-call, labor, and infrastructure costs should remain part of GMA's cost model.
+
+### Why It Fits Agent-Driven Delivery
+Pure unlimited flat-fee pricing creates asymmetric risk. Unexpected API changes, runaway execution, failed retries, third-party outages, or unusually complex repairs can consume far more compute and engineering effort than a fixed monthly price anticipated.
+
+The hybrid model provides:
+
+- Predictable recurring baseline revenue
+- Coverage for persistent infrastructure and monitoring costs
+- A defined boundary around included work
+- Fair billing for expansion work
+- Protection against pathological compute or maintenance spikes
+- A natural upgrade path as customers automate more of their operation
+
+### Required Guardrails
+The production billing model should include:
+
+- Per-client execution budgets
+- Hard ceilings on autonomous retries
+- Loop detection and kill switches
+- Cost anomaly alerts
+- Approval thresholds for expensive execution
+- Visible credit balances or included-capacity status
+- Clear rollover/expiration rules if credits are used
+- Transparent definitions of maintenance versus new-build work
+- No surprise overages without the contractually defined approval policy
+
+### Metrics to Model Before Locking Prices
+
+Track:
+
+- Gross margin per tier
+- Infrastructure cost per client
+- AI/model cost per client
+- API cost per client
+- Average maintenance load
+- Average included-capacity utilization
+- Credits consumed by service type
+- Expansion revenue per account
+- Support burden
+- Churn by tier
+- Lifetime value
+- Cost and frequency of exceptional incidents
+
+---
+
+## 10. Client Interface With the GMA Agent Workforce
+
+The client interface should expose the value of the agent system without exposing internal orchestration complexity or allowing unbounded direct execution.
+
+### Option A — Dedicated Slack or Discord Channel
+
+#### Purpose
+Fastest deployment path for early customers and white-label partners.
+
+#### User Experience
+Each client receives a private channel or workspace connection. A GMA bot accepts plain-English requests such as:
+
+> Sync my new Typeform leads to HubSpot.
+
+The request flows into the GMA intake system where it is parsed, scoped, costed, checked against permissions and available credits, and routed to the correct agent or specialist.
+
+Where human approval is required, the system produces a one-click approval/reject action before deployment or customer commitment.
+
+#### Advantages
+
+- Fast to deploy
+- Familiar user experience
+- Low client training burden
+- Suitable for pilots and agency partners
+- Easy notifications and conversational follow-up
+
+#### Limitations
+
+- Less differentiated product experience
+- Harder to present full automation health and commercial data cleanly
+- Client history and operational state can become fragmented if chat is treated as the system of record
+
+Chat must therefore be an interface to GMA, not the authoritative ledger.
+
+### Option B — Lightweight GMA Client Web Portal
+
+#### Purpose
+Preferred professional client experience as the service matures.
+
+The portal may initially be built with a low-code/internal-tool layer or a custom interface, but the long-term design should connect directly to GMA's own backend authority, job queue, billing/credit state, telemetry, and approval system.
+
+#### Client Dashboard
+Clients should be able to see:
+
+- Active automations
+- Current health/status
+- Recent runs
+- Errors and incidents
+- Resolved failures
+- Pending requests
+- Work currently being built
+- Approval requests
+- Included capacity / credit balance
+- Expansion estimates
+- Service history
+- Relevant reports and measurable outcomes
+
+#### Request Interface
+Provide a simple conversational or structured request box. A client can describe the desired outcome in plain English.
+
+The backend should then:
+
+1. Identify the client and authorized workspace.
+2. Classify the request.
+3. Retrieve only the relevant client context.
+4. Determine affected systems and permissions.
+5. Estimate scope, risk, and credit/cost impact.
+6. Produce an execution plan or clarification only when genuinely required.
+7. Route required approvals.
+8. Dispatch approved work into Conduit / Agent Hub.
+9. Run implementation and verification under GMA governance.
+10. Return status, evidence, deliverables, and billing consumption to the portal.
+
+### Recommended Direction
+Use Slack/Discord as an early access surface where it accelerates sales and onboarding, but architect the **GMA client portal as the canonical long-term interface**. Both surfaces should feed the same backend request, approval, ledger, identity, telemetry, and billing systems.
+
+The client must never gain unrestricted conversational access to production agents. Requests should pass through authenticated intake, scope controls, permission boundaries, spend controls, and deployment gates.
+
+---
+
 # GMA Sales Integration Requirements
 
-These methods should feed the broader GMA sales system rather than operate as disconnected manual tactics.
+These methods and commercial mechanisms should feed the broader GMA sales system rather than operate as disconnected manual tactics.
 
 For every opportunity, capture at minimum:
 
@@ -356,6 +514,10 @@ For every opportunity, capture at minimum:
 - Proposed solution
 - Product/service category
 - Estimated project value
+- Proposed retainer tier if applicable
+- Estimated recurring revenue
+- Estimated expansion/credit demand
+- Preferred client interface
 - Contact status
 - Demo or Loom URL if applicable
 - Source content URL if applicable
@@ -407,5 +569,13 @@ Track:
 - Human-approved outbound responses
 - Response-to-conversation rate
 - Conversation-to-sale rate
+- Monthly recurring revenue
+- Expansion/credit revenue
+- Gross margin by client and tier
+- Included-capacity utilization
+- Average credits consumed per account
+- Client-interface usage
+- Request-to-approval time
+- Approval-to-delivery time
 
-The goal is to identify which acquisition channel produces the highest qualified revenue per hour and progressively automate research, routing, evidence capture, content production, opportunity scoring, follow-up, and reporting without weakening human approval over customer commitments or publication quality.
+The goal is to identify which acquisition channel and commercial structure produce the highest qualified revenue and durable margin per unit of operator attention, while progressively automating research, routing, evidence capture, content production, opportunity scoring, client intake, delivery, follow-up, billing visibility, and reporting without weakening human approval over customer commitments, spend, or publication quality.
